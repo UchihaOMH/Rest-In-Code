@@ -1,4 +1,4 @@
-﻿Shader "Custom/Custom_Shader"
+﻿Shader "Custom/RImLight_Hologram_Shader"
 {
     Properties
     {
