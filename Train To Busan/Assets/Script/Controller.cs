@@ -5,20 +5,60 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public Transform doll;
+    public Rigidbody2D rig;
     public Animator animator;
 
-    public float runSpeed = 1.0f;
+    [Header("Controll"), Tooltip("Move Pixel Per Sec")]
+    public float moveSpeed = 1.0f;
+    public float jumpHeight = 50.0f;
 
-#if UNITY_EDITOR
+    private bool isStep = false;
+
+    private Quaternion rot;
+
     private void Awake()
     {
-        doll = gameObject.GetComponent<Transform>();
-        animator = gameObject.GetComponent<Animator>();
+        doll = GetComponent<Transform>();
+        rig = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        rot = Quaternion.Euler(0, 180, 0);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            isStep = true;
+    }
+
+#if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKey)
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector2 dir = Vector2.zero;
+
+        if (horizontal > 0)
+        {
+            dir.x = moveSpeed;
+            rot = Quaternion.Euler(0, 180, 0);
+        }
+        else if (horizontal < 0)
+        {
+            dir.x = -moveSpeed;
+            rot = Quaternion.Euler(0, 0, 0);
+        }
+
+        if (vertical > 0 && isStep)
+        {
+            rig.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            isStep = false;
+        }
+
+        doll.Translate(new Vector3(dir.x, dir.y, 0), Space.World);
+        doll.rotation = rot;
     }
 #endif
 
