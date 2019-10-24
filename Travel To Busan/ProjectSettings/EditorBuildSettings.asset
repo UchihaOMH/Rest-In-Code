@@ -4,14 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/CubicPilot/Scenes/1_MenuScene.unity
-    guid: b01f28277f2db44a6989aa1a1d2b5c8c
-  - enabled: 1
-    path: Assets/CubicPilot/Scenes/2_GameplayScene.unity
-    guid: 602483de22790438e8999de79ea5c719
-  - enabled: 1
-    path: Assets/CubicPilot/Scenes/3_FinaleScene.unity
-    guid: 6efa4e5432b8245ba8543bc0f51c2d8f
+  m_Scenes: []
   m_configObjects: {}

@@ -1,9 +1,9 @@
 lastUpgrade=00964
 proj.pluginVersion=0.9.64
-proj.AppId=424064666660
+proj.AppId=150306617322
 and.BundleId=portfolio.omh.first
 proj.classDir=Assets
 proj.ConstantsClassName=GPGSIds
-and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--+app_id+--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e424064666660%3c%2fstring%3e%0d%0a++%3c%21--+package_name+--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3eportfolio.omh.first%3c%2fstring%3e%0d%0a++%3c%21--+achievement+%ec%97%ac%ed%96%89%ec%9d%84+%ec%8b%9c%ec%9e%91%ed%95%98%eb%8b%a4.+--%3e%0d%0a++%3cstring+name%3d%22achievement__.%22+translatable%3d%22false%22%3eCgkIpJjl4asMEAIQAQ%3c%2fstring%3e%0d%0a++%3c%21--+achievement+%eb%aa%ac%ec%8a%a4%ed%84%b0+%ed%97%8c%ed%84%b0+--%3e%0d%0a++%3cstring+name%3d%22achievement%22+translatable%3d%22false%22%3eCgkIpJjl4asMEAIQAg%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
-and.ClientId=424064666660-dtnrbu78uekikgoeh91jlu8cevthlbq6.apps.googleusercontent.com
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--+app_id+--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e150306617322%3c%2fstring%3e%0d%0a++%3c%21--+package_name+--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3eportfolio.omh.first%3c%2fstring%3e%0d%0a++%3c%21--+achievement+Test+--%3e%0d%0a++%3cstring+name%3d%22achievement_test%22+translatable%3d%22false%22%3eCgkI6u_j968EEAIQAQ%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
+and.ClientId=150306617322-06nhfeujksupdmop96c5sgbrjv9lfr3f.apps.googleusercontent.com
 android.SetupDone=true
