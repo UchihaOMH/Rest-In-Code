@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Civilian
-  - LevelController
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Level
+  - Object
   - 
   - 
   - 
@@ -43,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 596383117
+    locked: 0
+  - name: Object
+    uniqueID: 394833521
     locked: 0
