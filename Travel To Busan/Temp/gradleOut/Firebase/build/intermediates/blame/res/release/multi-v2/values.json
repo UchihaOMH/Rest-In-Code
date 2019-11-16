@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\WorkSpace\\Rest-In-Code\\Travel To Busan\\Temp\\gradleOut\\Firebase\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\WorkSpace\\Rest-In-Code\\Travel To Busan\\Temp\\gradleOut\\Firebase\\res\\values\\google-services.xml",
+                    "from": {
+                        "startLines": "9,2,3,6,8,7,4,5",
+                        "startColumns": "2,2,2,2,2,2,2,2",
+                        "startOffsets": "1047,334,451,720,940,822,531,637",
+                        "endColumns": "141,116,79,101,106,117,105,82",
+                        "endOffsets": "1186,448,528,819,1044,937,634,717"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,318,400,504,613,733,841",
+                        "endColumns": "143,118,81,103,108,119,107,84",
+                        "endOffsets": "194,313,395,499,608,728,836,921"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\WorkSpace\\Rest-In-Code\\Travel To Busan\\Temp\\gradleOut\\Firebase\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\WorkSpace\\Rest-In-Code\\Travel To Busan\\Temp\\gradleOut\\Firebase\\res\\values\\google-services.xml",
+                    "from": {
+                        "startLines": "9,2,3,6,8,7,4,5",
+                        "startColumns": "2,2,2,2,2,2,2,2",
+                        "startOffsets": "1047,334,451,720,940,822,531,637",
+                        "endColumns": "141,116,79,101,106,117,105,82",
+                        "endOffsets": "1186,448,528,819,1044,937,634,717"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,318,400,504,613,733,841",
+                        "endColumns": "143,118,81,103,108,119,107,84",
+                        "endOffsets": "194,313,395,499,608,728,836,921"
+                    }
+                }
+            ]
+        }
+    ]
+}
