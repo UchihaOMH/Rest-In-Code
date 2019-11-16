@@ -1,0 +1,2 @@
+include 'Firebase'
+include 'GooglePlayGamesManifest.plugin'
