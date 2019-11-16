@@ -66,5 +66,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#LockFile
+UnityLockfile.file
+db.lock
 
 # End of https://www.gitignore.io/api/unity
