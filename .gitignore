@@ -68,6 +68,6 @@ crashlytics-build.properties
 
 #LockFile
 UnityLockfile.file
-db.lock
+*.lock
 
 # End of https://www.gitignore.io/api/unity
