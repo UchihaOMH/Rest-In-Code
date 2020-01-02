@@ -1,71 +1,150 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerAttackState : MonoBehaviour, IPlayerAnimState
+public class PlayerAttackState : PlayerAnimState
 {
-    public PlayerControl controller;
-
-    private Stack<GameObject> attackBuff;
-    private bool onAttack = false;
-    private int comboCount = 0;
-
-    private Stack<GameObject> leftAttack;
-    private Stack<GameObject> rightAttack;
-
-    private void Start()
+    public bool OnAttack
     {
-        leftAttack = new Stack<GameObject>(new List<GameObject>() { controller.leftButton });
-        rightAttack = new Stack<GameObject>(new List<GameObject>() { controller.rightButton });
-    }
-
-    public void InputProcess()
-    {
-        for (int i = 0; i < Input.touchCount; i++)
+        get => onAttack;
+        private set
         {
-            List<RaycastResult> set = new List<RaycastResult>();
-            controller.eventData.position = Input.GetTouch(i).position;
-            controller.graphicRaycaster.Raycast(controller.eventData, set);
-            GameObject obj = set[0].gameObject;
-
-            if (obj.layer.Equals(LayerMask.GetMask(GameConst.LayerDefinition.controller)))
-            {
-                if (Input.GetTouch(i).phase == TouchPhase.Began && obj.Equals(controller.attackSymbol))
-                {
-                    attackBuff = new Stack<GameObject>();
-                }
-                else if (Input.GetTouch(i).phase == TouchPhase.Moved || Input.GetTouch(i).phase == TouchPhase.Stationary)
-                {
-                    if (attackBuff.Peek() != obj)
-                    {
-                        attackBuff.Push(obj);
-                    }
-
-                    if (attackBuff.Equals(leftAttack))
-                    {
-                        controller.targetAnim.SetTrigger(GameConst.AnimationParameter.tAttack);
-                        BasicCombo(Vector2.left);
-                    }
-                    else if (attackBuff.Equals(rightAttack))
-                    {
-                        controller.targetAnim.SetTrigger(GameConst.AnimationParameter.tAttack);
-                        BasicCombo(Vector2.right);
-                    }
-                }
-                else if (Input.GetTouch(i).phase == TouchPhase.Ended)
-                {
-
-                    //  콤보 기술들 버퍼랑 비교해서 발동
-                }
-            }
+            controller.targetAnim.SetBool(GameConst.AnimationParameter.bAttack, value);
+            onAttack = value;
+        }
+    }
+    public bool OnBasicAttack 
+    {
+        get => onBasicAttack;
+        private set
+        {
+            controller.targetAnim.SetBool(GameConst.AnimationParameter.bBasicAttack, value);
+            onBasicAttack = value;
         }
     }
 
-    void BasicCombo(Vector2 dir)
+    private Stack<GameObject> buff;
+    private Stack<GameObject> leftBasicAttack;
+    private Stack<GameObject> rightBasicAttack;
+    private Stack<GameObject> leftUpperCommand;
+    private Stack<GameObject> rightUpperCommand;
+    private Stack<GameObject> leftLowerCommand;
+    private Stack<GameObject> rightLowerCommand;
+    private Stack<GameObject> breakCommand;
+
+    private bool onAttack = false;
+    private bool onBasicAttack = false;
+
+    public PlayerAttackState()
     {
-        comboCount %= 4 + 1;
-        controller.LookAt(dir);
-        controller.targetAnim.SetInteger(GameConst.AnimationParameter.iComboCount, comboCount);
+        leftBasicAttack = new Stack<GameObject>(new List<GameObject>()
+        { controller.leftButton });
+        rightBasicAttack = new Stack<GameObject>(new List<GameObject>()
+        { controller.leftButton });
+
+        leftUpperCommand = new Stack<GameObject>(new List<GameObject>()
+        { controller.leftButton, controller.upLeftButton });
+        rightUpperCommand = new Stack<GameObject>(new List<GameObject>()
+        { controller.rightButton, controller.upRightButton });
+
+        leftLowerCommand = new Stack<GameObject>(new List<GameObject>()
+        { controller.leftButton, controller.downLeftButton });
+        rightLowerCommand = new Stack<GameObject>(new List<GameObject>()
+        { controller.rightButton, controller.downRightButton });
+
+        breakCommand = new Stack<GameObject>(new List<GameObject>()
+        { controller.downButton });
+    }
+
+    public override void InputProcess(GameObject input, Touch touch)
+    {
+        if (input == null)
+        {
+            OnAttack = false;
+            OnBasicAttack = false;
+            TransitionProcess(controller.animStruct.run, input, touch);
+            return;
+        }
+
+        if (touch.phase == TouchPhase.Began)
+        {
+            onAttack = true;
+            buff = new Stack<GameObject>();
+        }
+        else if (touch.phase == TouchPhase.Moved)
+        {
+            PushToBuffer(input);
+        }
+        else if (touch.phase == TouchPhase.Stationary)
+        {
+            if (CompareBuffer(buff, leftBasicAttack))
+            {
+                OnBasicAttack = true;
+                controller.LookAt(Vector2.left);
+            }
+            else if (CompareBuffer(buff, rightBasicAttack))
+            {
+                OnBasicAttack = true;
+                controller.LookAt(Vector2.right);
+            }
+        }
+        else
+        {
+            if (controller.targetRb.velocity.y < -0.1f)
+            {
+                if (CompareBuffer(buff, breakCommand))
+                {
+
+                }
+            }
+            else if (CompareBuffer(buff, rightUpperCommand))
+            {
+
+            }
+            else if (CompareBuffer(buff, leftUpperCommand))
+            {
+
+            }
+            else if (CompareBuffer(buff, rightLowerCommand))
+            {
+
+            }
+            else if (CompareBuffer(buff, leftLowerCommand))
+            {
+
+            }
+
+            OnAttack = false;
+            OnBasicAttack = false;
+            TransitionProcess(controller.animStruct.run, input, touch);
+        }
+    }
+    public override void CurrentState()
+    {
+        Debug.Log("Attack");
+    }
+
+    public void PushToBuffer(GameObject input)
+    {
+        if (buff.Count == 0)
+            buff.Push(input);
+        else if (buff.Peek() != input && input != controller.attackSymbol)
+            buff.Push(input);
+    }
+    public bool CompareBuffer(Stack<GameObject> buff_1, Stack<GameObject> buff_2)
+    {
+        Stack<GameObject> a = new Stack<GameObject>(buff_1);
+        Stack<GameObject> b = new Stack<GameObject>(buff_2);
+
+        if (a.Count != 0 && a.Count == b.Count)
+        {
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (a.Pop() != b.Pop())
+                    return false;
+            }
+            return true;
+        }
+        return false;
     }
 }

@@ -1,52 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerSitState : MonoBehaviour, IPlayerAnimState
+public class PlayerSitState : PlayerAnimState
 {
-    public PlayerControl controller;
-
-    public void InputProcess()
+    public bool OnSit
     {
-        if (Input.touchCount == 0)
+        get => onSit;
+        private set
         {
-            controller.targetAnim.SetBool(GameConst.AnimationParameter.bSit, false);
-            controller.State = controller.move;
+            onSit = value;
+            controller.targetAnim.SetBool(GameConst.AnimationParameter.bSit, value);
+        }
+    }
+
+    private bool onSit = false;
+
+    public override void InputProcess(GameObject input, Touch touch)
+    {
+        if (input == null)
+        {
+            TransitionProcess(controller.animStruct.run, input, touch);
             return;
         }
 
-        for (int i = 0; i < Input.touchCount; i++)
+        if (touch.phase == TouchPhase.Began)
         {
-            List<RaycastResult> set = new List<RaycastResult>();
-            controller.eventData.position = Input.GetTouch(i).position;
-            controller.graphicRaycaster.Raycast(controller.eventData, set);
-            GameObject obj = set[0].gameObject;
-
-            if (obj.layer.Equals(LayerMask.GetMask(GameConst.LayerDefinition.controller)))
+            //  공격
+            if (touch.phase == TouchPhase.Began && input == controller.attackSymbol)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Began && obj.Equals(controller.attackSymbol))
-                {
-                    controller.State = controller.attack;
-                    return;
-                }
+                TransitionProcess(controller.animStruct.attack, input, touch);
+            }
+        }
+        else
+        {
+            if (input == controller.downButton)
+            {
+                Sit();
+            }
+            else
+            {
+                OnSit = false;
 
-                if (obj.Equals(controller.downButton))
+                //  달리기
+                if (input == controller.leftButton || input == controller.rightButton)
                 {
-                    Sit();
+                    TransitionProcess(controller.animStruct.run, input, touch);
+                }
+                //  구르기
+                else if (input == controller.downLeftButton || input == controller.downRightButton)
+                {
+                    TransitionProcess(controller.animStruct.roll, input, touch);
                 }
                 else
                 {
-                    controller.targetAnim.SetBool(GameConst.AnimationParameter.bSit, false);
-                    controller.State = controller.move;
-                    return;
+                    TransitionProcess(controller.animStruct.run, input, touch);
                 }
             }
         }
     }
-
-    void Sit()
+    public override void CurrentState()
     {
-        controller.targetAnim.SetBool(GameConst.AnimationParameter.bSit, true);
+        Debug.Log("Sit");
+    }
+
+    public void Sit()
+    {
+        OnSit = true;
     }
 }

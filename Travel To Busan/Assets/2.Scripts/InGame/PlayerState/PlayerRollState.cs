@@ -1,53 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerRollState : MonoBehaviour, IPlayerAnimState
+public class PlayerRollState : PlayerAnimState
 {
-    public PlayerControl controller;
-
     private bool onRoll = false;
 
-    public void InputProcess()
+    public override void InputProcess(GameObject input, Touch touch)
     {
-        Roll(Vector2.right);
-
-        for (int i = 0; i < Input.touchCount; i++)
+        if (input == null)
         {
-            List<RaycastResult> set = new List<RaycastResult>();
-            controller.eventData.position = Input.GetTouch(i).position;
-            controller.graphicRaycaster.Raycast(controller.eventData, set);
-            GameObject obj = set[0].gameObject;
+            TransitionProcess(controller.animStruct.run, input, touch);
+            return;
+        }
 
-            if (obj.layer.Equals(LayerMask.GetMask(GameConst.LayerDefinition.controller)))
+        if (!onRoll)
+        {
+            if (input == controller.downLeftButton)
             {
-                if (!onRoll)
-                {
-                    if (obj.Equals(controller.downLeftButton))
-                    {
-                        Roll(Vector2.left);
-                    }
-                    else if (obj.Equals(controller.downRightButton))
-                    {
-                        Roll(Vector2.right);
-                    }
-                }
+                Roll(Vector2.left);
+            }
+            else if (input == controller.downRightButton)
+            {
+                Roll(Vector2.right);
+            }
+            else
+            {
+                TransitionProcess(controller.animStruct.run, input, touch);
             }
         }
     }
-
-    void Roll(Vector2 dir)
+    public override void CurrentState()
     {
-        controller.targetAnim.SetTrigger(GameConst.AnimationParameter.tRoll);
-        controller.LookAt(dir);
-        onRoll = true;
+        Debug.Log("Roll");
+    }
 
-        controller.targetAnim.GetBehaviour<RollBehaviour>().Roll(dir, controller.targetTr, controller.moveSpeed, () =>
+    public void Roll(Vector2 dir)
+    {
+        if (dir == Vector2.zero)
+            return;
+
+        controller.targetAnim.SetTrigger(GameConst.AnimationParameter.tRoll);
+        onRoll = true;
+        controller.LookAt(dir);
+        controller.targetAnim.GetBehaviour<RollBehaviour>().Roll(dir, controller.targetTr, controller.speed, () =>
         {
             onRoll = false;
-            controller.State = controller.move;
-            return;
         });
     }
 }

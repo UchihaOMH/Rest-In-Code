@@ -1,33 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- using UnityEngine.EventSystems;
 
-public class PlayerDieState : MonoBehaviour, IPlayerAnimState
+public class PlayerDieState : PlayerAnimState
 {
-    public PlayerControl controller;
-
-    public void InputProcess()
+    public override void InputProcess(GameObject input, Touch touch)
     {
-        Die();
-
-        //for (int i = 0; i < Input.touchCount; i++)
-        //{
-        //    List<RaycastResult> set = new List<RaycastResult>();
-        //    controller.eventData.position = Input.GetTouch(i).position;
-        //    controller.graphicRaycaster.Raycast(controller.eventData, set);
-        //    GameObject obj = set[0].gameObject;
-
-        //    if (obj.layer.Equals(LayerMask.GetMask(GameConst.LayerDefinition.controller)))
-        //    {
-
-        //    }
-        //}
+        return;
+    }
+    public override void CurrentState()
+    {
+        Debug.Log("Die");
     }
 
-    void Die()
+    public void Die()
     {
-        controller.targetAnim.SetTrigger(GameConst.AnimationParameter.tDie);
-        controller.isDead = true;
+        controller.targetAnim.SetBool(GameConst.AnimationParameter.bAlive, false);
+    }
+    public void Resurrect()
+    {
+        controller.targetAnim.SetBool(GameConst.AnimationParameter.bAlive, true);
+        controller.State = controller.animStruct.run;
     }
 }

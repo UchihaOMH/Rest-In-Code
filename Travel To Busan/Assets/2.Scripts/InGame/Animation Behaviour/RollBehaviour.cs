@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class RollBehaviour : StateMachineBehaviour
     private Transform tr;
     private float speed;
 
-    System.Action callback;
+    private Action callback;
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
@@ -22,24 +23,18 @@ public class RollBehaviour : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        callback();
+        callback?.Invoke();
 
         onRoll = false;
-
-        dir = Vector2.zero;
-        tr = null;
-        speed = 0.0f;
-
-        callback = null;
     }
 
-    public void Roll(Vector2 _dir, Transform _tr, float _speed, System.Action animationEndCallback)
+    public void Roll(Vector2 dir, Transform tr, float speed, Action animationEndCallback)
     {
         if (!onRoll)
         {
-            dir = _dir;
-            tr = _tr;
-            speed = _speed;
+            this.dir = dir;
+            this.tr = tr;
+            this.speed = speed;
             callback = animationEndCallback;
 
             onRoll = true;

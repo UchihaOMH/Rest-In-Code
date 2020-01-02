@@ -4,20 +4,23 @@ using UnityEngine;
 
 public static class GameConst
 {
+    public static readonly Touch emptyTouch = new Touch();
+
     public static class AnimationParameter
     {
         public const string bJump = "bJump";
         public const string bSit = "bSit";
+        public const string bAlive = "bAlive";
+        public const string bAttack = "bAttack";
+        public const string bBasicAttack = "bBasicAttack";
 
-        public const string fMoveBlend = "fMoveBlend";
+        public const string fRunBlend = "fRunBlend";
         public const string fJumpBlend = "fJumpBlend";
 
         public const string tRoll = "tRoll";
-        public const string tDie = "tDie";
-        public const string tResurrection = "tResurrection";
-        public const string tAttack = "tAttack";
-
-        public const string iComboCount = "iComboCounter";
+        public const string tUpperCommand = "tUpperCommand";
+        public const string tLowerCommand = "tLowerCommand";
+        public const string tBreakCommand = "tBreakCommand";
     }
 
     public static class LayerDefinition

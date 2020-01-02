@@ -1,98 +1,115 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerJumpState : MonoBehaviour, IPlayerAnimState
+public class PlayerJumpState : PlayerAnimState
 {
-    public PlayerControl controller;
+    public bool OnJump
+    {
+        get => onJump;
+        private set
+        {
+            onJump = value;
+            controller.targetAnim.SetBool(GameConst.AnimationParameter.bJump, value);
+        }
+    }
 
     private bool onJump = false;
 
-    public void InputProcess()
+    public override void InputProcess(GameObject input, Touch touch)
     {
-        for (int i = 0; i < Input.touchCount; i++)
+        if (input == null && !OnJump)
         {
-            List<RaycastResult> set = new List<RaycastResult>();
-            controller.eventData.position = Input.GetTouch(i).position;
-            controller.graphicRaycaster.Raycast(controller.eventData, set);
-            GameObject obj = set[0].gameObject;
+            OnJump = false;
+            TransitionProcess(controller.animStruct.run, input, touch);
+            return;
+        }
 
-            if (obj.layer.Equals(LayerMask.GetMask(GameConst.LayerDefinition.controller)))
+        BlendCheck();
+
+        if (OnJump)
+        {
+            if (touch.phase == TouchPhase.Began)
             {
-                if (onJump)
+                if (input == controller.attackSymbol)
                 {
-                    if (Input.GetTouch(i).phase == TouchPhase.Began && obj.Equals(controller.attackSymbol))
-                    {
-                        controller.State = controller.attack;
-                        return;
-                    }
-
-                    if (obj.Equals(controller.leftButton) || obj.Equals(controller.upLeftButton))
-                    {
-                        AirMove(Vector2.left);
-                    }
-                    else if (obj.Equals(controller.rightButton) || obj.Equals(controller.upRightButton))
-                    {
-                        AirMove(Vector2.right);
-                    }
+                    OnJump = false;
+                    TransitionProcess(controller.animStruct.attack, input, touch);
                 }
-                else
-                {
-                    if (obj.Equals(controller.upButton))
-                    {
-                        Jump(0.0f);
-                    }
-                    else if (obj.Equals(controller.upLeftButton))
-                    {
-                        Jump(0.0f);
-                        AirMove(Vector2.left);
-                    }
-                    else if (obj.Equals(controller.upRightButton))
-                    {
-                        Jump(0.0f);
-                        AirMove(Vector2.right);
-                    }
-                }
+            }
+            else if (input == controller.leftButton)
+            {
+                AirWalk(Vector2.left);
+            }
+            else if (input == controller.rightButton)
+            {
+                AirWalk(Vector2.right);
+            }
+            else if (input == controller.upLeftButton)
+            {
+                AirWalk(Vector2.left);
+            }
+            else if (input == controller.upRightButton)
+            {
+                AirWalk(Vector2.right);
+            }
+        }
+        else
+        {
+            if (input == controller.upButton)
+            {
+                Jump(input, touch);
+            }
+            else if (input == controller.upLeftButton)
+            {
+                Jump(input, touch);
+                AirWalk(Vector2.left);
+            }
+            else if (input == controller.upRightButton)
+            {
+                Jump(input, touch);
+                AirWalk(Vector2.right);
             }
             else
-                continue;
+            {
+                TransitionProcess(controller.animStruct.run, input, touch);
+            }
         }
     }
-
-    void AirMove(Vector2 dir)
+    public override void CurrentState()
     {
+        Debug.Log("Jump");
+    }
+
+    public void Jump(GameObject input, Touch touch)
+    {
+        OnJump = true;
+        controller.targetRb.AddForce(Vector2.up * controller.jumpForce, ForceMode2D.Impulse);
+    }
+    public void AirWalk(Vector2 dir)
+    {
+        controller.targetTr.Translate(dir * controller.speed, Space.World);
         controller.LookAt(dir);
-        controller.targetTr.Translate(dir * controller.moveSpeed, Space.World);
     }
-    void Jump(float blend)
+    public void BlendCheck()
     {
-        if (!onJump)
+        if (!OnJump)
+            return;
+
+        if (controller.targetRb.velocity.y < -0.5f)
         {
-            controller.targetAnim.SetBool(GameConst.AnimationParameter.bJump, true);
-            controller.targetAnim.SetFloat(GameConst.AnimationParameter.fJumpBlend, blend);
-            controller.targetRb.AddForce(Vector2.up * controller.jumpForce, ForceMode2D.Impulse);
-            StartCoroutine(JumpCoroutine());
+            OnJump = true;
+            controller.targetAnim.SetFloat(GameConst.AnimationParameter.fJumpBlend, 1.0f);
         }
-    }
-    IEnumerator JumpCoroutine()
-    {
-        onJump = true;
-
-        while (onJump)
+        else if (controller.targetRb.velocity.y > 0.5f)
         {
-            if (controller.targetRb.velocity.y < -0.1f)
-            {
-                controller.targetAnim.SetFloat(GameConst.AnimationParameter.fJumpBlend, 1.0f);
-            }
-            else if (controller.targetRb.velocity.y < 0.1f)
-            {
-                onJump = false;
-                controller.targetAnim.SetBool(GameConst.AnimationParameter.bJump, false);
-                controller.State = controller.move;
-            }
-
-            yield return null;
+            OnJump = true;
+            controller.targetAnim.SetFloat(GameConst.AnimationParameter.fJumpBlend, 0.0f);
+        }
+        else
+        {
+            Debug.Log("!Onjump");
+            OnJump = false;
         }
     }
 }
