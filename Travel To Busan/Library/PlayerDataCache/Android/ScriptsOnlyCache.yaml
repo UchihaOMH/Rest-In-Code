@@ -1,17 +1,38 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - JumpBehaviour
+    - BaseAttackBehaviour
+    - BeAttackedBehaviour
+    - DamageCalculator
+    - FXControl
+    - FXPoolManager
+    - GameManager
+    - HPBar
+    - PlayerBaseAttackState
+    - PlayerBeAttackedState
+    - PlayerCmdState
     - PlayerControl
+    - PlayerDieState
+    - PlayerJumpState
+    - PlayerRollState
+    - PlayerRunState
+    - PlayerSitState
+    - Puppet2D.Puppet2D_Bone
+    - Puppet2D.Puppet2D_FFDLineDisplay
+    - Puppet2D.Puppet2D_FFDStoreData
+    - Puppet2D.Puppet2D_GlobalControl
+    - Puppet2D.Puppet2D_IKHandle
+    - Puppet2D.Puppet2D_ParentControl
+    - Puppet2D.Puppet2D_SortingLayer
     - RollBehaviour
-    - TouchHighlight
+    - WeaponDefinition
+    - WindFist
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineBehaviourEditor
     - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
@@ -24,10 +45,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
-    - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
-    - UnityEngine.UI.RectMask2D
-    - UnityEngine.UI.ScrollRect
   sceneClasses:
     Assets/1.Scenes/Map/Prologue.unity:
     - Class: 1
@@ -38,7 +56,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
@@ -46,7 +70,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
-    - Class: 62
+    - Class: 64
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
@@ -56,6 +80,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -63,30 +91,72 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9676}
+      Script: {instanceID: 9688}
     - Class: 114
-      Script: {instanceID: 9872}
+      Script: {instanceID: 9734}
     - Class: 114
-      Script: {instanceID: 9922}
+      Script: {instanceID: 9818}
     - Class: 114
-      Script: {instanceID: 10066}
+      Script: {instanceID: 9850}
     - Class: 114
-      Script: {instanceID: 10258}
+      Script: {instanceID: 9918}
     - Class: 114
-      Script: {instanceID: 10408}
+      Script: {instanceID: 10140}
     - Class: 114
-      Script: {instanceID: 10436}
+      Script: {instanceID: 10142}
     - Class: 114
-      Script: {instanceID: 10540}
+      Script: {instanceID: 10212}
     - Class: 114
-      Script: {instanceID: 10620}
+      Script: {instanceID: 10312}
     - Class: 114
-      Script: {instanceID: 11084}
+      Script: {instanceID: 10338}
     - Class: 114
-      Script: {instanceID: 11390}
+      Script: {instanceID: 10416}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 10472}
+    - Class: 114
+      Script: {instanceID: 10500}
+    - Class: 114
+      Script: {instanceID: 10614}
+    - Class: 114
+      Script: {instanceID: 10656}
+    - Class: 114
+      Script: {instanceID: 10688}
+    - Class: 114
+      Script: {instanceID: 10742}
+    - Class: 114
+      Script: {instanceID: 10816}
+    - Class: 114
+      Script: {instanceID: 10858}
+    - Class: 114
+      Script: {instanceID: 11004}
+    - Class: 114
+      Script: {instanceID: 11194}
+    - Class: 114
+      Script: {instanceID: 11236}
+    - Class: 114
+      Script: {instanceID: 11340}
+    - Class: 114
+      Script: {instanceID: 11348}
+    - Class: 114
+      Script: {instanceID: 11534}
+    - Class: 114
+      Script: {instanceID: 11542}
+    - Class: 114
+      Script: {instanceID: 11558}
+    - Class: 114
+      Script: {instanceID: 11568}
+    - Class: 114
+      Script: {instanceID: 11626}
+    - Class: 114
+      Script: {instanceID: 11672}
+    - Class: 114
+      Script: {instanceID: 11700}
+    - Class: 114
+      Script: {instanceID: 18830}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -105,12 +175,6 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: JumpBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -121,6 +185,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
+  - hash:
+      serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2d_AnimatorController
+  - hash:
+      serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerCmdState
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -135,16 +211,40 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: b06eb2df75f533522fcbda1a922b2ac2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_HiddenBone
+  - hash:
+      serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 0f50e629cb1cd8aebc82da0fc07e60d0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_BlendShape
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BeAttackedBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 2e85effe4e42a1ac6fae9cb41318470c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_ParentControl
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -213,6 +313,18 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 4476af633d20b58f3f83a35b12fdb155
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_Bakedmesh
+  - hash:
+      serializedVersion: 2
+      Hash: 3ef98dfb622becffe5198b3cfa7e58cf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_SplineControl
+  - hash:
+      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -243,6 +355,24 @@ ScriptsOnlyBuild:
     className: RectMask2D
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnimationBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 34c91a14cc4041801b6e829a214bec61
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WindFist
+  - hash:
+      serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerDieState
+  - hash:
+      serializedVersion: 2
       Hash: 4e9333594897a1fb8b136ad2eae996c7
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -255,6 +385,12 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerRunState
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -265,6 +401,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerBeAttackedState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_SkinnedVertices
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -297,13 +445,31 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 5772c4f1336b53badb0734aaa4a7edc3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerJumpState
+  - hash:
+      serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerSitState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_VertHandler
+  - hash:
+      serializedVersion: 2
       Hash: be0e5f82c07a2957a41615a02fc45146
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Fade
   - hash:
       serializedVersion: 2
-      Hash: c32aee5868c6325a722a1fd0cf6e129d
+      Hash: 2b7fa4a9bed9cdbedb0a40f6029374bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerControl
@@ -339,6 +505,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BaseAttackBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: 28ad5d0358e4bec1d8f7bc34150b8ed6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -346,9 +518,33 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DamageCalculator
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: 1e25dc1f1561000ecff6829fde9228ee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_EditSkinWeights
+  - hash:
+      serializedVersion: 2
+      Hash: 92c55a11521227d3c815f601ddde21c6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_FFDLineDisplay
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Test
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -369,10 +565,28 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_BakeAnimation
+  - hash:
+      serializedVersion: 2
+      Hash: 558a39a16cf1b46e4905f12e8b75b852
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FXControl
+  - hash:
+      serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 481162116a3b63bb19a9f491ebb19fe4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_GlobalControl
   - hash:
       serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
@@ -417,7 +631,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 2d0811d97f9a4292cff5ad4007494543
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -433,6 +647,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RollBehaviour
   - hash:
       serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
@@ -451,6 +671,24 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: c4b73c5a1edb4391754011150e4896dd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_VertexDeform
+  - hash:
+      serializedVersion: 2
+      Hash: 861110ab806ce766bdac558eb7e06438
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FXPoolManager
+  - hash:
+      serializedVersion: 2
+      Hash: 08302f70742713f25530128b16f10b58
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponDefinition
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -477,6 +715,24 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
+      Hash: 9f2260202439eaa575a2770542c42117
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_Guides
+  - hash:
+      serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerRollState
+  - hash:
+      serializedVersion: 2
+      Hash: 4587565a03be630ecdc2486327c27661
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_SortingLayer
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -489,22 +745,28 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
+      Hash: a88beb0e8596f56c2892dd002165b7c7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_IKHandle
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
   - hash:
       serializedVersion: 2
+      Hash: d93da10c678ceb3253934823e59f7712
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_Bone
+  - hash:
+      serializedVersion: 2
       Hash: 0b935d5df06a32bb6adc58a9aec099ec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TouchToStart
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RollBehaviour
   - hash:
       serializedVersion: 2
       Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
@@ -555,6 +817,12 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
+      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerBaseAttackState
+  - hash:
+      serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -565,6 +833,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: ea925e6507b6b33724a60ea2e716a54e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Puppet2D
+    className: Puppet2D_FFDStoreData
+  - hash:
+      serializedVersion: 2
+      Hash: 9cd8904ba11b97aa334760fd43ec06ab
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HPBar
   platform: 13
   scenePathNames:
   - Assets/1.Scenes/Map/Prologue.unity

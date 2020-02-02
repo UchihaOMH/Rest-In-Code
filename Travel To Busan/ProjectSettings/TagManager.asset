@@ -16,10 +16,10 @@ TagManager:
   - Level
   - Object
   - Controller
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - IKs
+  - FX
   - 
   - 
   - 
@@ -46,4 +46,22 @@ TagManager:
     locked: 0
   - name: Object
     uniqueID: 394833521
+    locked: 0
+  - name: Office Worker
+    uniqueID: 3785302235
+    locked: 0
+  - name: Player
+    uniqueID: 1895723625
+    locked: 0
+  - name: Bones
+    uniqueID: 1283775571
+    locked: 0
+  - name: IKs
+    uniqueID: 3873331977
+    locked: 0
+  - name: Weapon
+    uniqueID: 1154330445
+    locked: 0
+  - name: FX
+    uniqueID: 3955937239
     locked: 0
