@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5964943674278938264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,14 +69,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1154330445
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18c3d847e2cadd749a575e003f7abb02, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6431373}
+  m_Sprite: {fileID: 21300000, guid: b82286f9278f89340ae3f06064fe543f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6392157}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.49, y: 1.36}
+  m_Size: {x: 1.78, y: 1.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,10 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e2b2835afe1694e91cf65108de117e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   weaponOffset:
     position: {x: 0.55, y: 0.12, z: 0}
-    rotation: {x: 0, y: 0, z: -90}
-    scale: {x: 3, y: 3, z: 3}
+    rotation: {x: 0, y: 0, z: -163.374}
+    scale: {x: 110, y: 120, z: 3}
   fxOffset:
     attack: {x: -2.75, y: 0.42, z: 0}
     cmdAttack1: {x: 0, y: 0, z: 0}
@@ -104,15 +106,15 @@ MonoBehaviour:
     cmdAttack3: {x: 0, y: 0, z: 0}
   weaponInfo:
     name: "\uBC14\uB78C\uC758 \uC8FC\uBA39"
-    damage: 3
-    knockBackDist: 0.2
+    damage: 10
+    knockBackDist: 0.3
   fxTrigger:
     attack: tWindPunch
     cmdAttack1: 
     cmdAttack2: 
     cmdAttack3: 
   audioClip:
-    attack: {fileID: 8300000, guid: 862413a09ac805e46bd54b92b54179de, type: 3}
+    attack: {fileID: 8300000, guid: e6a74694486dac240b4fd0f4d0195e92, type: 3}
     cmdAttack1: {fileID: 0}
     cmdAttack2: {fileID: 0}
     cmdAttack3: {fileID: 0}

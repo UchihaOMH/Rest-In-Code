@@ -1,0 +1,482 @@
+﻿(영어)
+<size=16>AnyPortrait Update Log v1.2.2</size>
+(Build January 31, 2020)
+
+<size=13>Improvements</size>
+
+- <color=blue>Duplicating and Migrating objects</color> is added
+    Duplicating a Mesh is added
+    Duplicating a Mesh Group is added
+    Duplicating objects (Meshes and sub Mesh Groups) in mesh groups is added
+    Migrating a Mesh in a Mesh Group to another Mesh Group
+    <color=red>(For more information, please visit our homepage)</color>
+
+- <color=blue>Animation UI</color> is improved
+    Improved editing of curves separately by "Previous / Middle / Next" when editing curves in batches with multiple keyframes selected
+    When you press Ctrl+Shift and Click at the top of the Timeline UI, the Time Slider moves directly to that location
+    The feature to change whether or not to limit the rotation value of keyframes within 180 degrees
+    <color=red>(For more information, please visit our homepage)</color>
+
+- Performance of the editor is slightly improved
+- When running on Mac OS for the first time, a message related to Metal appears
+- The count of bones is added in Statistics
+- Pressing the Auto-Rig button of the Rigging modifier while holding down the Ctrl (or Command) key allows you to select the bones that will be the target of automatic rigging
+- When opening a dialog to select a texture for an image, it is changed that texture assets are loaded sequentially
+- Added material presets to support Universal Rendering Pipeline (URP) added in Unity 2019.3
+- The feature is added that pressing the Arrow keys (or Shift+Arrow keys) can change the position, rotation and scale of the selected object
+- The feature is added that the FFD tool is applied or canceled by pressing Enter or Escape key
+- The function is added to change the Color Space of Images in batches when the value of Color Space is different between the Baking option and the images property
+- The internal process is improved to handle "Undo" or "Redo" when adding or deleting objects
+- The menu is added to go to the Advanced Manual page (Window > AnyPortrait > Advanced Manual in Unity Editor)
+
+
+
+<size=13>Fixed issues</size>
+
+- A bug is fixed that intermittent error log when scrolling Hierarchy
+- A bug is fixed that "Quick Bake" and "Open Editor and Select" do not work properly in the Inspector UI
+- A bug is fixed that text is intermittently aligned to center in the Update Log dialog
+- A bug is fixed that the order of clipping meshes or sub-mesh groups cannot be changed
+
+
+
+-----------------------------------------
+(한국어)
+<size=16>AnyPortrait 업데이트 로그 v1.2.2</size>
+(2020년 1월 31일 빌드)
+
+<size=13>개선된 사항</size>
+
+- <color=blue>객체의 복제와 소속 변경</color> 기능 추가
+    메시 복제 기능 추가
+    메시 그룹 복제 기능 추가
+    메시 그룹의 객체(메시와 하위 메시 그룹)들을 복제하는 기능 추가
+    메시 그룹의 메시를 다른 메시 그룹에 속하도록 이동시키는 기능 추가
+    <color=red>(자세한 설명은 홈페이지를 확인하세요)</color>
+
+- <color=blue>애니메이션 UI</color> 개선
+    다수의 키프레임을 선택한 상태에서 커브를 일괄적으로 편집할 때, "이전/중간/다음"을 각각 구분하여 편집하도록 개선
+    타임라인 UI의 상단부에서 Ctrl+Shift+클릭을 하면 타임 슬라이더를 바로 해당 위치로 이동
+    키프레임의 회전 값을 180도 이내로 제한할 지 여부를 변경하는 기능 추가
+    <color=red>(자세한 설명은 홈페이지를 확인하세요)</color>
+
+- 에디터 성능이 조금 더 향상됨
+- Mac OS에서 처음 실행할 때, Metal과 관련된 안내 메시지가 등장
+- Statistics 출력 내용에 본 개수가 추가됨
+- Rigging 모디파이어의 Auto-Rig 버튼을 Ctrl 키(또는 Command 키)를 누른 상태에서 누르면 자동 리깅의 대상이 될 본을 선택할 수 있음
+- 이미지의 텍스쳐를 선택하는 다이얼로그를 열 때, 텍스쳐 에셋들이 순차적으로 로딩되도록 변경됨
+- Unity 2019.3에 추가된 URP(Universal Rendering Pipeline)를 지원하는 재질 프리셋이 추가됨
+- 키보드의 방향키(또는 Shift+방향키)를 이용하여 선택된 객체를 이동, 회전 및 크기 제어할 수 있도록 개선
+- 키보드의 Enter키나 Esc키를 눌러서 FFD 툴을 적용하거나 취소할 수 있도록 개선
+- Bake를 할 때, 설정된 Color Space와 이미지들의 Color Space가 다를 경우, 일괄적으로 이미지의 Color Space를 변경하는 기능 추가
+- 객체를 추가하거나 삭제시 "실행 취소"나 "다시 실행"이 더 정확하게 처리되도록 내부적으로 개선
+- Advanced Manual 페이지로 이동하는 메뉴가 추가됨 (Unity Editor의 Window > AnyPortrait > Advanced manual)
+
+
+
+<size=13>수정된 문제점</size>
+
+- Hierarchy를 스크롤할 때 간헐적으로 에러 로그가 발생하는 버그 수정
+- Inspector에서 Quick Bake 기능과 Open Editor and Select가 정상적으로 동작하지 않는 문제 수정
+- Update Log 다이얼로그에서 간헐적으로 문장이 가운데 정렬로 나타나는 문제 수정
+- 메시 그룹 내의 객체들의 순서를 바꿀 때, 클리핑 메시나 하위 메시 그룹간에 순서 변경이 안되는 문제 수정
+
+
+
+-----------------------------------------
+(프랑스어)
+<size=16>Fichier de mise à jour AnyPortrait v1.2.2</size>
+(Construit le 31 janvier 2020)
+
+<size=13>Améliorations</size>
+
+- <color=blue>Duplication et migration d'objets</color> est ajouté
+    La duplication d'un maillage est ajoutée
+    La duplication d'un groupe de mailles est ajoutée
+    La duplication d'objets (maillages et sous-groupes de mailles) dans des groupes de mailles est ajoutée
+    Migration d'un maillage d'un groupe de maillages vers un autre groupe de maillages
+    <color=red> (Pour plus d'informations, veuillez visiter notre page d'accueil) </color>
+
+- <color=blue>UI d'animation</color> est amélioré
+    Amélioration de l'édition des courbes séparément par "Précédent / Milieu / Suivant" lors de l'édition des courbes par lots avec plusieurs images clés sélectionnées
+    Lorsque vous appuyez sur Ctrl+Shift et cliquez en haut de l'interface utilisateur de la chronologie, le curseur temporel se déplace directement à cet emplacement.
+    Fonction permettant de modifier ou non la limitation de la valeur de rotation des images clés à 180 degrés
+    <color=red> (Pour plus d'informations, veuillez visiter notre page d'accueil) </color>
+
+- Les performances de l'éditeur sont légèrement améliorées
+- Lors de la première exécution sur Mac OS, un message relatif à Metal apparaît
+- Le nombre d'os est ajouté dans les statistiques
+- Appuyer sur le bouton Auto-Rig du modificateur Rigging tout en maintenant la touche Ctrl (ou Commande) vous permet de sélectionner les os qui seront la cible du gréement automatique
+- Lors de l'ouverture d'une boîte de dialogue pour sélectionner une texture pour une image, il est modifié que les éléments de texture soient chargés séquentiellement
+- Ajout de préréglages de matériaux pour prendre en charge Universal Rendering Pipeline (URP) ajoutés dans Unity 2019.3
+- La fonctionnalité est ajoutée en appuyant sur les touches fléchées (ou Shift + touches fléchées) peut changer la position, la rotation et l'échelle de l'objet sélectionné
+- La fonctionnalité est ajoutée que l'outil FFD est appliqué ou annulé en appuyant sur la touche Entrée ou Échap
+- La fonction est ajoutée pour modifier l'espace colorimétrique des images par lots lorsque la valeur de l'espace colorimétrique est différente entre l'option de cuisson et la propriété des images
+- Le processus interne est amélioré pour gérer "Annuler" ou "Rétablir" lors de l'ajout ou de la suppression d'objets
+- Le menu est ajouté pour aller à la page Advanced Manual (Window > AnyPortrait > Advanced Manual dans Unity Editor)
+
+
+
+<size=13>Problème résolu</size>
+
+- Un bug est corrigé ce journal des erreurs intermittentes lors du défilement de la hiérarchie
+- Un bug est corrigé que "Quick Bake" et "Open Editor and Select" ne fonctionnent pas correctement dans l'Inspector UI
+- Un bogue a été corrigé pour que le texte soit aligné par intermittence au centre dans la boîte de dialogue Journal de mise à jour
+- Un bug est corrigé que l'ordre de découpage des mailles ou des groupes de sous-mailles ne peut pas être changé
+
+
+
+-----------------------------------------
+(독일어)
+<size=16>AnyPortrait-Aktualisierungsprotokoll v1.2.2</size>
+(Build 31. Januar 2020)
+
+
+<size=13>Verbesserungen</size>
+
+- <color=blue>Objekte duplizieren und migrieren</color> wurde hinzugefügt
+    Das Duplizieren eines Netzes wird hinzugefügt
+    Das Duplizieren einer Netzgruppe wird hinzugefügt
+    Das Duplizieren von Objekten (Meshes und Sub-Mesh-Gruppen) in Mesh-Gruppen wird hinzugefügt
+    Ein Netz in einer Netzgruppe in eine andere Netzgruppe migrieren
+    <color=red> (Weitere Informationen finden Sie auf unserer Homepage) </color>
+
+- Die <color=blue>Animationsoberfläche</color> wurde verbessert
+    Verbesserte separate Bearbeitung von Kurven mit "Zurück / Mitte / Weiter", wenn Kurven in Stapeln mit mehreren ausgewählten Keyframes bearbeitet werden
+    Wenn Sie Strg + Umschalttaste drücken und oben in der Zeitleisten-Benutzeroberfläche auf klicken, wird der Zeitschieber direkt an diese Stelle verschoben
+    Die Funktion zum Ändern, ob der Rotationswert von Keyframes innerhalb von 180 Grad begrenzt werden soll
+    <color=red> (Weitere Informationen finden Sie auf unserer Homepage) </color>
+
+- Die Leistung des Editors wurde leicht verbessert
+- Bei der erstmaligen Ausführung unter Mac OS wird eine Meldung zu Metal angezeigt
+- Die Anzahl der Knochen wird in der Statistik hinzugefügt
+- Wenn Sie die Taste "Auto-Rig" des Modifikators "Rigging" drücken, während Sie die Taste "Strg" (oder "Befehl") gedrückt halten, können Sie die Bones auswählen, auf die das automatische Rigging angewendet werden soll
+- Beim Öffnen eines Dialogfelds zur Auswahl einer Textur für ein Bild wird geändert, dass Textur-Assets nacheinander geladen werden
+- In Unity 2019.3 wurden Materialvoreinstellungen zur Unterstützung der Universal Rendering Pipeline (URP) hinzugefügt
+- Es wurde die Funktion hinzugefügt, dass durch Drücken der Pfeiltasten (oder Umschalt + Pfeiltasten) die Position, Drehung und Skalierung des ausgewählten Objekts geändert werden kann
+- Die Funktion wird hinzugefügt, dass das FFD-Tool durch Drücken der Eingabetaste oder der Esc-Taste angewendet oder abgebrochen wird
+- Die Funktion wurde hinzugefügt, um den Farbraum von Bildern in Stapeln zu ändern, wenn sich der Wert des Farbraums zwischen der Backoption und der Bildeigenschaft unterscheidet
+- Der interne Prozess wurde verbessert, um "Rückgängig" oder "Wiederherstellen" beim Hinzufügen oder Löschen von Objekten zu behandeln
+- Das Menü wird hinzugefügt, um zur Seite "Advanced Manual" zu gelangen (Window > AnyPortrait > Advanced Manual im Unity Editor)
+
+
+
+<size=13>Problem behoben</size>
+
+- Ein Fehler im zeitweiligen Fehlerprotokoll beim Scrollen in der Hierarchie wurde behoben
+- Es wurde ein Fehler behoben, durch den "Quick Bake" und "Open Editor and Select" in der Inspector-Benutzeroberfläche nicht ordnungsgemäß funktionieren
+- Es wurde ein Fehler behoben, durch den Text zeitweise so ausgerichtet wurde, dass er im Dialogfeld "Protokoll aktualisieren" zentriert war
+- Es wurde ein Fehler behoben, durch den die Reihenfolge des Zuschneidens von Maschen oder Untermaschengruppen nicht geändert werden kann
+
+
+
+-----------------------------------------
+(스페인어)
+<size=16>AnyPortrait Update Log v1.2.2</size>
+(Construido el 31 de enero de 2020)
+
+
+<size=13>Mejoras</size>
+
+- <color=blue>Se agrega Duplicar y migrar objetos</color>
+    Se agrega la duplicación de una malla
+    Se agrega la duplicación de un grupo de malla
+    Se agrega la duplicación de objetos (mallas y sub grupos de mallas) en grupos de malla
+    Migrar una malla en un grupo de malla a otro grupo de malla
+    <color=red>(Para obtener más información, visite nuestra página de inicio)</color>
+
+- <color=blue>Se ha mejorado la interfaz de usuario de animación</color>
+    Edición mejorada de curvas por separado mediante "Anterior / Medio / Siguiente" al editar curvas en lotes con múltiples fotogramas clave seleccionados
+    Cuando presiona Ctrl + Shift y hace clic en la parte superior de la interfaz de usuario de la línea de tiempo, el control deslizante de tiempo se mueve directamente a esa ubicación
+    La función para cambiar si limitar o no el valor de rotación de los fotogramas clave dentro de 180 grados
+    <color=red>(Para obtener más información, visite nuestra página de inicio)</color>
+
+- El rendimiento del editor ha mejorado ligeramente
+- Cuando se ejecuta en Mac OS por primera vez, aparece un mensaje relacionado con Metal
+- El recuento de huesos se agrega en Estadísticas
+- Presionando el botón Auto-Rig del modificador Rigging mientras mantiene presionada la tecla Ctrl (o Comando) le permite seleccionar los huesos que serán el objetivo del aparejo automático
+- Al abrir un cuadro de diálogo para seleccionar una textura para una imagen, se cambia que los activos de textura se cargan secuencialmente
+- Se agregaron preajustes de material para admitir Universal Rendering Pipeline (URP) agregado en Unity 2019.3
+- Se agrega la función de que presionar las teclas de flecha (o Shift + teclas de flecha) puede cambiar la posición, rotación y escala del objeto seleccionado
+- Se agrega la función de que la herramienta FFD se aplica o cancela presionando la tecla Enter o Escape
+- La función se agrega para cambiar el espacio de color de las imágenes en lotes cuando el valor del espacio de color es diferente entre la opción de horneado y la propiedad de imágenes
+- El proceso interno se mejora para manejar "Deshacer" o "Rehacer" al agregar o eliminar objetos
+- El menú se agrega para ir a la página Advanced Manual (Window > AnyPortrait > Advanced Manual en Unity Editor)
+
+
+
+<size=13>Problema solucionado</size>
+
+- Se corrigió un error que registra el error intermitente al desplazarse por la jerarquía
+- Se corrigió un error que indica que "Hornear rápido" y "Abrir editor y seleccionar" no funcionan correctamente en la interfaz de usuario del Inspector
+- Se solucionó un error por el cual el texto se alineaba intermitentemente al centro en el cuadro de diálogo Actualizar registro
+- Se corrigió un error que no podía cambiar el orden de las mallas de recorte o los grupos de submallas
+
+
+
+-----------------------------------------
+(이탈리아어)
+<size=16>Registro aggiornamenti AnyPortrait v1.2.2</size>
+(Build 31 gennaio 2020)
+
+
+<size=13>Miglioramenti</size>
+
+- È stato aggiunto <color=blue>Duplicazione e migrazione di oggetti</color>
+    Viene aggiunta la duplicazione di una mesh
+    La duplicazione di un gruppo mesh viene aggiunta
+    Vengono aggiunti oggetti duplicati (mesh e sottogruppi di mesh) in gruppi di mesh
+    Migrazione di una mesh in un gruppo mesh a un altro gruppo mesh
+    <color=red>(Per maggiori informazioni, visita la nostra homepage)</color>
+
+- <color=blue>UI di animazione</color> è stato migliorato
+    Miglioramento della modifica delle curve separatamente tramite "Precedente / Medio / Successivo" quando si modificano le curve in lotti con più fotogrammi chiave selezionati
+    Quando premi Ctrl + Maiusc e fai clic nella parte superiore dell'interfaccia della sequenza temporale, il dispositivo di scorrimento temporale si sposta direttamente in quella posizione
+    La funzione per modificare se limitare o meno il valore di rotazione dei fotogrammi chiave entro 180 gradi
+    <color=red>(Per maggiori informazioni, visita la nostra homepage)</color>
+
+- Le prestazioni dell'editor sono leggermente migliorate
+- Quando si esegue su Mac OS per la prima volta, viene visualizzato un messaggio relativo a Metal
+- Il conteggio delle ossa viene aggiunto in Statistica
+- Premendo il pulsante Auto-Rig del modificatore Rigging mentre si tiene premuto il tasto Ctrl (o Comando) è possibile selezionare le ossa che saranno il bersaglio del rigging automatico
+- Quando si apre una finestra di dialogo per selezionare una trama per un'immagine, viene modificato il caricamento sequenziale delle risorse trama
+- Aggiunti preset materiale per supportare Universal Rendering Pipeline (URP) aggiunti in Unity 2019.3
+- È stata aggiunta la funzione che premendo i tasti freccia (o Maiusc + tasti freccia) è possibile modificare la posizione, la rotazione e la scala dell'oggetto selezionato
+- È stata aggiunta la funzione che lo strumento FFD viene applicato o annullato premendo il tasto Invio o Esc
+- La funzione viene aggiunta per modificare lo spazio colore delle immagini in batch quando il valore dello spazio colore è diverso tra l'opzione Cottura e la proprietà delle immagini
+- Il processo interno è stato migliorato per gestire "Annulla" o "Ripeti" durante l'aggiunta o l'eliminazione di oggetti
+- Il menu viene aggiunto per andare alla pagina del Advanced Manual (Window > AnyPortrait > Advanced Manual in Unity Editor)
+
+
+
+<size=13>Risolto il problema</size>
+
+- È stato corretto un bug relativo al registro degli errori intermittente durante lo scorrimento della Gerarchia
+- È stato corretto un bug per cui "Quick Bake" e "Open Editor and Select" non funzionano correttamente nell'interfaccia utente di Inspector
+- È stato corretto un bug per cui il testo veniva allineato in modo intermittente al centro nella finestra di dialogo Registro aggiornamenti
+- È stato corretto un bug per cui l'ordine delle mesh di ritaglio o dei gruppi di mesh secondarie non poteva essere modificato
+
+
+
+-----------------------------------------
+(덴마크어)
+<size=16>AnyPortrait Update Log v1.2.2</size>
+(Byg 31. januar 2020)
+
+
+<size=13>Forbedringer</size>
+
+- <color=blue>Duplicering og migrering af objekter</color> tilføjes
+    Duplicering af et mesh tilføjes
+    Duplicering af en Mesh-gruppe tilføjes
+    Duplicering af objekter (Meshes og Sub Mesh Groups) i mesh-grupper tilføjes
+    Migrering af et net i en Mesh-gruppe til en anden Mesh-gruppe
+    <color=red>(For mere information, se venligst vores hjemmeside)</color>
+
+- <color=blue>Animationsgrænseflade</color> forbedres
+    Forbedret redigering af kurver separat med "Forrige / Mellem / Næste", når du redigerer kurver i batches med flere nøglerammer valgt
+    Når du trykker på Ctrl + Shift og Klik øverst på tidslinjen UI, flyttes Time Slider direkte til det sted
+    Funktionen til at ændre, hvorvidt nøglerammerets rotationsværdi skal begrænses inden for 180 grader
+    <color=red>(For mere information, se venligst vores hjemmeside)</color>
+
+- Editorens ydelse er lidt forbedret
+- Når du kører på Mac OS første gang, vises en meddelelse, der er relateret til Metal
+- Antallet af knogler tilføjes i statistikker
+- Ved at trykke på knappen Auto-Rig på Rigging-modifikatoren, mens du holder Ctrl (eller Command) -tasten nede, kan du vælge de knogler, der er målet for automatisk rigning
+- Når du åbner en dialog for at vælge en tekstur til et billede, ændres det, at teksturaktiviteter indlæses i rækkefølge
+- Tilføjet materiale forudindstillinger til understøttelse af Universal Rendering Pipeline (URP) tilføjet i Unity 2019.3
+- Funktionen tilføjes, at tryk på piletasterne (eller Shift + piletasterne) kan ændre position, rotation og skala for det valgte objekt
+- Funktionen tilføjes, at FFD-værktøjet anvendes eller annulleres ved at trykke på Enter- eller Escape-tasten
+- Funktionen tilføjes for at ændre billedets farverum i batches, når værdien af ​​farverum er forskellig mellem indstillingen Bagning og egenskaben billeder
+- Den interne proces forbedres til at håndtere "Fortryd" eller "Gendan", når du tilføjer eller sletter objekter
+- Menuen tilføjes for at gå til siden Advanced Manual (Window > AnyPortrait > Advanced Manual i Unity Editor)
+
+
+
+<size=13>Faste problem</size>
+
+- En fejl er rettet på den intermitterende fejllogg, når du ruller Hierarki
+- Der er rettet en fejl, hvor "Quick Bake" og "Open Editor and Select" ikke fungerer korrekt i Inspector UI
+- Der er rettet en fejl, idet teksten intermittent justeres til midten i dialogboksen Opdateringslog
+- Der er løst en fejl, så rækkefølgen af ​​udklipningsmasker eller undermesh-grupper ikke kan ændres
+
+
+
+-----------------------------------------
+(일본어)
+<size=16> AnyPortrait更新ログv1.2.2</size>
+（2020年1月31日ビルド）
+
+<size=13>改善点</size>
+
+- <color=blue>オブジェクトの複製と所属を変更</color>機能を追加
+    メッシュレプリケーション機能を追加
+    メッシュグループの複製機能を追加
+    メッシュグループのオブジェクト（メッシュとサブメッシュグループ）を複製する機能を追加
+    メッシュグループのメッシュを他のメッシュグループに属するように移動させる機能を追加
+    <color=red>（詳細はホームページを確認してください）</color>
+
+- <color=blue>アニメーションUI</color>改善
+    多数のキーフレームを選択した状態で、カーブを一括して編集するとき、「前/中/次へ」をそれぞれ区分して編集するように改善
+    タイムラインUIの上段部でCtrl+Shift+クリックをすると、タイムスライダーをその位置に移動
+    キーフレームの回転値を180度以内に制限するかどうかを変更する機能を追加
+    <color=red>（詳細はホームページを確認してください）</color>
+
+ - エディタのパフォーマンスがもう少し向上
+ - Mac OSで初めて実行するときに、Metalに関する案内メッセージが登場
+ - Statistics出力に骨の数が追加された
+ - RiggingモディファイヤのAuto-Rigボタンを、Ctrlキー（またはCommandキー）を押しながらクリックすると、自動的にリギングの対象となる本を選択することができている
+ - 画像のテクスチャを選択するダイアログを開いたときに、テクスチャアセットが順次ロードされるように変更されまし
+ - Unity 2019.3に追加されたURP（Universal Rendering Pipeline）をサポートしている材質のプリセットが追加された
+ - キーボードの方向キー（またはShift +方向キー）を使用して、選択したオブジェクトを移動、回転、サイズを制御することができるよう改善
+ - キーボードのEnterキー、Escキーを押してFFDツールを適用したり、元に戻すことができるように改善
+ - Bakeをするときは、設定されたColor Spaceや画像のColor Spaceが異なる場合には、一括して画像のColor Spaceを変更する機能を追加
+ - オブジェクトを追加したり、削除時に「元に戻す」や「再実行」がより正確に処理されるように内部的に改善
+ - Advanced Manualのページに移動するメニューが追加された（Unity EditorのWindow > AnyPortrait > Advanced Manual）
+
+
+
+<size=13>修正された問題</size>
+
+ - Hierarchyをスクロールするときに断続的にエラーログが発生するバグを修正
+ - InspectorでQuick Bake機能とOpen Editor and Selectが正常に動作しない問題を修正
+ - Update Logダイアログで断続的に文章が中央揃えに表示される問題を修正
+ - メッシュグループ内のオブジェクトの順序を変更するとき、クリッピングメッシーナサブメッシュグループ間の順序の変更がない問題を修正
+
+​
+
+
+
+-----------------------------------------
+(중국어-번체)
+<size=16>AnyPortrait更新日誌v1.2.2</size>
+（2020年1月31日）
+
+
+<size=13>改進</size>
+
+- 添加了<color=blue>複製和遷移對象</color>
+    複製網格已添加
+    複製網格組已添加
+    添加了網格組中的重複對象（網格和子網格組）
+    將網格組中的網格遷移到另一個網格組
+    <color=red>（有關更多信息，請訪問我們的主頁）</color>
+
+- 改進了<color=blue>動畫UI</color>
+    批量選擇了多個關鍵幀時，通過“上一個/中/下一個”分別改進了曲線的編輯
+    當您按Ctrl+Shift並單擊時間軸UI頂部的時，時間滑塊會直接移至該位置
+    更改是否將關鍵幀的旋轉值限制在180度以內的功能
+    <color=red>（有關更多信息，請訪問我們的主頁）</color>
+
+- 編輯器的性能略有提高
+- 首次在Mac OS上運行時，出現與Metal相關的消息
+- 統計中添加了骨頭數
+- 在按住Ctrl（或Command）鍵的同時按下“Riging”修改器的“Auto-Rig”按鈕，可以選擇將成為自動綁定目標的骨骼。
+- 打開對話框以選擇圖像的紋理時，已更改為依次加載紋理資產
+- 添加了材質預設以支持Unity 2019.3中添加的通用渲染管道（URP）
+- 增加了按箭頭鍵（或Shift +箭頭鍵）可以更改所選對象的位置，旋轉和比例的功能
+- 添加了通過按Enter或Escape鍵應用或取消FFD工具的功能
+- 當“烘焙”選項和“圖像”屬性之間的“色彩空間”的值不同時，添加了該功能以批量更改圖像的色彩空間
+- 改進了內部過程，以在添加或刪除對象時處理“撤消”或“重做”
+- 已添加菜單以轉到“Advanced Manual”頁面（Unity編輯器中的 Window > AnyPortrait > Advanced Manual）
+
+
+
+<size=13>修復了問題</size>
+
+- 修復了滾動層次結構時間歇性錯誤日誌的錯誤
+- 修復了一個錯誤，即“快速烘烤”和“打開編輯器並選擇”在Inspector UI中無法正常工作
+- 修復了“更新日誌”對話框中文本間歇居中對齊的問題
+- 修復了無法更改剪切網格或子網格組的順序的錯誤
+
+
+
+-----------------------------------------
+(중국어-간체)
+<size=16>AnyPortrait更新日志v1.2.2</size>
+（2020年1月31日）
+
+
+<size=13>改进</size>
+
+- 添加了<color=blue>复制和迁移对象</color>
+    复制网格已添加
+    复制网格组已添加
+    添加了网格组中的重复对象（网格和子网格组）
+    将网格组中的网格迁移到另一个网格组
+    <color=red>（有关更多信息，请访问我们的主页）</color>
+
+- 改进了<color=blue>动画UI</color>
+    批量选择了多个关键帧时，通过“上一个/中/下一个”分别改进了曲线的编辑
+    当您按Ctrl + Shift并单击时间轴UI顶部的时，时间滑块会直接移至该位置
+    更改是否将关键帧的旋转值限制在180度以内的功能
+    <color=red>（有关更多信息，请访问我们的主页）</color>
+
+- 编辑器的性能略有提高
+- 首次在Mac OS上运行时，出现与Metal相关的消息
+- 统计中添加了骨头数
+- 在按住Ctrl（或Command）键的同时按下“Riging”修改器的“Auto-Rig”按钮，可以选择将成为自动绑定目标的骨骼。
+- 打开对话框以选择图像的纹理时，已更改为依次加载纹理资产
+- 添加了材质预设以支持Unity 2019.3中添加的通用渲染管道（URP）
+- 增加了按箭头键（或Shift +箭头键）可以更改所选对象的位置，旋转和比例的功能
+- 添加了通过按Enter或Escape键应用或取消FFD工具的功能
+- 当“烘焙”选项和“图像”属性之间的“色彩空间”的值不同时，添加了该功能以批量更改图像的色彩空间
+- 改进了内部过程，以在添加或删除对象时处理“撤消”或“重做”
+- 已添加菜单以转到“Advanced Manual”页面（Unity编辑器中的 Window > AnyPortrait > Advanced Manual）
+
+
+
+<size=13>修复了问题</size>
+
+- 修复了滚动层次结构时间歇性错误日志的错误
+- 修复了一个错误，即“快速烘烤”和“打开编辑器并选择”在Inspector UI中无法正常工作
+- 修复了“更新日志”对话框中文本间歇居中对齐的问题
+- 修复了无法更改剪切网格或子网格组的顺序的错误
+
+
+
+-----------------------------------------
+(폴란드어)
+<size=16>Dziennik aktualizacji AnyPortret v1.2.2</size>
+(Zbuduj 31 stycznia 2020 r.)
+
+
+<size=13>Ulepszenia</size>
+
+- <color=blue>Dodano Powielanie i migrowanie obiektów</color>
+    Dodano duplikowanie siatki
+    Dodano duplikowanie grupy siatki
+    Dodano duplikowanie obiektów (siatki i podgrupy grup) w grupach siatek
+    Migracja siatki w grupie siatki do innej grupy siatki
+    <color=red>(Aby uzyskać więcej informacji, odwiedź naszą stronę główną)</color>
+
+- <color=blue>Interfejs animacji</color> został ulepszony
+    Ulepszona edycja krzywych oddzielnie przez „Poprzedni / Środkowy / Następny” podczas edycji krzywych w partiach z wybraną wieloma klatkami kluczowymi
+    Po naciśnięciu klawiszy Ctrl + Shift i kliknięciu u góry interfejsu użytkownika osi czasu suwak czasu przesuwa się bezpośrednio do tej lokalizacji
+    Funkcja zmiany, czy ograniczyć wartość obrotu klatek kluczowych w zakresie 180 stopni
+    <color=red>(Aby uzyskać więcej informacji, odwiedź naszą stronę główną)</color>
+
+- Wydajność edytora została nieznacznie poprawiona
+- Podczas pierwszego uruchomienia w systemie Mac OS pojawia się komunikat związany z Metalem
+- Liczba kości jest dodawana do statystyk
+- Naciśnięcie przycisku Auto-Rig modyfikatora Rigging, przytrzymując klawisz Ctrl (lub Command), pozwala wybrać kości, które będą celem automatycznego takielunku
+- Podczas otwierania okna dialogowego, aby wybrać teksturę obrazu, zmienia się, że zasoby tekstury są ładowane sekwencyjnie
+- Dodano wstępne ustawienia materiałów do obsługi Universal Rendering Pipeline (URP) dodane w Unity 2019.3
+- Dodano funkcję, że naciśnięcie klawiszy strzałek (lub Shift + klawisze strzałek) może zmienić pozycję, obrót i skalę wybranego obiektu
+- Dodano funkcję, że narzędzie FFD jest stosowane lub anulowane przez naciśnięcie klawisza Enter lub Escape
+- Dodano funkcję zmiany przestrzeni kolorów obrazów w partiach, gdy wartość przestrzeni kolorów jest inna między opcją Pieczenia a właściwością obrazów
+- Poprawiono wewnętrzny proces obsługi „Cofnij” lub „Ponów” podczas dodawania lub usuwania obiektów
+- Menu zostało dodane, aby przejść do strony Advanced Manual (Window > AnyPortrait > Advanced Manual in Unity Editor)
+
+
+
+<size=13>Naprawiono problem</size>
+
+- Naprawiono błąd przerywanego dziennika błędów podczas przewijania hierarchii
+- Naprawiono błąd polegający na tym, że „Szybkie pieczenie” i „Otwórz edytor i wybierz” nie działają poprawnie w interfejsie użytkownika Inspector
+- Naprawiono błąd polegający na tym, że tekst jest przerywany wyrównany do środka w oknie dialogowym Aktualizuj dziennik
+- Naprawiono błąd polegający na tym, że kolejność przycinania siatek lub grup podsieci nie może być zmieniona
+
+
+
+-----------------------------------------

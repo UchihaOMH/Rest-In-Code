@@ -26,6 +26,7 @@ public struct _EntityInfo_
 
 public abstract class Entity : MonoBehaviour
 {
+    [Header("Entity Info")]
     public eEntityType entityType;
     public _EntityInfo_ info;
     
@@ -38,8 +39,7 @@ public abstract class Entity : MonoBehaviour
     }
 
     public abstract void OnDeadEvent();
-    public abstract void BeAttacked(float _damage);
-    public abstract void KnockBack(Vector2 _knockBackDir, float _knockBackPower);
+    public abstract void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.3f);
     public abstract void LookAt(Vector2 _dir);
     public abstract void TransitionProcess(IAnimState _state);
 }

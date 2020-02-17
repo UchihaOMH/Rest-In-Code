@@ -38,7 +38,7 @@ public struct _WeaponInfo_
 {
     public string name;
     public float damage;
-    public float knockBackPower;
+    public float knockBackDist;
 }
 
 public abstract class Weapon : MonoBehaviour
@@ -52,9 +52,9 @@ public abstract class Weapon : MonoBehaviour
     public _AttackAudioClip_ audioClip;
 
     public abstract void Attack(float _additionalDmg);
-    public abstract void CmdAttack1(float _additionalDmg);
-    public abstract void CmdAttack2(float _additionalDmg);
-    public abstract void CmdAttack3(float _additionalDmg);
+    public abstract void SkillAttack1(float _additionalDmg);
+    public abstract void SkillAttack2(float _additionalDmg);
+    public abstract void SkillAttack3(float _additionalDmg);
 
     public FXControl GetInitializedFX(Transform _parent, Vector3 offset)
     {

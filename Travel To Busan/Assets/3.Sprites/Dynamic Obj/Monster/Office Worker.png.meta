@@ -1,18 +1,15 @@
 fileFormatVersion: 2
-guid: 0f47cb32b11a53b4a814ec2f681d9914
+guid: 568922176db9ff748a4126249bc1e1d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1212249321366415531
+      213: 5231447878479694683
     second: Top
   - first:
-      213: 4134470982481670237
-    second: Head
-  - first:
-      213: -524195514793821918
+      213: -5337167816922743438
     second: Leg
   - first:
-      213: -6480627333823559350
+      213: 8007188998949525686
     second: Arm
   externalObjects: {}
   serializedVersion: 10
@@ -59,7 +56,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -114,9 +111,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 314
-        width: 186
-        height: 226
+        y: 0
+        width: 267
+        height: 484
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,29 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 041a52902ac0d5f44bd1828ab1c80d98
-      internalID: -1212249321366415531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Head
-      rect:
-        serializedVersion: 2
-        x: 225
-        y: 258
-        width: 193
-        height: 282
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69c4959613125204fbb32df14177a088
-      internalID: 4134470982481670237
+      spriteID: b5bc0c9c026d99840800000000000000
+      internalID: 5231447878479694683
       vertices: []
       indices: 
       edges: []
@@ -155,8 +131,8 @@ TextureImporter:
       name: Leg
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
+        x: 370
+        y: 221
         width: 127
         height: 230
       alignment: 0
@@ -166,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 580cd2505c7784c4d8390f6fae5d7215
-      internalID: -524195514793821918
+      spriteID: 27d3ca5e5229ee5b0800000000000000
+      internalID: -5337167816922743438
       vertices: []
       indices: 
       edges: []
@@ -176,8 +152,8 @@ TextureImporter:
       name: Arm
       rect:
         serializedVersion: 2
-        x: 198
-        y: 24
+        x: 287
+        y: 35
         width: 276
         height: 105
       alignment: 0
@@ -187,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 453d5faab2958704a8a0b3dc446abfde
-      internalID: -6480627333823559350
+      spriteID: 6b85dcb78ff3f1f60800000000000000
+      internalID: 8007188998949525686
       vertices: []
       indices: 
       edges: []

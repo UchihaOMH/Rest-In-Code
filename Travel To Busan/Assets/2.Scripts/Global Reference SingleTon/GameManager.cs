@@ -16,9 +16,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Public Field
-    public Player player;
-    public FXPoolManager fxPoolManager;
-    public DamageCalculator damageCalculator;
+    [HideInInspector] public Player player;
+    [HideInInspector] public FXPoolManager fxPoolManager;
+    [HideInInspector] public EnemyPoolManager enemyPoolManager;
+    [HideInInspector] public DamageCalculator damageCalculator;
+    [HideInInspector] public Fade fade;
     #endregion
 
     #region Private Field
@@ -35,7 +37,14 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this.gameObject);
 
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        fxPoolManager = GetComponentInChildren<FXPoolManager>();
+        enemyPoolManager = GetComponentInChildren<EnemyPoolManager>();
+        damageCalculator = GetComponentInChildren<DamageCalculator>();
+        fade = GetComponentInChildren<Fade>();
+
         var weapon = weaponDefinition.GetWeaponByWeaponName("바람의 주먹");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         player.EquipWeapon(weapon);
     }
     private void Update()

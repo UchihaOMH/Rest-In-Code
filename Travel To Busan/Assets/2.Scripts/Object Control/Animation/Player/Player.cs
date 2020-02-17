@@ -2,35 +2,28 @@
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public struct _PlayerAnimTrigger_
 {
-    public const string bJump = "bJump";
-    public const string bSit = "bSit";
+    public const string idle = "Idle";
+    public const string run = "Run";
+    public const string jump = "Jump";
+    public const string fall = "Fall";
+    public const string die = "Die";
+    public const string beAttacked = "Be Attacked";
 
-    public const string fRunBlend = "fRunBlend";
-    public const string fJumpBlend = "fJumpBlend";
-
-    public const string tRoll = "tRoll";
-    public const string tBeAttacked = "tBeAttacked";
-    public const string tBaseAttack = "tBaseAttack";
-    public const string tJumpAttack = "tJumpAttack";
-    public const string tDie = "tDie";
+    public const string attack = "Attack";
+    public const string smashAttack = "Smash Attack";
+    public const string rizingAttack = "Rizing Attack";
 }
 [System.Serializable]
 public struct _PlayerAnimState_
 {
     public PlayerRunState run;
     public PlayerJumpState jump;
-    public PlayerRollState roll;
-    public PlayerSitState sit;
-    public PlayerDieState die;
-    public PlayerBaseAttackState baseAttack;
-    public PlayerJumpAttackState jumpAttack;
+    public PlayerAttackState attack;
     public PlayerBeAttackedState beAttacked;
-    public PlayerCmdState cmd;
+    public PlayerSkillState skill;
 }
 [System.Serializable]
 public struct _PlayerInfo_
@@ -57,79 +50,60 @@ public class Player : Entity
             var before = currState;
             currState = value;
             if (isDebug && before != currState)
-                Debug.Log((currState as IAnimState).GetStateName());
+                Debug.Log("Player State : " + (currState as IAnimState).GetStateName());
         }
     }
-    private PlayerState currState;
-    /// <summary>
-    /// Direction of the Control Pad, player touched
-    /// </summary>
-    public string CurrentDirection
-    {
-        get => currentDirection;
-        private set => currentDirection = value;
-    }
-    private string currentDirection = "";
     #endregion
 
     #region Public Field    
-    [Header("Raycast")]
-    public GraphicRaycaster raycaster;
-    public PointerEventData eventData;
-
-    [Header("Controller"), Space(10f)]
+    [Header("Controller"), Space(15f)]
     public HPBar hpBar;
-    public RectTransform controlPad;
-    public RectTransform controlStick;
-    public GameObject attackButton;
-    public GameObject rollButton;
-    public GameObject cmdButton;
+    public ControlPadInputModule inputModule;
 
-    [Header("Target Control"), Space(10f)]
+    [Header("Target Control"), Space(15f)]
+    public AnyPortrait.apPortrait apPortrait;
     public Transform targetHandTr;
     public Transform tr;
-    public Animator anim;
     public Rigidbody2D rb;
-    public Puppet2D.Puppet2D_GlobalControl globalControl;
-    
-    [Space(10f)]
+    public AudioSource audioSource;
+
+    [Space(15f)]
     public Weapon weapon;
+    public _PlayerAnimState_ animationStates;
     public float jumpForce;
     public float rollSpeed;
-    public _PlayerAnimState_ animationStates;
+    public bool cinematicMode = false;
     public bool onGround = true;
     #endregion
 
     #region Private Field
-    private Vector3 controlPadCenterPos;
-    private GameObject controlpadCompass;
-    private float controlPadRadius = 0f;
-    private int controlPadTouchId = -1;
-
+    [SerializeField, Header("Debug")] private PlayerState currState;
     [SerializeField] private bool isDebug = true;
     #endregion
 
     #region Mono
     private void Awake()
     {
-        gameObject.layer = LayerMask.GetMask(GameConst.LayerDefinition.player);
-
-        hpBar.FillAmount(info.currHP / info.maxHP);
-
-        eventData = new PointerEventData(EventSystem.current);
         CurrState = animationStates.run;
 
-        controlpadCompass = new GameObject("CompassObj");
-        controlpadCompass.transform.position = controlPad.position;
-        controlpadCompass.transform.SetParent(controlPad);
-        controlPadCenterPos = controlPad.position;
-        controlPadRadius = controlPad.rect.size.x / 2f;
+        if (cinematicMode)
+            return;
+
+        hpBar.FillAmount(info.currHP / info.maxHP);
+        hpBar.HideBar(false);
     }
     private void Update()
     {
+        if (info.currHP <= 0f && !isDead)
+        {
+            OnDeadEvent();
+            return;
+        }
+
         JumpCheck();
-        CurrentDirection = !GetControlPadInput().Equals(GameConst.emptyKeyValuePair) ? GetControlPadInput().Key : "";
-        (CurrState as IAnimState).Process();
+
+        if (!cinematicMode)
+            (CurrState as IAnimState).Process();
 
         if (isDebug)
         {
@@ -138,7 +112,7 @@ public class Player : Entity
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.GetComponent<Collider2D>() != null)
+        if (collision.gameObject.GetComponent<Collider2D>() != null && !onGround)
         {
             if (collision.GetContact(0).normal.y > 0f)
             {
@@ -147,159 +121,54 @@ public class Player : Entity
                 if (CurrState is PlayerJumpState)
                 {
                     CurrState = animationStates.run;
-                    anim.SetBool("bJump", false);
+                    apPortrait.Play(_PlayerAnimTrigger_.idle);
                 }
             }
         }
-        //if (LayerMask.LayerToName(collision.collider.gameObject.layer) == GameConst.LayerDefinition.level)
-        //{
-        //    if (collision.GetContact(0).normal.y > 0f)
-        //    {
-        //        onGround = true;
-
-        //        if (CurrState is PlayerJumpState)
-        //        {
-        //            CurrState = animationStates.run;
-        //            anim.SetBool("bJump", false);
-        //        }
-        //    }
-        //}
     }
     #endregion
 
     #region Public Method
-    /// <summary>
-    /// Return the control pad input
-    /// </summary>
-    /// <returns>Key : The direction of the control stick from the control pad, Value : The touch phase from the control pad</returns>
-    public KeyValuePair<string, TouchPhase> GetControlPadInput()
-    {
-        if (Input.touchCount == 0)
-            HoldControlStick(controlPadCenterPos);
-
-        for (int i = 0; i < Input.touchCount; i++)
-        {
-            Touch touch = Input.GetTouch(i);
-            List<RaycastResult> set = new List<RaycastResult>();
-            eventData.position = touch.position;
-            raycaster.Raycast(eventData, set);
-
-            if (controlPadTouchId == touch.fingerId || (set.Count > 0 && set[0].gameObject == controlPad.gameObject))
-            {
-                HoldControlStick(touch.position);
-                controlPadTouchId = touch.fingerId;
-
-                string direction = CurrentDirection = ParseStringDirection(controlStick.position);
-                KeyValuePair<string, TouchPhase> returnValue = new KeyValuePair<string, TouchPhase>(direction, touch.phase);
-
-                if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                {
-                    HoldControlStick(controlPadCenterPos);
-                    controlPadTouchId = -1;
-                }
-
-                return returnValue;
-            }
-            else
-                continue;
-        }
-
-        return GameConst.emptyKeyValuePair;
-    }
-    public void EquipWeapon(GameObject _weapon)
+    public void EquipWeapon(GameObject _weaponObj)
     {
         if (weapon != null)
             Destroy(weapon.gameObject);
 
-        weapon = _weapon.GetComponent<Weapon>();
-        weapon.transform.SetParent(targetHandTr);
-        weapon.transform.position = Vector3.zero;
-
-        weapon.transform.localPosition = weapon.weaponOffset.position;
-        weapon.transform.localRotation = Quaternion.Euler(weapon.weaponOffset.rotation);
-        weapon.transform.localScale = weapon.weaponOffset.scale;
+        Weapon newWeapon = _weaponObj.GetComponent<Weapon>();
+        weapon = newWeapon;
 
         weapon.owner = this;
+        weapon.transform.SetParent(targetHandTr);
+        weapon.transform.position = weapon.weaponOffset.position;
+        weapon.transform.rotation = Quaternion.Euler(weapon.weaponOffset.rotation);
+        weapon.transform.localScale = weapon.weaponOffset.scale;
     }
     #endregion
 
-    #region Private Mathod
-    /// <summary>
-    /// Does player jump?
-    /// </summary>
-    /// <returns>true : Player jump</returns>
+    #region Private Method
     private void JumpCheck()
     {
-        if (rb.velocity.y < -0.001f || rb.velocity.y > 0.001f)
+        if (rb.velocity.y > 0.001f)
         {
             onGround = false;
 
-            if (!(CurrState is PlayerBaseAttackState) && !(CurrState is PlayerRollState) && !(CurrState is PlayerCmdState) && !(CurrState is PlayerJumpAttackState))
+            if (!(CurrState is PlayerAttackState) && !(CurrState is PlayerSkillState))
             {
                 CurrState = animationStates.jump;
-                anim.SetBool("bJump", true);
-                anim.SetFloat("fJumpBlend", rb.velocity.y);
+                if (!apPortrait.IsPlaying(_PlayerAnimTrigger_.jump))
+                    apPortrait.Play(_PlayerAnimTrigger_.jump);
             }
         }
-    }
-    /// <summary>
-    /// The direction of the control stick from the control pad
-    /// </summary>
-    /// <param name="_pos">Typically, touched position</param>
-    /// <returns>The Direction string. examply "Left"</returns>
-    private string ParseStringDirection(Vector2 _pos)
-    {
-        Vector2 dir = _pos - (new Vector2(controlPad.position.x, controlPad.position.y));
-        float rot = Vector2.SignedAngle(Vector2.up, dir);
+        else if (rb.velocity.y < -0.001f)
+        {
+            onGround = false;
 
-        if (Mathf.Abs(rot) < 20f)
-        {
-            return "Up";
-        }
-        else if (Mathf.Abs(rot) < 50f)
-        {
-            if (rot < 0f)
+            if (!(CurrState is PlayerAttackState) && !(CurrState is PlayerSkillState))
             {
-                return "Up Right";
+                CurrState = animationStates.jump;
+                if (!apPortrait.IsPlaying(_PlayerAnimTrigger_.fall))
+                    apPortrait.Play(_PlayerAnimTrigger_.fall);
             }
-            else
-            {
-                return "Up Left";
-            }
-        }
-        else if (Mathf.Abs(rot) < 160f)
-        {
-            if (rot < 0f)
-            {
-                return "Right";
-            }
-            else
-            {
-                return "Left";
-            }
-        }
-        else if (Mathf.Abs(rot) <= 180f)
-        {
-            return "Down";
-        }
-
-        return "";
-    }
-    /// <summary>
-    /// position the control stick where specify position
-    /// </summary>
-    /// <param name="_pos">Typically, touched position</param>
-    private void HoldControlStick(Vector3 _pos)
-    {
-        float distance = Vector3.Distance(controlPadCenterPos, _pos);
-        if (distance <= controlPadRadius)
-        {
-            controlStick.position = _pos;
-        }
-        else
-        {
-            Vector3 newPos = (_pos - controlPadCenterPos).normalized * controlPadRadius;
-            controlStick.position = controlPadCenterPos + newPos;
         }
     }
     #endregion
@@ -316,11 +185,11 @@ public class Player : Entity
 
         if (dir.x < -0.1f)
         {
-            globalControl.flip = false;
+            tr.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (dir.x > 0.1f)
         {
-            globalControl.flip = true;
+            tr.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
     /// <summary>
@@ -332,21 +201,35 @@ public class Player : Entity
         CurrState = state as PlayerState;
         (CurrState as IAnimState).Process();
     }
-    public override void BeAttacked(float _damage)
+    public override void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.3f)
     {
         float finalDamage = GameManager.Instance.damageCalculator.CalcFinalDamage(_damage, info.defense);
         info.currHP -= finalDamage;
         hpBar.FillAmount(info.currHP / info.maxHP);
-    }
-    public override void KnockBack(Vector2 _dir, float _power)
-    {
-        rb.AddForce(_dir.normalized * _power, ForceMode2D.Impulse);
         TransitionProcess(animationStates.beAttacked);
-    }
+        (CurrState as PlayerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
 
+        apPortrait.Play(_PlayerAnimTrigger_.beAttacked);
+    }
     public override void OnDeadEvent()
     {
-        throw new System.NotImplementedException();
+        if (!isDead)
+        {
+            isDead = true;
+            apPortrait.Play(_PlayerAnimTrigger_.die);
+        }
+    }
+    #endregion
+
+    #region Animation Event Method
+    private void OnAttackExit()
+    {
+        if (apPortrait.IsPlaying(_PlayerAnimTrigger_.attack))
+            animationStates.attack.OnAttackExit();
+        else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
+            animationStates.attack.OnRizingAttackExit();
+        else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.smashAttack))
+            animationStates.attack.OnSmashExit();
     }
     #endregion
 }

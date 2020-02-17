@@ -18,17 +18,20 @@ public class FXControl : MonoBehaviour, IManagedObject
 
     private Action<Entity> callback;
 
-    private void OnEnable()
-    {
-        Pool = GameManager.Instance.fxPoolManager.transform;
-    }
+    private bool vfxEnd = false;
+    private bool sfxEnd = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        var entity = collision.collider.gameObject.GetComponentInChildren<Entity>();
+        var entity = collision.gameObject.GetComponentInChildren<Entity>();
 
         if (entity != null)
             callback?.Invoke(entity);
+    }
+    private void Update()
+    {
+        if (sfxEnd && vfxEnd)
+            ReturnObject2Pool();
     }
 
     public void Play(string _trigger, AudioClip _clip)
@@ -42,11 +45,18 @@ public class FXControl : MonoBehaviour, IManagedObject
     }
     public void ReturnObject2Pool()
     {
+        ResetObjectForPooling();
+        transform.SetParent(Pool);
+        gameObject.SetActive(false);
+    }
+    public void ResetObjectForPooling()
+    {
         audioSource.clip = null;
         callback = null;
         spriteRenderer.sprite = null;
-        transform.SetParent(Pool);
-        gameObject.SetActive(false);
+
+        vfxEnd = false;
+        sfxEnd = false;
     }
 
     #region Animator Event
@@ -56,7 +66,15 @@ public class FXControl : MonoBehaviour, IManagedObject
     }
     private void OnAnimationEnd()
     {
-        ReturnObject2Pool();
+        vfxEnd = true;
     }
     #endregion
+
+    IEnumerator CheckSfxIsPlaying()
+    {
+        while (audioSource.isPlaying)
+            yield return null;
+
+        sfxEnd = true;
+    }
 }

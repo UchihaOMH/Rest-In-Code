@@ -3,23 +3,23 @@ guid: 77b076f345a4d00428d42974e9c86871
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1153683570616083263
-    second: Control Pad
+      213: 2086207200247368052
+    second: Controll Pad
   - first:
-      213: 726224755828260646
-    second: Control Pad Place Holder
+      213: -1425103782565168150
+    second: Controller Stabilizer
   - first:
-      213: 6631930149375663566
-    second: Roll Button
+      213: 7377745571939758718
+    second: Jump Button
   - first:
-      213: 32377462733447631
+      213: 3539393803266753360
     second: Control Stick
   - first:
-      213: -8365385820435298205
+      213: -931216649718855721
     second: Attack Button
   - first:
-      213: -3030347874766897098
-    second: CMD Button
+      213: 6231782420183963901
+    second: Skill Button
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -65,7 +65,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Control Pad
+      name: Controll Pad
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 134f3f3f05b57b84ead0fa789b0b5f4d
-      internalID: -1153683570616083263
+      spriteID: 4794b9a3562b3fc10800000000000000
+      internalID: 2086207200247368052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Control Pad Place Holder
+      name: Controller Stabilizer
       rect:
         serializedVersion: 2
         x: 1111
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ceccfc6fc26eb14d9c8a8b5690702aa
-      internalID: 726224755828260646
+      spriteID: aeb332809a3093ce0800000000000000
+      internalID: -1425103782565168150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roll Button
+      name: Jump Button
       rect:
         serializedVersion: 2
         x: 1111
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ebdca0d6f74ea147a09438a059bf64a
-      internalID: 6631930149375663566
+      spriteID: e723eaa3284036660800000000000000
+      internalID: 7377745571939758718
       vertices: []
       indices: 
       edges: []
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 664e14aa59e54aa4292c213cce77b149
-      internalID: 32377462733447631
+      spriteID: 0530feb59e37e1130800000000000000
+      internalID: 3539393803266753360
       vertices: []
       indices: 
       edges: []
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a41581e044dff174a907dc6b3cb7a5b2
-      internalID: -8365385820435298205
+      spriteID: 7d704901467a313f0800000000000000
+      internalID: -931216649718855721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CMD Button
+      name: Skill Button
       rect:
         serializedVersion: 2
         x: 1111
@@ -235,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec1a053366a02da4e858cc68adefa7ce
-      internalID: -3030347874766897098
+      spriteID: df8d690081dbb7650800000000000000
+      internalID: 6231782420183963901
       vertices: []
       indices: 
       edges: []

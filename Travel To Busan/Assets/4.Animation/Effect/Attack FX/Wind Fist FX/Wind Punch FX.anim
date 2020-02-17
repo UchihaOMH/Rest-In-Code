@@ -68,7 +68,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.28333333
+        time: 0.33333334
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -96,7 +96,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.16666667
+        time: 0.21666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -154,10 +154,10 @@ AnimationClip:
     - time: 0
       value: {fileID: 3408421712646771035, guid: 1e97a4f2ade4e0c4cae8834da0864df7,
         type: 3}
-    - time: 0.16666667
+    - time: 0.21666667
       value: {fileID: 1563307416363054973, guid: 1e97a4f2ade4e0c4cae8834da0864df7,
         type: 3}
-    - time: 0.28333333
+    - time: 0.33333334
       value: {fileID: 1563307416363054973, guid: 1e97a4f2ade4e0c4cae8834da0864df7,
         type: 3}
     attribute: m_Sprite
@@ -229,7 +229,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.3
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -296,7 +296,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.28333333
+        time: 0.33333334
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -324,7 +324,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.16666667
+        time: 0.21666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -388,8 +388,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.28333333
-    functionName: OnAnimationEnd
+  - time: 0.33333334
+    functionName: ReturnObject2Pool
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : Entity
 {
-    [Header("Enemy")]
+    [Header("Enemy Info"), Space(10f)]
     public Vector2 wanderOrigin;
     public float wanderRadius = 2f;
 

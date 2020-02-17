@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class PlayerBeAttackedState : PlayerState, IAnimState
 {
-    public PlayerState GetPlayerState()
-    {
-        return this;
-    }
-    private void Awake()
-    {
-        player.anim.GetBehaviour<BeAttackedBehaviour>().AddExitEvent(() =>
-        {
-            player.TransitionProcess(player.animationStates.run);
-        });
-    }
-
     public void Process()
     {
-
+        
     }
-    public void BeAttacked()
+    public void BeAttacked(Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.1f)
     {
-        player.anim.SetTrigger(_PlayerAnimTrigger_.tBeAttacked);
+        player.apPortrait.Play(_PlayerAnimTrigger_.beAttacked);
+        player.tr.Translate(_knockBackDir.normalized * _knockBackDist, Space.World);
+        CancelInvoke("ResetStance");
+        Invoke("ResetStance", _knockBackDuration);
+    }
+
+    private void ResetStance()
+    {
+        if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.die))
+        {
+            player.TransitionProcess(player.animationStates.run);
+            player.apPortrait.Play(_PlayerAnimTrigger_.run);
+        }
     }
 
     public string GetStateName()

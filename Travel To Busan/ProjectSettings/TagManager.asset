@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Portal
+  - Map
+  - Office Worker
+  - UnderArmour Collector
+  - Bat Man
+  - FX Pool
+  - Enemy Pool
   layers:
   - Default
   - TransparentFX
@@ -41,13 +48,16 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 2068581151
+    locked: 0
   - name: Map
     uniqueID: 596383117
     locked: 0
   - name: Object
     uniqueID: 394833521
     locked: 0
-  - name: Office Worker
+  - name: Enemy
     uniqueID: 3785302235
     locked: 0
   - name: Player
@@ -64,4 +74,7 @@ TagManager:
     locked: 0
   - name: FX
     uniqueID: 3955937239
+    locked: 0
+  - name: UI
+    uniqueID: 272698743
     locked: 0

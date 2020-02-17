@@ -1,22 +1,46 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - BaseAttackBehaviour
-    - BeAttackedBehaviour
+    - AnyPortrait.apMesh
+    - AnyPortrait.apMeshGroup
+    - AnyPortrait.apModifier_AnimatedTF
+    - AnyPortrait.apModifier_Rigging
+    - AnyPortrait.apOptBone
+    - AnyPortrait.apOptMesh
+    - AnyPortrait.apOptNode
+    - AnyPortrait.apOptRootUnit
+    - AnyPortrait.apOptTransform
+    - AnyPortrait.apPortrait
+    - CameraControl
+    - ControlPadInputModule
     - DamageCalculator
+    - EnemyPoolManager
     - FXControl
     - FXPoolManager
+    - Fade
     - GameManager
+    - Glass
     - HPBar
+    - Level1SceneManager
+    - OfficeWorker
+    - OfficeWorkerAttackBehaviour
+    - OfficeWorkerAttackState
+    - OfficeWorkerBeAttackedBehaviour
+    - OfficeWorkerBeAttackedState
+    - OfficeWorkerHowlBehaviour
+    - OfficeWorkerHowlState
+    - OfficeWorkerPatrolState
+    - OfficeWorkerTraceState
+    - Player
     - PlayerBaseAttackState
     - PlayerBeAttackedState
-    - PlayerCmdState
-    - PlayerControl
     - PlayerDieState
+    - PlayerIdleState
     - PlayerJumpState
-    - PlayerRollState
     - PlayerRunState
-    - PlayerSitState
+    - PlayerSkillState
+    - PrologueCinematic
+    - PrologueSceneManager
     - Puppet2D.Puppet2D_Bone
     - Puppet2D.Puppet2D_FFDLineDisplay
     - Puppet2D.Puppet2D_FFDStoreData
@@ -24,21 +48,24 @@ ScriptsOnlyBuild:
     - Puppet2D.Puppet2D_IKHandle
     - Puppet2D.Puppet2D_ParentControl
     - Puppet2D.Puppet2D_SortingLayer
-    - RollBehaviour
     - WeaponDefinition
     - WindFist
+    Unity.Mobile.AndroidLogcat.Editor.dll:
+    - Unity.Android.Logcat.AndroidLogcatManager
+    Unity.Rider.Editor.dll:
+    - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
+    - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -47,6 +74,184 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
   sceneClasses:
+    Assets/1.Scenes/Map/Level 1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 68
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11290}
+    - Class: 114
+      Script: {instanceID: 11344}
+    - Class: 114
+      Script: {instanceID: 11350}
+    - Class: 114
+      Script: {instanceID: 11370}
+    - Class: 114
+      Script: {instanceID: 11430}
+    - Class: 114
+      Script: {instanceID: 11534}
+    - Class: 114
+      Script: {instanceID: 11610}
+    - Class: 114
+      Script: {instanceID: 11686}
+    - Class: 114
+      Script: {instanceID: 11760}
+    - Class: 114
+      Script: {instanceID: 11914}
+    - Class: 114
+      Script: {instanceID: 11916}
+    - Class: 114
+      Script: {instanceID: 12006}
+    - Class: 114
+      Script: {instanceID: 12010}
+    - Class: 114
+      Script: {instanceID: 12140}
+    - Class: 114
+      Script: {instanceID: 12170}
+    - Class: 114
+      Script: {instanceID: 12238}
+    - Class: 114
+      Script: {instanceID: 12274}
+    - Class: 114
+      Script: {instanceID: 12288}
+    - Class: 114
+      Script: {instanceID: 12290}
+    - Class: 114
+      Script: {instanceID: 12386}
+    - Class: 114
+      Script: {instanceID: 12410}
+    - Class: 114
+      Script: {instanceID: 12424}
+    - Class: 114
+      Script: {instanceID: 12548}
+    - Class: 114
+      Script: {instanceID: 12640}
+    - Class: 114
+      Script: {instanceID: 12648}
+    - Class: 114
+      Script: {instanceID: 12658}
+    - Class: 114
+      Script: {instanceID: 12700}
+    - Class: 114
+      Script: {instanceID: 12778}
+    - Class: 114
+      Script: {instanceID: 12836}
+    - Class: 114
+      Script: {instanceID: 12856}
+    - Class: 114
+      Script: {instanceID: 12872}
+    - Class: 114
+      Script: {instanceID: 12930}
+    - Class: 114
+      Script: {instanceID: 13118}
+    - Class: 114
+      Script: {instanceID: 13142}
+    - Class: 114
+      Script: {instanceID: 13270}
+    - Class: 114
+      Script: {instanceID: 13340}
+    - Class: 114
+      Script: {instanceID: 13450}
+    - Class: 114
+      Script: {instanceID: 13512}
+    - Class: 114
+      Script: {instanceID: 13598}
+    - Class: 114
+      Script: {instanceID: 13610}
+    - Class: 114
+      Script: {instanceID: 13720}
+    - Class: 114
+      Script: {instanceID: 13840}
+    - Class: 114
+      Script: {instanceID: 13858}
+    - Class: 114
+      Script: {instanceID: 13872}
+    - Class: 114
+      Script: {instanceID: 13916}
+    - Class: 114
+      Script: {instanceID: 13954}
+    - Class: 114
+      Script: {instanceID: 13984}
+    - Class: 114
+      Script: {instanceID: 13998}
+    - Class: 114
+      Script: {instanceID: 14018}
+    - Class: 114
+      Script: {instanceID: 14054}
+    - Class: 114
+      Script: {instanceID: 131746}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 137
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
+    Assets/1.Scenes/Map/Level 2.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
     Assets/1.Scenes/Map/Prologue.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -70,10 +275,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
     - Class: 68
       Script: {instanceID: 0}
     - Class: 74
@@ -91,74 +292,120 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9688}
+      Script: {instanceID: 11290}
     - Class: 114
-      Script: {instanceID: 9734}
+      Script: {instanceID: 11344}
     - Class: 114
-      Script: {instanceID: 9818}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 9850}
+      Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 9918}
-    - Class: 114
-      Script: {instanceID: 10140}
-    - Class: 114
-      Script: {instanceID: 10142}
-    - Class: 114
-      Script: {instanceID: 10212}
-    - Class: 114
-      Script: {instanceID: 10312}
-    - Class: 114
-      Script: {instanceID: 10338}
-    - Class: 114
-      Script: {instanceID: 10416}
-    - Class: 114
-      Script: {instanceID: 10472}
-    - Class: 114
-      Script: {instanceID: 10500}
-    - Class: 114
-      Script: {instanceID: 10614}
-    - Class: 114
-      Script: {instanceID: 10656}
-    - Class: 114
-      Script: {instanceID: 10688}
-    - Class: 114
-      Script: {instanceID: 10742}
-    - Class: 114
-      Script: {instanceID: 10816}
-    - Class: 114
-      Script: {instanceID: 10858}
-    - Class: 114
-      Script: {instanceID: 11004}
-    - Class: 114
-      Script: {instanceID: 11194}
-    - Class: 114
-      Script: {instanceID: 11236}
-    - Class: 114
-      Script: {instanceID: 11340}
-    - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11430}
     - Class: 114
       Script: {instanceID: 11534}
     - Class: 114
-      Script: {instanceID: 11542}
+      Script: {instanceID: 11610}
     - Class: 114
-      Script: {instanceID: 11558}
+      Script: {instanceID: 11686}
     - Class: 114
-      Script: {instanceID: 11568}
+      Script: {instanceID: 11760}
     - Class: 114
-      Script: {instanceID: 11626}
+      Script: {instanceID: 11854}
     - Class: 114
-      Script: {instanceID: 11672}
+      Script: {instanceID: 11904}
     - Class: 114
-      Script: {instanceID: 11700}
+      Script: {instanceID: 11914}
     - Class: 114
-      Script: {instanceID: 18830}
+      Script: {instanceID: 11916}
+    - Class: 114
+      Script: {instanceID: 11934}
+    - Class: 114
+      Script: {instanceID: 12006}
+    - Class: 114
+      Script: {instanceID: 12010}
+    - Class: 114
+      Script: {instanceID: 12140}
+    - Class: 114
+      Script: {instanceID: 12170}
+    - Class: 114
+      Script: {instanceID: 12238}
+    - Class: 114
+      Script: {instanceID: 12274}
+    - Class: 114
+      Script: {instanceID: 12288}
+    - Class: 114
+      Script: {instanceID: 12290}
+    - Class: 114
+      Script: {instanceID: 12376}
+    - Class: 114
+      Script: {instanceID: 12386}
+    - Class: 114
+      Script: {instanceID: 12410}
+    - Class: 114
+      Script: {instanceID: 12424}
+    - Class: 114
+      Script: {instanceID: 12548}
+    - Class: 114
+      Script: {instanceID: 12640}
+    - Class: 114
+      Script: {instanceID: 12648}
+    - Class: 114
+      Script: {instanceID: 12658}
+    - Class: 114
+      Script: {instanceID: 12700}
+    - Class: 114
+      Script: {instanceID: 12836}
+    - Class: 114
+      Script: {instanceID: 12872}
+    - Class: 114
+      Script: {instanceID: 12930}
+    - Class: 114
+      Script: {instanceID: 13118}
+    - Class: 114
+      Script: {instanceID: 13142}
+    - Class: 114
+      Script: {instanceID: 13270}
+    - Class: 114
+      Script: {instanceID: 13340}
+    - Class: 114
+      Script: {instanceID: 13450}
+    - Class: 114
+      Script: {instanceID: 13512}
+    - Class: 114
+      Script: {instanceID: 13598}
+    - Class: 114
+      Script: {instanceID: 13610}
+    - Class: 114
+      Script: {instanceID: 13720}
+    - Class: 114
+      Script: {instanceID: 13840}
+    - Class: 114
+      Script: {instanceID: 13858}
+    - Class: 114
+      Script: {instanceID: 13872}
+    - Class: 114
+      Script: {instanceID: 13916}
+    - Class: 114
+      Script: {instanceID: 13954}
+    - Class: 114
+      Script: {instanceID: 13984}
+    - Class: 114
+      Script: {instanceID: 13998}
+    - Class: 114
+      Script: {instanceID: 14018}
+    - Class: 114
+      Script: {instanceID: 14054}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -175,10 +422,28 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_AnimatedFFD
+  - hash:
+      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apOptMultiCameraController
+  - hash:
+      serializedVersion: 2
+      Hash: a42ee24490f55df03b15e66147846743
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_RunnerCharacter
   - hash:
       serializedVersion: 2
       Hash: 3c08375166df118bd1801438fc36b92f
@@ -193,10 +458,16 @@ ScriptsOnlyBuild:
     className: Puppet2d_AnimatorController
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerCmdState
+    className: OfficeWorkerBeAttackedBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: aef9386513e10c2b58b4c2172faf4e3c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerSkillState
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -211,16 +482,52 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 96141a70c2d338b1f9c6fe6aba410279
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apOptBone
+  - hash:
+      serializedVersion: 2
       Hash: b06eb2df75f533522fcbda1a922b2ac2
     assemblyName: Assembly-CSharp.dll
     namespaceName: Puppet2D
     className: Puppet2D_HiddenBone
   - hash:
       serializedVersion: 2
+      Hash: dc8061213acf9b0616eb5392bca9aca6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_SlimeController
+  - hash:
+      serializedVersion: 2
+      Hash: 8837aeef181aa7a6e95b4f03646fb8a2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerPatrolState
+  - hash:
+      serializedVersion: 2
+      Hash: a4229ced116757c21b9fb17b69a721a3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame_Bomb
+  - hash:
+      serializedVersion: 2
+      Hash: 423c5588dd586d81ecb15f34d1fa4ab8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_SwordGirlController
+  - hash:
+      serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 5cf0869da58577a02934b326dff89178
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame3D_Enemy
   - hash:
       serializedVersion: 2
       Hash: 0f50e629cb1cd8aebc82da0fc07e60d0
@@ -239,6 +546,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 10d439823580d5bcd8a8bb81e0fbeabe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame_Bullet
   - hash:
       serializedVersion: 2
       Hash: 2e85effe4e42a1ac6fae9cb41318470c
@@ -295,10 +608,28 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 2140463a1f2c49074268f30c402bd544
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_RunnerGame
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 2189788e84827cfd0f02e66338c84107
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apOptMesh
+  - hash:
+      serializedVersion: 2
+      Hash: 761a48e2a8859f7955e4a0cfe714e906
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apMaskMesh
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -311,6 +642,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 1a3dd86158e009c3a9ff83763b354607
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerHowlState
   - hash:
       serializedVersion: 2
       Hash: 4476af633d20b58f3f83a35b12fdb155
@@ -343,10 +680,22 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
+      Hash: 8816c244aa929d3eee6ec928ba63fb40
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PrologueCinematic
+  - hash:
+      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: b3178e8b5b9dd6e5dea1f97b253b3231
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PoliceRod
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -355,19 +704,19 @@ ScriptsOnlyBuild:
     className: RectMask2D
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 66951bab74f43d04e5a8feec3e4a1d10
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: AnimationBehaviour
+    className: Glass
   - hash:
       serializedVersion: 2
-      Hash: 34c91a14cc4041801b6e829a214bec61
+      Hash: b3178e8b5b9dd6e5dea1f97b253b3231
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WindFist
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+      Hash: 4bda97005a5d3a041336100b3ebc8382
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerDieState
@@ -379,16 +728,46 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PrologueSceneManager
+  - hash:
+      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+      Hash: 1d58e90aa056c68f53c98d58f9a140ac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_RunnerObject
+  - hash:
+      serializedVersion: 2
+      Hash: a5348c8abaa1614d9e83a1db2f6b3f61
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerAttackState
+  - hash:
+      serializedVersion: 2
+      Hash: 4bda97005a5d3a041336100b3ebc8382
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerRunState
+  - hash:
+      serializedVersion: 2
+      Hash: 81f2a91bb88d30923995e97598f94f5e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame3D_Manager
+  - hash:
+      serializedVersion: 2
+      Hash: dc8061213acf9b0616eb5392bca9aca6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_SDController
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -397,13 +776,31 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_FFD
+  - hash:
+      serializedVersion: 2
+      Hash: 394e310db439180243fbfe2dbd18c54e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame3D_Bomb
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+      Hash: 4f6b6b763602cf29827c9adc731d046e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerState
+  - hash:
+      serializedVersion: 2
+      Hash: aef9386513e10c2b58b4c2172faf4e3c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerBeAttackedState
@@ -439,22 +836,58 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: d29df9551bbe7a8b39f51fa119276b42
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apMesh
+  - hash:
+      serializedVersion: 2
       Hash: 8dc90e648ac06f43bdd31ac9fa8f4579
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 5772c4f1336b53badb0734aaa4a7edc3
+      Hash: fa8de55f2fca22d05b605043df865f9d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apOptNode
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerHowlBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: a0060d5f0aa617468d5cdc064e7c84cd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerJumpState
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_Morph
+  - hash:
+      serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifierBase
+  - hash:
+      serializedVersion: 2
+      Hash: 0450f19b5f2b34133c47924335472606
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerSitState
+    className: CameraControl
+  - hash:
+      serializedVersion: 2
+      Hash: 01ef2a5b5ae88ecf740245066a0c6777
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apOptTransform
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -469,10 +902,10 @@ ScriptsOnlyBuild:
     className: Fade
   - hash:
       serializedVersion: 2
-      Hash: 2b7fa4a9bed9cdbedb0a40f6029374bf
+      Hash: 2e43b30b4c248793355a3f9d9979ac97
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerControl
+    className: Player
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -499,6 +932,12 @@ ScriptsOnlyBuild:
     className: TwinklingUI
   - hash:
       serializedVersion: 2
+      Hash: 39ba6d4ff946ea0bd411ef9a9dc9e8af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyPoolManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -511,10 +950,22 @@ ScriptsOnlyBuild:
     className: BaseAttackBehaviour
   - hash:
       serializedVersion: 2
+      Hash: 986c89a7b4f250d29cf0499eef8cb0df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorker
+  - hash:
+      serializedVersion: 2
       Hash: 28ad5d0358e4bec1d8f7bc34150b8ed6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TouchHighlight
+  - hash:
+      serializedVersion: 2
+      Hash: 9cd8904ba11b97aa334760fd43ec06ab
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HPBar
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -541,6 +992,12 @@ ScriptsOnlyBuild:
     className: Puppet2D_FFDLineDisplay
   - hash:
       serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_Volume
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -553,16 +1010,40 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: 09645f4c91de68143953f593d35ec065
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame3D_Actor
+  - hash:
+      serializedVersion: 2
       Hash: 5f1752ed2092162f016c19510c28a8b9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
   - hash:
       serializedVersion: 2
+      Hash: dc6c52bcf348ab26736432edca103fb5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame3D_Bullet
+  - hash:
+      serializedVersion: 2
       Hash: feb9a5a121d15fa3654d4e50a5233045
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: d7cd099b300830bfca8210ca7306a588
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apOptRootUnit
+  - hash:
+      serializedVersion: 2
+      Hash: c38fc6a87771c4fde7860548ea77f66b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Level1SceneManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -589,6 +1070,18 @@ ScriptsOnlyBuild:
     className: Puppet2D_GlobalControl
   - hash:
       serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_Physic
+  - hash:
+      serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_TF
+  - hash:
+      serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -599,6 +1092,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 9e23623fafcb621ee3768b6940aadb51
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_RunnerMapTile
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -631,10 +1130,16 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 2d0811d97f9a4292cff5ad4007494543
+      Hash: 17d261608d6771ff8e2772f9d694e764
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: bd2f89eb85e5d22a640aba78637ba488
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerTraceState
   - hash:
       serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
@@ -643,22 +1148,40 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: aef9386513e10c2b58b4c2172faf4e3c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerIdleState
+  - hash:
+      serializedVersion: 2
+      Hash: e1ce3bf42f71eb200590065ed63ac16a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apAnimPlayTimelineSimulator
+  - hash:
+      serializedVersion: 2
+      Hash: 43fbce59f98f987c0712e62ad49dfe69
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apMeshGroup
+  - hash:
+      serializedVersion: 2
       Hash: 3b760e6526e13f7504f59e210145899a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RollBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5a48dd2cbcad03c8d0258b9204a3b7ed
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame_Enemy
   - hash:
       serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
@@ -679,6 +1202,24 @@ ScriptsOnlyBuild:
     className: Puppet2D_VertexDeform
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerAttackBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: b0679cd280cca2a3f6e1f4eafed98004
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame_Manager
+  - hash:
+      serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_AnimatedMorph
+  - hash:
+      serializedVersion: 2
       Hash: 861110ab806ce766bdac558eb7e06438
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -691,6 +1232,12 @@ ScriptsOnlyBuild:
     className: WeaponDefinition
   - hash:
       serializedVersion: 2
+      Hash: f728c62d71a674f863eac7cfaf420f4c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PirateGame_Actor
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -701,6 +1248,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_Rigging
   - hash:
       serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
@@ -721,12 +1274,6 @@ ScriptsOnlyBuild:
     className: Puppet2D_Guides
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerRollState
-  - hash:
-      serializedVersion: 2
       Hash: 4587565a03be630ecdc2486327c27661
     assemblyName: Assembly-CSharp.dll
     namespaceName: Puppet2D
@@ -737,6 +1284,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayModeRunnerCallback
+  - hash:
+      serializedVersion: 2
+      Hash: 757846df01f85fd53ab0dcf1689e7b47
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apTutorial_PortraitController
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -781,7 +1334,19 @@ ScriptsOnlyBuild:
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
-      Hash: 20eeaeae829475b5e354d1f626c51a2b
+      Hash: 4f6b6b763602cf29827c9adc731d046e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OfficeWorkerBeAttackedState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestRunner.Utils
+    className: TestRunCallbackListener
+  - hash:
+      serializedVersion: 2
+      Hash: 4ef0f7d42cdb13479386e1f049c315aa
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner
     className: PlaymodeTestsController
@@ -811,13 +1376,25 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
+      Hash: b4fc2b66491e71ad3c35302a4e1ffaff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apModifier_AnimatedTF
+  - hash:
+      serializedVersion: 2
+      Hash: ce20ef7bd36e46d0617df2d478c9f66b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AnyPortrait
+    className: apPortrait
+  - hash:
+      serializedVersion: 2
       Hash: 7072231382eb3c4871b3dd75ad0227e1
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: bb8becaa1d715f2d3c6ad4bf6de81d0a
+      Hash: 4bda97005a5d3a041336100b3ebc8382
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerBaseAttackState
@@ -827,6 +1404,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ToggleGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 66ec3c6377ef7a317370e4938e1b8ab3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: apTutorial_PirateGame3D_BillboardMesh
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -841,11 +1424,13 @@ ScriptsOnlyBuild:
     className: Puppet2D_FFDStoreData
   - hash:
       serializedVersion: 2
-      Hash: 9cd8904ba11b97aa334760fd43ec06ab
+      Hash: d7d53eb44c53dcc1f7e6ab529455814c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: HPBar
+    className: ControlPadInputModule
   platform: 13
   scenePathNames:
   - Assets/1.Scenes/Map/Prologue.unity
+  - Assets/1.Scenes/Map/Level 1.unity
+  - Assets/1.Scenes/Map/Level 2.unity
   playerPath: D:/WorkSpace/Unity_WorkSpace/Rest-In-Code/Travel To Busan/App/app.apk
