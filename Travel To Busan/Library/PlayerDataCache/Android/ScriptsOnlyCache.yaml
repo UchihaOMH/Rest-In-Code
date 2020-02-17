@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - AnyPortrait.apMeshGroup
     - AnyPortrait.apModifier_AnimatedTF
     - AnyPortrait.apModifier_Rigging
+    - AnyPortrait.apModifier_TF
     - AnyPortrait.apOptBone
     - AnyPortrait.apOptMesh
     - AnyPortrait.apOptNode
@@ -23,44 +24,27 @@ ScriptsOnlyBuild:
     - HPBar
     - Level1SceneManager
     - OfficeWorker
-    - OfficeWorkerAttackBehaviour
     - OfficeWorkerAttackState
-    - OfficeWorkerBeAttackedBehaviour
     - OfficeWorkerBeAttackedState
-    - OfficeWorkerHowlBehaviour
-    - OfficeWorkerHowlState
     - OfficeWorkerPatrolState
     - OfficeWorkerTraceState
     - Player
-    - PlayerBaseAttackState
+    - PlayerAttackState
     - PlayerBeAttackedState
-    - PlayerDieState
-    - PlayerIdleState
     - PlayerJumpState
     - PlayerRunState
     - PlayerSkillState
     - PrologueCinematic
     - PrologueSceneManager
-    - Puppet2D.Puppet2D_Bone
-    - Puppet2D.Puppet2D_FFDLineDisplay
-    - Puppet2D.Puppet2D_FFDStoreData
-    - Puppet2D.Puppet2D_GlobalControl
-    - Puppet2D.Puppet2D_IKHandle
-    - Puppet2D.Puppet2D_ParentControl
-    - Puppet2D.Puppet2D_SortingLayer
     - WeaponDefinition
     - WindFist
-    Unity.Mobile.AndroidLogcat.Editor.dll:
-    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -114,110 +98,86 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11290}
+      Script: {instanceID: 11292}
     - Class: 114
-      Script: {instanceID: 11344}
+      Script: {instanceID: 11342}
     - Class: 114
-      Script: {instanceID: 11350}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11370}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11430}
+      Script: {instanceID: 11578}
     - Class: 114
-      Script: {instanceID: 11534}
+      Script: {instanceID: 11652}
     - Class: 114
-      Script: {instanceID: 11610}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 11686}
+      Script: {instanceID: 11954}
     - Class: 114
-      Script: {instanceID: 11760}
+      Script: {instanceID: 11958}
     - Class: 114
-      Script: {instanceID: 11914}
+      Script: {instanceID: 12040}
     - Class: 114
-      Script: {instanceID: 11916}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12006}
+      Script: {instanceID: 12108}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12176}
     - Class: 114
-      Script: {instanceID: 12140}
+      Script: {instanceID: 12212}
     - Class: 114
-      Script: {instanceID: 12170}
+      Script: {instanceID: 12226}
     - Class: 114
-      Script: {instanceID: 12238}
+      Script: {instanceID: 12308}
     - Class: 114
-      Script: {instanceID: 12274}
+      Script: {instanceID: 12318}
     - Class: 114
-      Script: {instanceID: 12288}
+      Script: {instanceID: 12340}
     - Class: 114
-      Script: {instanceID: 12290}
+      Script: {instanceID: 12352}
     - Class: 114
-      Script: {instanceID: 12386}
+      Script: {instanceID: 12470}
     - Class: 114
-      Script: {instanceID: 12410}
+      Script: {instanceID: 12556}
     - Class: 114
-      Script: {instanceID: 12424}
+      Script: {instanceID: 12564}
     - Class: 114
-      Script: {instanceID: 12548}
+      Script: {instanceID: 12574}
     - Class: 114
-      Script: {instanceID: 12640}
+      Script: {instanceID: 12682}
     - Class: 114
-      Script: {instanceID: 12648}
+      Script: {instanceID: 12738}
     - Class: 114
-      Script: {instanceID: 12658}
+      Script: {instanceID: 12758}
     - Class: 114
-      Script: {instanceID: 12700}
+      Script: {instanceID: 12770}
     - Class: 114
-      Script: {instanceID: 12778}
+      Script: {instanceID: 12866}
     - Class: 114
-      Script: {instanceID: 12836}
+      Script: {instanceID: 13008}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 13030}
     - Class: 114
-      Script: {instanceID: 12872}
+      Script: {instanceID: 13220}
     - Class: 114
-      Script: {instanceID: 12930}
+      Script: {instanceID: 13328}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 13464}
     - Class: 114
-      Script: {instanceID: 13142}
+      Script: {instanceID: 13476}
     - Class: 114
-      Script: {instanceID: 13270}
+      Script: {instanceID: 13584}
     - Class: 114
-      Script: {instanceID: 13340}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 13450}
+      Script: {instanceID: 13798}
     - Class: 114
-      Script: {instanceID: 13512}
+      Script: {instanceID: 13828}
     - Class: 114
-      Script: {instanceID: 13598}
+      Script: {instanceID: 13842}
     - Class: 114
-      Script: {instanceID: 13610}
-    - Class: 114
-      Script: {instanceID: 13720}
-    - Class: 114
-      Script: {instanceID: 13840}
-    - Class: 114
-      Script: {instanceID: 13858}
-    - Class: 114
-      Script: {instanceID: 13872}
-    - Class: 114
-      Script: {instanceID: 13916}
-    - Class: 114
-      Script: {instanceID: 13954}
-    - Class: 114
-      Script: {instanceID: 13984}
-    - Class: 114
-      Script: {instanceID: 13998}
-    - Class: 114
-      Script: {instanceID: 14018}
-    - Class: 114
-      Script: {instanceID: 14054}
-    - Class: 114
-      Script: {instanceID: 131746}
+      Script: {instanceID: 13862}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -292,112 +252,88 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11290}
+      Script: {instanceID: 11292}
     - Class: 114
-      Script: {instanceID: 11344}
+      Script: {instanceID: 11342}
     - Class: 114
-      Script: {instanceID: 11350}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11370}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11430}
+      Script: {instanceID: 11578}
     - Class: 114
-      Script: {instanceID: 11534}
+      Script: {instanceID: 11652}
     - Class: 114
-      Script: {instanceID: 11610}
+      Script: {instanceID: 11808}
     - Class: 114
-      Script: {instanceID: 11686}
+      Script: {instanceID: 11858}
     - Class: 114
-      Script: {instanceID: 11760}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 11854}
+      Script: {instanceID: 11886}
     - Class: 114
-      Script: {instanceID: 11904}
+      Script: {instanceID: 11954}
     - Class: 114
-      Script: {instanceID: 11914}
+      Script: {instanceID: 11958}
     - Class: 114
-      Script: {instanceID: 11916}
+      Script: {instanceID: 12040}
     - Class: 114
-      Script: {instanceID: 11934}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12006}
+      Script: {instanceID: 12108}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12176}
     - Class: 114
-      Script: {instanceID: 12140}
+      Script: {instanceID: 12212}
     - Class: 114
-      Script: {instanceID: 12170}
+      Script: {instanceID: 12226}
     - Class: 114
-      Script: {instanceID: 12238}
+      Script: {instanceID: 12308}
     - Class: 114
-      Script: {instanceID: 12274}
+      Script: {instanceID: 12318}
     - Class: 114
-      Script: {instanceID: 12288}
+      Script: {instanceID: 12340}
     - Class: 114
-      Script: {instanceID: 12290}
+      Script: {instanceID: 12352}
     - Class: 114
-      Script: {instanceID: 12376}
+      Script: {instanceID: 12470}
     - Class: 114
-      Script: {instanceID: 12386}
+      Script: {instanceID: 12556}
     - Class: 114
-      Script: {instanceID: 12410}
+      Script: {instanceID: 12564}
     - Class: 114
-      Script: {instanceID: 12424}
+      Script: {instanceID: 12574}
     - Class: 114
-      Script: {instanceID: 12548}
+      Script: {instanceID: 12738}
     - Class: 114
-      Script: {instanceID: 12640}
+      Script: {instanceID: 12770}
     - Class: 114
-      Script: {instanceID: 12648}
+      Script: {instanceID: 12866}
     - Class: 114
-      Script: {instanceID: 12658}
+      Script: {instanceID: 13008}
     - Class: 114
-      Script: {instanceID: 12700}
+      Script: {instanceID: 13030}
     - Class: 114
-      Script: {instanceID: 12836}
+      Script: {instanceID: 13220}
     - Class: 114
-      Script: {instanceID: 12872}
+      Script: {instanceID: 13328}
     - Class: 114
-      Script: {instanceID: 12930}
+      Script: {instanceID: 13464}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 13476}
     - Class: 114
-      Script: {instanceID: 13142}
+      Script: {instanceID: 13584}
     - Class: 114
-      Script: {instanceID: 13270}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 13340}
+      Script: {instanceID: 13798}
     - Class: 114
-      Script: {instanceID: 13450}
+      Script: {instanceID: 13828}
     - Class: 114
-      Script: {instanceID: 13512}
+      Script: {instanceID: 13842}
     - Class: 114
-      Script: {instanceID: 13598}
-    - Class: 114
-      Script: {instanceID: 13610}
-    - Class: 114
-      Script: {instanceID: 13720}
-    - Class: 114
-      Script: {instanceID: 13840}
-    - Class: 114
-      Script: {instanceID: 13858}
-    - Class: 114
-      Script: {instanceID: 13872}
-    - Class: 114
-      Script: {instanceID: 13916}
-    - Class: 114
-      Script: {instanceID: 13954}
-    - Class: 114
-      Script: {instanceID: 13984}
-    - Class: 114
-      Script: {instanceID: 13998}
-    - Class: 114
-      Script: {instanceID: 14018}
-    - Class: 114
-      Script: {instanceID: 14054}
+      Script: {instanceID: 13862}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -452,18 +388,6 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2d_AnimatorController
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: OfficeWorkerBeAttackedBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: aef9386513e10c2b58b4c2172faf4e3c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -488,19 +412,13 @@ ScriptsOnlyBuild:
     className: apOptBone
   - hash:
       serializedVersion: 2
-      Hash: b06eb2df75f533522fcbda1a922b2ac2
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_HiddenBone
-  - hash:
-      serializedVersion: 2
       Hash: dc8061213acf9b0616eb5392bca9aca6
     assemblyName: Assembly-CSharp.dll
     namespaceName: AnyPortrait
     className: apTutorial_SlimeController
   - hash:
       serializedVersion: 2
-      Hash: 8837aeef181aa7a6e95b4f03646fb8a2
+      Hash: 0d02d3c40b0a1c6a53e5ca8c82feb5b9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OfficeWorkerPatrolState
@@ -530,18 +448,6 @@ ScriptsOnlyBuild:
     className: apTutorial_PirateGame3D_Enemy
   - hash:
       serializedVersion: 2
-      Hash: 0f50e629cb1cd8aebc82da0fc07e60d0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_BlendShape
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BeAttackedBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -552,12 +458,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: AnyPortrait
     className: apTutorial_PirateGame_Bullet
-  - hash:
-      serializedVersion: 2
-      Hash: 2e85effe4e42a1ac6fae9cb41318470c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_ParentControl
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -644,24 +544,6 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 1a3dd86158e009c3a9ff83763b354607
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: OfficeWorkerHowlState
-  - hash:
-      serializedVersion: 2
-      Hash: 4476af633d20b58f3f83a35b12fdb155
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_Bakedmesh
-  - hash:
-      serializedVersion: 2
-      Hash: 3ef98dfb622becffe5198b3cfa7e58cf
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_SplineControl
-  - hash:
-      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -680,7 +562,7 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: 8816c244aa929d3eee6ec928ba63fb40
+      Hash: fb7c265afd041610002e372625cc4e5b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PrologueCinematic
@@ -716,19 +598,13 @@ ScriptsOnlyBuild:
     className: WindFist
   - hash:
       serializedVersion: 2
-      Hash: 4bda97005a5d3a041336100b3ebc8382
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerDieState
-  - hash:
-      serializedVersion: 2
       Hash: 4e9333594897a1fb8b136ad2eae996c7
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 35a54b430f32c49107a436abdce3a416
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PrologueSceneManager
@@ -794,6 +670,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: d7d53eb44c53dcc1f7e6ab529455814c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ControlPadInputModule
+  - hash:
+      serializedVersion: 2
       Hash: 4f6b6b763602cf29827c9adc731d046e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -804,12 +686,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerBeAttackedState
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_SkinnedVertices
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -854,12 +730,6 @@ ScriptsOnlyBuild:
     className: apOptNode
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: OfficeWorkerHowlBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: a0060d5f0aa617468d5cdc064e7c84cd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -878,7 +748,7 @@ ScriptsOnlyBuild:
     className: apModifierBase
   - hash:
       serializedVersion: 2
-      Hash: 0450f19b5f2b34133c47924335472606
+      Hash: 0355b29e4c5203ce2583092cd20f1077
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraControl
@@ -890,19 +760,13 @@ ScriptsOnlyBuild:
     className: apOptTransform
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_VertHandler
-  - hash:
-      serializedVersion: 2
       Hash: be0e5f82c07a2957a41615a02fc45146
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Fade
   - hash:
       serializedVersion: 2
-      Hash: 2e43b30b4c248793355a3f9d9979ac97
+      Hash: 2656908e0d02128a1353d45e60f4a618
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -944,13 +808,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BaseAttackBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 986c89a7b4f250d29cf0499eef8cb0df
+      Hash: db5476df95f8c28d98c2b2803ebb46c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OfficeWorker
@@ -978,18 +836,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
-  - hash:
-      serializedVersion: 2
-      Hash: 1e25dc1f1561000ecff6829fde9228ee
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_EditSkinWeights
-  - hash:
-      serializedVersion: 2
-      Hash: 92c55a11521227d3c815f601ddde21c6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_FFDLineDisplay
   - hash:
       serializedVersion: 2
       Hash: b4fc2b66491e71ad3c35302a4e1ffaff
@@ -1046,12 +892,6 @@ ScriptsOnlyBuild:
     className: Level1SceneManager
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_BakeAnimation
-  - hash:
-      serializedVersion: 2
       Hash: 558a39a16cf1b46e4905f12e8b75b852
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1062,12 +902,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 481162116a3b63bb19a9f491ebb19fe4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_GlobalControl
   - hash:
       serializedVersion: 2
       Hash: b4fc2b66491e71ad3c35302a4e1ffaff
@@ -1136,7 +970,7 @@ ScriptsOnlyBuild:
     className: GameManager
   - hash:
       serializedVersion: 2
-      Hash: bd2f89eb85e5d22a640aba78637ba488
+      Hash: 4e059a232b0d73bb855b365b57e884f1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OfficeWorkerTraceState
@@ -1146,12 +980,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
-  - hash:
-      serializedVersion: 2
-      Hash: aef9386513e10c2b58b4c2172faf4e3c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerIdleState
   - hash:
       serializedVersion: 2
       Hash: e1ce3bf42f71eb200590065ed63ac16a
@@ -1194,18 +1022,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
-  - hash:
-      serializedVersion: 2
-      Hash: c4b73c5a1edb4391754011150e4896dd
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_VertexDeform
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: OfficeWorkerAttackBehaviour
   - hash:
       serializedVersion: 2
       Hash: b0679cd280cca2a3f6e1f4eafed98004
@@ -1268,18 +1084,6 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 9f2260202439eaa575a2770542c42117
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_Guides
-  - hash:
-      serializedVersion: 2
-      Hash: 4587565a03be630ecdc2486327c27661
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_SortingLayer
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -1298,22 +1102,10 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: a88beb0e8596f56c2892dd002165b7c7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_IKHandle
-  - hash:
-      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
-  - hash:
-      serializedVersion: 2
-      Hash: d93da10c678ceb3253934823e59f7712
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_Bone
   - hash:
       serializedVersion: 2
       Hash: 0b935d5df06a32bb6adc58a9aec099ec
@@ -1397,7 +1189,7 @@ ScriptsOnlyBuild:
       Hash: 4bda97005a5d3a041336100b3ebc8382
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerBaseAttackState
+    className: PlayerAttackState
   - hash:
       serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
@@ -1416,18 +1208,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: ea925e6507b6b33724a60ea2e716a54e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Puppet2D
-    className: Puppet2D_FFDStoreData
-  - hash:
-      serializedVersion: 2
-      Hash: d7d53eb44c53dcc1f7e6ab529455814c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ControlPadInputModule
   platform: 13
   scenePathNames:
   - Assets/1.Scenes/Map/Prologue.unity

@@ -21,7 +21,7 @@ public class OfficeWorkerTraceState : OfficeWorkerState, IAnimState
     }
     public void Process()
     {
-        var hit = Physics2D.BoxCast(rangeBox.position, rangeBox.lossyScale, 0, Vector2.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
+        var hit = Physics2D.BoxCast(rangeBox.position, new Vector2(Mathf.Abs(rangeBox.lossyScale.x), Mathf.Abs(rangeBox.lossyScale.y)), 0, Vector2.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
         if (hit.collider != null)
         {
             if (hit.collider.GetComponent<Player>() == officeWorker.target)

@@ -89,7 +89,7 @@ public class OfficeWorkerPatrolState : OfficeWorkerState, IAnimState
     }
     public bool DetectTarget()
     {
-        var hit = Physics2D.CircleCast(detectRange.position, detectRange.lossyScale.x / 2f, Vector3.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
+        var hit = Physics2D.CircleCast(detectRange.position, Mathf.Abs(detectRange.lossyScale.x / 2f), Vector3.forward, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
         if (hit.collider != null)
         {
             //  타깃이 없을 때, 플레이어가 감지되면 타깃설정 및 추적상태로 변경
