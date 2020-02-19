@@ -53,4 +53,11 @@ public class Test : MonoBehaviour
             Debug.Log("Collision Exit");
         }
     }
+
+    private void Awake()
+    {
+        transform.SetParent(GameObject.FindGameObjectWithTag("Office Worker").transform);
+        transform.localPosition = Vector3.zero;
+        transform.localScale = Vector3.one;
+    }
 }

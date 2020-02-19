@@ -48,7 +48,7 @@ public class PlayerRunState : PlayerState, IAnimState
     {
         if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.run))
             player.apPortrait.Play(_PlayerAnimTrigger_.run);
-        player.tr.Translate(dir * player.info.speed, Space.World);
+        player.tr.Translate(dir * player.info.speed * Time.deltaTime, Space.World);
         player.LookAt(dir);
     }
 }

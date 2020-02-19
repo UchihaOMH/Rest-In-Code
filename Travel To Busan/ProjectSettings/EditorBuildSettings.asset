@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/1.Scenes/Map/First Scene Bridge.unity
+    guid: 82906f2060f288f408b6a34ad5486506
+  - enabled: 1
     path: Assets/1.Scenes/Map/Prologue.unity
     guid: cf5f5840cf8e6e54b906308b70187251
   - enabled: 1

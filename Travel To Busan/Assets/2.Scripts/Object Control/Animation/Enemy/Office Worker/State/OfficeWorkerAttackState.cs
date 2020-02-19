@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class OfficeWorkerAttackState : OfficeWorkerState, IAnimState
 {
+    public float attackSpeed = 1f;
     public float coolTime = 0.5f;
-    public float timer = 0f;
+
+    private float timer = 0f;
 
     private void OnDrawGizmosSelected()
     {
@@ -33,19 +35,6 @@ public class OfficeWorkerAttackState : OfficeWorkerState, IAnimState
         }
     }
 
-    private void Update()
-    {
-        ////  공격판정 타이밍
-        //if (attackable)
-        //{
-        //    var hit = Physics2D.BoxCast(attackRangeBox.position, attackRangeBox.lossyScale, 0f, Vector2.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
-        //    if (hit.collider != null && hit.collider.GetComponent<Player>() != null)
-        //    {
-        //        hit.collider.gameObject.GetComponent<Player>().BeAttacked(officeWorker, officeWorker.info.damage, hit.collider.transform.position.x - officeWorker.tr.position.x < 0f ? Vector2.left : Vector2.right, officeWorker.knockBackDist);
-        //    }
-        //}
-    }
-
     public string GetStateName()
     {
         return "Attack State";
@@ -59,9 +48,12 @@ public class OfficeWorkerAttackState : OfficeWorkerState, IAnimState
     {
         if (Time.time >= timer)
         {
+            officeWorker.apPortrait.SetAnimationSpeed(_OfficeWorkerAnimTrigger_.attack, attackSpeed);
             officeWorker.apPortrait.Play(_OfficeWorkerAnimTrigger_.attack);
             timer = Time.time + coolTime;
         }
+        else
+            officeWorker.CurrState = officeWorker.animationState.trace;
     }
 
     #region Animation Event

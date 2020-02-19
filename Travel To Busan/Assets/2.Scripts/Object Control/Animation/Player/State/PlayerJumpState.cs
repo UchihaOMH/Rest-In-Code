@@ -67,7 +67,7 @@ public class PlayerJumpState : PlayerState, IAnimState
 
     public void AirWalk(Vector2 dir)
     {
-        player.tr.Translate(dir * player.info.speed, Space.World);
+        player.tr.Translate(dir * player.info.speed * Time.deltaTime, Space.World);
         player.LookAt(dir);
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OfficeWorkerBeAttackedState : OfficeWorkerState, IAnimState
 {
+    private float timer = -1f;
+
     public string GetStateName()
     {
         return "Be Attacked";
@@ -18,8 +20,7 @@ public class OfficeWorkerBeAttackedState : OfficeWorkerState, IAnimState
         if (!officeWorker.isDead)
         {
             officeWorker.hpBar.HideBar(false);
-            if (!officeWorker.apPortrait.IsPlaying(_OfficeWorkerAnimTrigger_.beAttacked))
-                officeWorker.apPortrait.Play(_OfficeWorkerAnimTrigger_.beAttacked);
+            officeWorker.apPortrait.Play(_OfficeWorkerAnimTrigger_.beAttacked);
 
             officeWorker.tr.Translate(_knockBackDir * _knockBackDist, Space.World);
 

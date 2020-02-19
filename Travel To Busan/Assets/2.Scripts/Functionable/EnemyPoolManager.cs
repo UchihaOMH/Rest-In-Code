@@ -18,7 +18,7 @@ public class EnemyPoolManager : MonoBehaviour
                 //  풀에 비활성화 상태의 몬스터가 있으면 초기화 후, 리턴
                 foreach (var objInPool in pool)
                 {   
-                    if (objInPool.GetComponent<Entity>().name == entityData.GetComponent<Entity>().name && !objInPool.activeSelf)
+                    if (objInPool.GetComponent<Entity>().info.name == entityData.GetComponent<Entity>().info.name && !objInPool.activeSelf)
                     {
                         var enemy = objInPool.GetComponent<Enemy>();
                         enemy.gameObject.SetActive(true);
@@ -40,13 +40,29 @@ public class EnemyPoolManager : MonoBehaviour
 
         return null;
     }
-
     public void ReturnAllManagedEnemy()
     {
         var objs = transform.GetComponentsInChildren<IManagedObject>();
         for (int i = 0; i < objs.Length; i++)
         {
             objs[i].ReturnObject2Pool();
+        }
+    }
+    public void PrepareEnemyInPool(string _enemyName, int _count)
+    {
+        foreach (var enemyPref in enemyPrefList)
+        {
+            Entity enemy = enemyPref.GetComponent<Entity>();
+            if (enemy.info.name == _enemyName)
+            {
+                for (int i = 0; i < _count; i++)
+                {
+                    GameObject enemyObj = Instantiate(enemyPref, this.transform);
+                    pool.Add(enemyObj);
+                    enemyObj.SetActive(false);
+                }
+                return;
+            }
         }
     }
 }

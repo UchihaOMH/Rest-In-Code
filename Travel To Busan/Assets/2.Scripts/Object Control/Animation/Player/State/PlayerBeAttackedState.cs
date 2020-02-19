@@ -18,10 +18,10 @@ public class PlayerBeAttackedState : PlayerState, IAnimState
 
     private void ResetStance()
     {
-        if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.die))
+        if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.die) && player.CurrState == this)
         {
+            player.apPortrait.Play(_PlayerAnimTrigger_.idle);
             player.TransitionProcess(player.animationStates.run);
-            player.apPortrait.Play(_PlayerAnimTrigger_.run);
         }
     }
 

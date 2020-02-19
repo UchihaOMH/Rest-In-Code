@@ -6,13 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum eScene
+    {
+        FirstSceneBridge = 0,
+        Prologue,
+        Level1,
+        Level2,
+        Level3,
+        Level4,
+        Level5
+    }
+
     #region Property
     public static GameManager Instance
     {
         get => instance;
         private set => instance = value; 
     }
-    private static GameManager instance;
+    private static GameManager instance = null;
     #endregion
 
     #region Public Field
@@ -37,14 +48,15 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this.gameObject);
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        Application.targetFrameRate = 30;
+
         fxPoolManager = GetComponentInChildren<FXPoolManager>();
         enemyPoolManager = GetComponentInChildren<EnemyPoolManager>();
         damageCalculator = GetComponentInChildren<DamageCalculator>();
         fade = GetComponentInChildren<Fade>();
 
         var weapon = weaponDefinition.GetWeaponByWeaponName("바람의 주먹");
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponentInParent<Player>();
         player.EquipWeapon(weapon);
     }
     private void Update()

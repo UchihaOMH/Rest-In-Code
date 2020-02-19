@@ -10,11 +10,14 @@ public class PrologueSceneManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.fade.LoadScene(1);
+            GameManager.Instance.fade.LoadScene((int)GameManager.eScene.Level1);
             GameManager.Instance.enemyPoolManager.ReturnAllManagedEnemy();
         }
     }
-
+    private void Awake()
+    {
+        GameManager.Instance.enemyPoolManager.PrepareEnemyInPool("Office Worker", 10);
+    }
     private void Start()
     {
         cinematic.StartCinematic();

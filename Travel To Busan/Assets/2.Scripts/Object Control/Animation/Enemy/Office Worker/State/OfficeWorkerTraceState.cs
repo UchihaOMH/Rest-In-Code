@@ -43,7 +43,7 @@ public class OfficeWorkerTraceState : OfficeWorkerState, IAnimState
                     officeWorker.apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.trace);
                 Vector2 dir = officeWorker.target.transform.position.x - officeWorker.tr.position.x < 0f ? Vector2.left : Vector2.right;
                 officeWorker.LookAt(dir);
-                officeWorker.tr.Translate(dir* officeWorker.info.speed, Space.Self);
+                officeWorker.tr.Translate(dir * officeWorker.info.speed * Time.deltaTime, Space.World);
             }
         }
     }

@@ -10,7 +10,7 @@ public class FXControl : MonoBehaviour, IManagedObject
         get => pool;
         set => pool = value;
     }
-    [SerializeField] private Transform pool;
+    private Transform pool;
 
     public SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -32,6 +32,8 @@ public class FXControl : MonoBehaviour, IManagedObject
     {
         if (sfxEnd && vfxEnd)
             ReturnObject2Pool();
+        else if (vfxEnd)
+            CheckSfxIsPlaying();
     }
 
     public void Play(string _trigger, AudioClip _clip)
@@ -70,11 +72,9 @@ public class FXControl : MonoBehaviour, IManagedObject
     }
     #endregion
 
-    IEnumerator CheckSfxIsPlaying()
+    private void CheckSfxIsPlaying()
     {
-        while (audioSource.isPlaying)
-            yield return null;
-
-        sfxEnd = true;
+        if (!audioSource.isPlaying)
+            sfxEnd = true;
     }
 }

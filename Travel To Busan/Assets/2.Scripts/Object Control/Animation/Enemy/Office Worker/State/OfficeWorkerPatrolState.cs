@@ -49,7 +49,7 @@ public class OfficeWorkerPatrolState : OfficeWorkerState, IAnimState
             if (Time.time >= moveCoolTime)
             {
                 //  목적지 도착시, 쿨타임 갱신 및 애니메이션 Idle로 설정
-                if (Mathf.Abs(xPoint - officeWorker.tr.position.x) <= officeWorker.patrolSpeed)
+                if (Mathf.Abs(xPoint - officeWorker.tr.position.x) <= officeWorker.patrolSpeed * Time.deltaTime)
                 {
                     moveCoolTime = Time.time + Random.Range(0f, 3f);
                     //  여기서 절벽 판정을 해야함
@@ -71,7 +71,7 @@ public class OfficeWorkerPatrolState : OfficeWorkerState, IAnimState
                     {
                         Vector3 dir = new Vector3((xPoint - officeWorker.tr.position.x < 0f ? -1f : 1f), 0f, 0f);
                         officeWorker.LookAt(dir);
-                        officeWorker.tr.Translate(dir.normalized * officeWorker.patrolSpeed, Space.World);
+                        officeWorker.tr.Translate(dir.normalized * officeWorker.patrolSpeed * Time.deltaTime, Space.World);
                         
                         if (!officeWorker.apPortrait.IsPlaying(_OfficeWorkerAnimTrigger_.patrol))
                             officeWorker.apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.patrol);
@@ -90,7 +90,7 @@ public class OfficeWorkerPatrolState : OfficeWorkerState, IAnimState
     public bool DetectTarget()
     {
         var hit = Physics2D.CircleCast(detectRange.position, Mathf.Abs(detectRange.lossyScale.x / 2f), Vector3.forward, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
-        if (hit.collider != null)
+        if (hit.collider != null || hit.collider?.GetComponent<Player>().isDead == false)
         {
             //  타깃이 없을 때, 플레이어가 감지되면 타깃설정 및 추적상태로 변경
             if (officeWorker.target == null)

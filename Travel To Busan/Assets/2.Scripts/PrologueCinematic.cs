@@ -4,30 +4,36 @@ using UnityEngine;
 
 public class PrologueCinematic : MonoBehaviour
 {
-    public Transform startPos;
-    public Transform enemyTracePos;
-    public Transform jumpPos;
-    public Transform endPos;
+    private enum ePoint
+    {
+        StartPoint = 0,
+        DashPoint,
+        JombieTracePoint,
+        JumpPoint,
+        BrakePoint,
+        GoalPoint,
+    }
+
+    public List<Transform> point = new List<Transform>();
 
     private Vector3 dest;
     private Player player;
     private Transform playerTr;
     private ControlPadInputModule inputModule;
 
-    private bool playerJumping = false;
-
     private bool cinematicStart = false;
+    private int pointIndex = 0;
 
     private void Start()
     {
         player = GameManager.Instance.player;
         playerTr = player.transform;
-        playerTr.position = startPos.position;
+        playerTr.position = point[pointIndex].position;
         playerTr.localScale = new Vector3(-1f, 1f, 1f);
 
         inputModule = GetComponent<ControlPadInputModule>();
 
-        dest = enemyTracePos.position;
+        dest = point[++pointIndex].position;
     }
     private void Update()
     {
@@ -35,58 +41,40 @@ public class PrologueCinematic : MonoBehaviour
             return;
 
         //  목적지에 도착하면
-        if (dest.x - playerTr.position.x < player.info.speed)
+        if (point[pointIndex].position.x - playerTr.position.x < player.info.speed * Time.deltaTime)
         {
-            //  EnemyTracePos면 Enemy가 랜덤한 간격으로 생성되고, 따라오기 시작함
-            if (dest.x == enemyTracePos.position.x)
+            //  대쉬 포인트. 유리를 부수기 위해 Speed를 두배가량 높인다.
+            if (dest.x == point[(int)ePoint.DashPoint].position.x)
             {
-                dest = jumpPos.position;
+                player.info.speed = 36f;
+            }
+            //  좀비 추격 시작 포인트. 좀비들이 추적하기 시작한다.
+            else if (dest.x == point[(int)ePoint.JombieTracePoint].position.x)
+            {
                 StartCoroutine(ZombieTracingCourtine());
             }
-            //  점프포인트이면 점프하고 다음목적지 재설정
-            else if (dest.x == jumpPos.position.x)
+            //  점프 포인트. 유리를 부수고 점프한다.
+            else if (dest.x == point[(int)ePoint.JumpPoint].position.x)
             {
-                dest = endPos.position;
                 player.rb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
-                playerJumping = true;
             }
+            //  감속 포인트. 유리를 부수기 위해 가속한 만큼 감속한다.
+            else if (dest.x == point[(int)ePoint.BrakePoint].position.x)
+            {
+                player.info.speed = 18f;
+            }
+            //  최종 포인트. 다음맵으로 이동한다.
+            else if (dest.x == point[(int)ePoint.GoalPoint].position.x)
+            {
+                //  콜라이더가 포탈에 닿으면 씬 매니저가 씬전환시킴
+            }
+
+            dest = point[pointIndex < point.Count ? ++pointIndex : pointIndex].position;
         }
 
-        playerTr.Translate(Vector3.right * player.info.speed, Space.World);
-
-        //  점프 상태면
-        if (playerJumping)
-        {
-            //  상승
-            if (player.rb.velocity.y > 0.001f)
-            {
-                if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.jump))
-                    player.apPortrait.Play(_PlayerAnimTrigger_.jump);
-            }// 하락
-            else if (player.rb.velocity.y < -0.001f)
-            {
-                if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.fall))
-                    player.apPortrait.Play(_PlayerAnimTrigger_.fall);
-            }// 착지
-            else
-            {
-                playerJumping = false;
-                if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.run))
-                    player.apPortrait.Play(_PlayerAnimTrigger_.run);
-            }
-        }
-        else
-        {
-            try
-            {
-                if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.run))
-                    player.apPortrait.Play(_PlayerAnimTrigger_.run);
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError(e.StackTrace);
-            }
-        }
+        Touch controlPadTouch = new Touch();
+        controlPadTouch.phase = TouchPhase.Stationary;
+        inputModule.CurrDir = new KeyValuePair<string, Touch>("Right", controlPadTouch);
     }
 
     public void StartCinematic()
@@ -100,10 +88,10 @@ public class PrologueCinematic : MonoBehaviour
 
         for (int i = 0; i < maxZombieCount; i++)
         {
-            GameObject emy = GameManager.Instance.enemyPoolManager.SpawnEnemy(startPos.position, "Office Worker");
-            emy.GetComponent<OfficeWorker>().target = player;
-            emy.GetComponent<OfficeWorker>().info.speed = Random.Range(0.4f, 0.75f);    
-            emy.GetComponent<OfficeWorker>().TransitionProcess(emy.GetComponent<OfficeWorker>().animationState.trace);
+            var emy = GameManager.Instance.enemyPoolManager.SpawnEnemy(point[(int)ePoint.StartPoint].position, "Office Worker").GetComponent<OfficeWorker>();
+            emy.target = player;
+            emy.info.speed = Random.Range(emy.info.speed * 0.9f, emy.info.speed * 1.1f);
+            emy.TransitionProcess(emy.GetComponent<OfficeWorker>().animationState.trace);
 
             yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
         }

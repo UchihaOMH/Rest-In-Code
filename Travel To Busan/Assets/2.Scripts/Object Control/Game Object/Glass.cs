@@ -9,12 +9,13 @@ public class Glass : MonoBehaviour
 
     [Space(10f)] public Animator anim;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetContact(0).normal.x > 0f)
+        if ((collision.transform.position - transform.position).x < 0f)
         {
             anim.SetTrigger("tBreak");
             Camera.main.GetComponent<CameraControl>().ExplosionShake(1.2f, 0.7f);
+            GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 

@@ -68,6 +68,7 @@ public class OfficeWorker : Enemy, IManagedObject
     private void Awake()
     {
         pool = GameObject.FindGameObjectWithTag("Enemy Pool").transform;
+        hpBar.HideBar(true);
         wanderOrigin = new Vector2(tr.position.x, tr.position.y);
         CurrState = animationState.patrol;
     }
@@ -95,6 +96,9 @@ public class OfficeWorker : Enemy, IManagedObject
     {
         if (_attacker is Player)
         {
+            if (CurrState == animationState.attack)
+                OnAttackExitEvent();
+
             target = _attacker;
 
             info.currHP -= GameManager.Instance.damageCalculator.CalcFinalDamage(_damage, info.defense);
@@ -130,17 +134,20 @@ public class OfficeWorker : Enemy, IManagedObject
     }
     public override void OnDeadEvent()
     {
-        isDead = true;
+        if (!isDead)
+        {
+            isDead = true;
 
-        hpBar.HideBar(true);
-        
-        //  충돌 및, 중력 옵션 해제
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        GetComponent<BoxCollider2D>().isTrigger = true;
+            hpBar.HideBar(true);
 
-        apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.die);
+            //  충돌 및, 중력 옵션 해제
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            GetComponent<BoxCollider2D>().isTrigger = true;
 
-        Invoke("ReturnObject2Pool", 3f);
+            apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.die);
+
+            Invoke("ReturnObject2Pool", 3f);
+        }
     }
     #endregion
 

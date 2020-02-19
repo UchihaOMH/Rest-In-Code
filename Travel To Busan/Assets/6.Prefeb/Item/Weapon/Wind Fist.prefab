@@ -100,14 +100,14 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: -163.374}
     scale: {x: 110, y: 120, z: 3}
   fxOffset:
-    attack: {x: -2.75, y: 0.42, z: 0}
+    attack: {x: -0.72, y: 1.02, z: 0}
     cmdAttack1: {x: 0, y: 0, z: 0}
     cmdAttack2: {x: 0, y: 0, z: 0}
     cmdAttack3: {x: 0, y: 0, z: 0}
   weaponInfo:
     name: "\uBC14\uB78C\uC758 \uC8FC\uBA39"
-    damage: 10
-    knockBackDist: 0.3
+    damage: 30
+    knockBackDist: 0.2
   fxTrigger:
     attack: tWindPunch
     cmdAttack1: 

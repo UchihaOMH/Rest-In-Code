@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 37427274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.49, z: 0}
-  m_LocalScale: {x: 24.568525, y: 24.56853, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 2362949621353226538}
   m_RootOrder: 0
@@ -14441,8 +14441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   officeWorker: {fileID: 2362949620738722030}
-  coolTime: 0.5
-  timer: 0
+  attackSpeed: 0.8
+  coolTime: 0.7
 --- !u!61 &1753581326203975310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14796,7 +14796,7 @@ MonoBehaviour:
     defense: 10
     maxHP: 300
     currHP: 300
-    speed: 0.5
+    speed: 23
   isDead: 0
   wanderOrigin: {x: 0, y: 0}
   wanderRadius: 2
@@ -14812,9 +14812,9 @@ MonoBehaviour:
   apPortrait: {fileID: 5990985714113650998}
   audioSource: {fileID: 2362949620738722035}
   target: {fileID: 0}
-  patrolSpeed: 0.15
+  patrolSpeed: 10
   knockBackDist: 0.2
-  isDebug: 1
+  isDebug: 0
 --- !u!50 &2362949620738722033
 Rigidbody2D:
   serializedVersion: 4

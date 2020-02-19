@@ -19,7 +19,7 @@ public class Level1SceneManager : MonoBehaviour
                     return;
                 }
             }
-            GameManager.Instance.fade.LoadScene(2);
+            GameManager.Instance.fade.LoadScene((int)GameManager.eScene.Level2);
         }
     }
 

@@ -13,36 +13,48 @@ public class PlayerSkillState : PlayerState, IAnimState
         KeyValuePair<string, Touch> currDir = player.inputModule.CurrDir;
         KeyValuePair<bool, Touch> skillButtonInput = player.inputModule.SkillButtonPressed;
 
-        if (skillButtonInput.Key && skillButtonInput.Value.phase == TouchPhase.Began
-            && currDir.Key != "")
+        if (skillButtonInput.Key && skillButtonInput.Value.phase == TouchPhase.Began)
         {
             if (currDir.Key == "Up")
             {
                 SkillAttack1();
             }
-            else if (currDir.Key == "Left" || currDir.Key == "Right")
+            else if (currDir.Key == "Down")
             {
                 SkillAttack2();
             }
-            else if (currDir.Key == "Down")
-            {
-                SkillAttack3();
-            }
+            else if (currDir.Key == "")
+                player.TransitionProcess(player.animationStates.run);
         }
-        else
-            player.TransitionProcess(player.animationStates.run);
     }
 
     public void SkillAttack1()
     {
-        player.weapon.SkillAttack1(player.info.damage);
+        player.apPortrait.Play(_PlayerAnimTrigger_.rizingAttack);
     }
     public void SkillAttack2()
     {
-        player.weapon.SkillAttack2(player.info.damage);
+        player.apPortrait.Play(_PlayerAnimTrigger_.smashAttack);
     }
-    public void SkillAttack3()
+
+    #region Animation Event
+    public void OnSmashExit()
     {
-        player.weapon.SkillAttack3(player.info.damage);
+        player.apPortrait.Play(_PlayerAnimTrigger_.idle);
+        player.TransitionProcess(player.animationStates.run);
     }
+    public void OnRizingAttackExit()
+    {
+        player.apPortrait.Play(_PlayerAnimTrigger_.idle);
+        player.TransitionProcess(player.animationStates.run);
+    }
+    public void OnSmashAttack()
+    {
+        player.weapon.SmashAttack(player.info.damage);
+    }
+    public void OnRizingAttack()
+    {
+        player.weapon.RizingAttack(player.info.damage);
+    }
+    #endregion
 }

@@ -71,13 +71,12 @@ public class Player : Entity
     public Weapon weapon;
     public _PlayerAnimState_ animationStates;
     public float jumpForce;
-    public float rollSpeed;
-    public bool cinematicMode = false;
     public bool onGround = true;
     #endregion
 
     #region Private Field
     [SerializeField, Header("Debug")] private PlayerState currState;
+    [SerializeField] bool isCinematicMode = false;
     [SerializeField] private bool isDebug = true;
     #endregion
 
@@ -86,7 +85,8 @@ public class Player : Entity
     {
         CurrState = animationStates.run;
 
-        if (cinematicMode)
+        //  시네마틱에서는 불필요한 초기화를 안함
+        if (isCinematicMode)
             return;
 
         hpBar.FillAmount(info.currHP / info.maxHP);
@@ -94,7 +94,7 @@ public class Player : Entity
     }
     private void Update()
     {
-        if (info.currHP <= 0f && !isDead)
+        if (info.currHP <= 0f)
         {
             OnDeadEvent();
             return;
@@ -102,8 +102,7 @@ public class Player : Entity
 
         JumpCheck();
 
-        if (!cinematicMode)
-            (CurrState as IAnimState).Process();
+        (CurrState as IAnimState).Process();
 
         if (isDebug)
         {
@@ -205,7 +204,7 @@ public class Player : Entity
     {
         float finalDamage = GameManager.Instance.damageCalculator.CalcFinalDamage(_damage, info.defense);
         info.currHP -= finalDamage;
-        hpBar.FillAmount(info.currHP / info.maxHP);
+        hpBar?.FillAmount(info.currHP / info.maxHP);
         TransitionProcess(animationStates.beAttacked);
         (CurrState as PlayerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
 
@@ -227,9 +226,14 @@ public class Player : Entity
         if (apPortrait.IsPlaying(_PlayerAnimTrigger_.attack))
             animationStates.attack.OnAttackExit();
         else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
-            animationStates.attack.OnRizingAttackExit();
+            animationStates.skill.OnRizingAttackExit();
         else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.smashAttack))
-            animationStates.attack.OnSmashExit();
+            animationStates.skill.OnSmashExit();
+    }
+    private void OnAttack()
+    {
+        if (apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
+            animationStates.skill.OnRizingAttack();
     }
     #endregion
 }
