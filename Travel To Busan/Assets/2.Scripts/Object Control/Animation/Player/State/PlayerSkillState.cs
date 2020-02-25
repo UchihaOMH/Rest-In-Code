@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class PlayerSkillState : PlayerState, IAnimState
 {
+    public float rizingAttackCoolTime = 2f;
+    public float smashAttackCoolTime = 1f;
+
+    public bool onRizingAttack = false;
+    public bool onSmashAttack = false;
+
+    private float rizingAttackTimer = 0f;
+    private float smashAttackTimer = 0f;
+
     public string GetStateName()
     {
-        return "Command State";
+        return "Skill State";
     }
     public void Process()
     {
@@ -17,43 +26,68 @@ public class PlayerSkillState : PlayerState, IAnimState
         {
             if (currDir.Key == "Up")
             {
-                SkillAttack1();
+                RizingAttack();
             }
             else if (currDir.Key == "Down")
             {
-                SkillAttack2();
+                SmashAttack();
             }
             else if (currDir.Key == "")
                 player.TransitionProcess(player.animationStates.run);
         }
+
+        if (onRizingAttack)
+        {
+            switch (player.inputModule.CurrDir.Key)
+            {
+                case "Left":
+                    player.tr.Translate(Vector3.left * player.info.speed * Time.deltaTime, Space.World);
+                    break;
+                case "Right":
+                    player.tr.Translate(Vector3.right * player.info.speed * Time.deltaTime, Space.World);
+                    break;
+            }
+        }
     }
 
-    public void SkillAttack1()
+    public void RizingAttack()
     {
-        player.apPortrait.Play(_PlayerAnimTrigger_.rizingAttack);
+        if (Time.time >= rizingAttackTimer)
+        {
+            player.apPortrait.Play(_PlayerAnimTrigger_.rizingAttack);
+            rizingAttackTimer = Time.time + rizingAttackCoolTime;
+        }
     }
-    public void SkillAttack2()
+    public void SmashAttack()
     {
-        player.apPortrait.Play(_PlayerAnimTrigger_.smashAttack);
+        if (Time.time >= smashAttackTimer)
+        {
+            player.apPortrait.Play(_PlayerAnimTrigger_.smashAttack);
+            smashAttackTimer = Time.time + smashAttackCoolTime;
+        }
     }
 
     #region Animation Event
     public void OnSmashExit()
     {
+        onSmashAttack = false;
         player.apPortrait.Play(_PlayerAnimTrigger_.idle);
         player.TransitionProcess(player.animationStates.run);
     }
     public void OnRizingAttackExit()
     {
+        onRizingAttack = false;
         player.apPortrait.Play(_PlayerAnimTrigger_.idle);
         player.TransitionProcess(player.animationStates.run);
     }
     public void OnSmashAttack()
     {
+        onSmashAttack = true;
         player.weapon.SmashAttack(player.info.damage);
     }
     public void OnRizingAttack()
     {
+        onRizingAttack = true;
         player.weapon.RizingAttack(player.info.damage);
     }
     #endregion

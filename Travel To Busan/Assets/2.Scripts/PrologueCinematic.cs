@@ -11,6 +11,7 @@ public class PrologueCinematic : MonoBehaviour
         JombieTracePoint,
         JumpPoint,
         BrakePoint,
+        RizingAttackPoint,
         GoalPoint,
     }
 
@@ -26,7 +27,7 @@ public class PrologueCinematic : MonoBehaviour
 
     private void Start()
     {
-        player = GameManager.Instance.player;
+        player = GameManager.Instance.Player;
         playerTr = player.transform;
         playerTr.position = point[pointIndex].position;
         playerTr.localScale = new Vector3(-1f, 1f, 1f);
@@ -39,6 +40,8 @@ public class PrologueCinematic : MonoBehaviour
     {
         if (!cinematicStart)
             return;
+
+        player.info.currHP = player.info.maxHP;
 
         //  목적지에 도착하면
         if (point[pointIndex].position.x - playerTr.position.x < player.info.speed * Time.deltaTime)
@@ -63,13 +66,19 @@ public class PrologueCinematic : MonoBehaviour
             {
                 player.info.speed = 18f;
             }
+            //  Rizing Attack 포인트. 앞을 막은 적을 뚫기 위해 공격한다
+            else if (dest.x == point[(int)ePoint.RizingAttackPoint].position.x)
+            {
+                player.TransitionProcess(player.animationStates.skill);
+                (player.CurrState as PlayerSkillState).RizingAttack();
+            }
             //  최종 포인트. 다음맵으로 이동한다.
             else if (dest.x == point[(int)ePoint.GoalPoint].position.x)
             {
                 //  콜라이더가 포탈에 닿으면 씬 매니저가 씬전환시킴
             }
 
-            dest = point[pointIndex < point.Count ? ++pointIndex : pointIndex].position;
+            dest = point[pointIndex < point.Count - 1 ? ++pointIndex : pointIndex].position;
         }
 
         Touch controlPadTouch = new Touch();
@@ -88,7 +97,7 @@ public class PrologueCinematic : MonoBehaviour
 
         for (int i = 0; i < maxZombieCount; i++)
         {
-            var emy = GameManager.Instance.enemyPoolManager.SpawnEnemy(point[(int)ePoint.StartPoint].position, "Office Worker").GetComponent<OfficeWorker>();
+            var emy = GameManager.Instance.EnemyPool.SpawnEnemy(point[(int)ePoint.StartPoint].position, "Office Worker").GetComponent<OfficeWorker>();
             emy.target = player;
             emy.info.speed = Random.Range(emy.info.speed * 0.9f, emy.info.speed * 1.1f);
             emy.TransitionProcess(emy.GetComponent<OfficeWorker>().animationState.trace);

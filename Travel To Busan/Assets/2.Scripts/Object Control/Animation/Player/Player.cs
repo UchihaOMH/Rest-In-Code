@@ -202,13 +202,18 @@ public class Player : Entity
     }
     public override void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.3f)
     {
-        float finalDamage = GameManager.Instance.damageCalculator.CalcFinalDamage(_damage, info.defense);
-        info.currHP -= finalDamage;
-        hpBar?.FillAmount(info.currHP / info.maxHP);
-        TransitionProcess(animationStates.beAttacked);
-        (CurrState as PlayerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
+        if (!isDead)
+        {
+            float finalDamage = GameManager.Instance.DamageCalculator.CalcFinalDamage(_damage, info.defense);
+            info.currHP -= finalDamage;
+            hpBar?.FillAmount(info.currHP / info.maxHP);
 
-        apPortrait.Play(_PlayerAnimTrigger_.beAttacked);
+            if (!(currState is PlayerSkillState) && !(currState is PlayerAttackState))
+            {
+                TransitionProcess(animationStates.beAttacked);
+                (CurrState as PlayerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
+            }
+        }
     }
     public override void OnDeadEvent()
     {

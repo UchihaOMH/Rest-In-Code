@@ -6,7 +6,7 @@ public class PlayerBeAttackedState : PlayerState, IAnimState
 {
     public void Process()
     {
-        
+
     }
     public void BeAttacked(Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.1f)
     {

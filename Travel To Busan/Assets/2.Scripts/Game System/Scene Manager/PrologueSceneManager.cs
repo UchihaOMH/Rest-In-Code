@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrologueSceneManager : MonoBehaviour
+public class PrologueSceneManager : SceneManagerClass
 {
     public PrologueCinematic cinematic;
 
@@ -10,16 +10,21 @@ public class PrologueSceneManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.fade.LoadScene((int)GameManager.eScene.Level1);
-            GameManager.Instance.enemyPoolManager.ReturnAllManagedEnemy();
+            GameManager.Instance.Fade.LoadScene((int)GameManager.eScene.Level1);
+            GameManager.Instance.EnemyPool.ReturnAllManagedEnemy();
         }
-    }
-    private void Awake()
-    {
-        GameManager.Instance.enemyPoolManager.PrepareEnemyInPool("Office Worker", 10);
     }
     private void Start()
     {
-        cinematic.StartCinematic();
+        Camera.main.GetComponent<CameraControl>().ExplosionShake(1.5f, 1.5f);
+        Invoke("StartCine", 3f);
+    }
+    private void StartCine()
+    {
+        GameManager.Instance.EnemyPool.PrepareEnemyInPool("Office Worker", 10);
+        GameManager.Instance.Conversation.StartConversation(GameManager.Instance.ScriptFolderPath + "Prologue.txt", () =>
+        {
+            cinematic.StartCinematic();
+        });
     }
 }

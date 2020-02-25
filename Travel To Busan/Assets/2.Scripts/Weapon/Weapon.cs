@@ -38,7 +38,7 @@ public abstract class Weapon : MonoBehaviour
 
     public FXControl GetInitializedFX(Transform _parent)
     {
-        FXControl fx = GameManager.Instance.fxPoolManager.GetFXObject().GetComponent<FXControl>();
+        FXControl fx = GameManager.Instance.FxPool.GetFXObject().GetComponent<FXControl>();
         fx.transform.SetParent(_parent);
         fx.transform.localPosition = Vector3.zero;
         fx.transform.localScale = Vector3.one;

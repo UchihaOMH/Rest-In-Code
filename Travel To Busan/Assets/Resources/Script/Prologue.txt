@@ -1,0 +1,6 @@
+[Direction="Right",Illust Name="Office Worker"]
+캬아아아악!
+[Direction="Left",Illust Name="Player"]
+뛰어!! 저 기차에 타야 돼!
+[Direction="Right",Illust Name="Office Worker"]
+키야아아아아앆!

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level1SceneManager : MonoBehaviour
+public class Level1SceneManager : SceneManagerClass
 {
     public List<Enemy> enemyList;
 
@@ -19,7 +19,7 @@ public class Level1SceneManager : MonoBehaviour
                     return;
                 }
             }
-            GameManager.Instance.fade.LoadScene((int)GameManager.eScene.Level2);
+            GameManager.Instance.Fade.LoadScene((int)GameManager.eScene.Level2);
         }
     }
 

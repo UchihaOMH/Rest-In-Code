@@ -14,11 +14,13 @@ ScriptsOnlyBuild:
     - AnyPortrait.apPortrait
     - CameraControl
     - ControlPadInputModule
+    - ConversationManager
     - DamageCalculator
     - EnemyPoolManager
     - FXControl
     - FXPoolManager
     - Fade
+    - FirstSceneBridgeSceneManager
     - GameManager
     - Glass
     - HPBar
@@ -42,6 +44,15 @@ ScriptsOnlyBuild:
     - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -53,7 +64,129 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
+    Assets/1.Scenes/Map/First Scene Bridge.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 62
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11294}
+    - Class: 114
+      Script: {instanceID: 11364}
+    - Class: 114
+      Script: {instanceID: 11422}
+    - Class: 114
+      Script: {instanceID: 11426}
+    - Class: 114
+      Script: {instanceID: 11540}
+    - Class: 114
+      Script: {instanceID: 11584}
+    - Class: 114
+      Script: {instanceID: 11658}
+    - Class: 114
+      Script: {instanceID: 11870}
+    - Class: 114
+      Script: {instanceID: 11956}
+    - Class: 114
+      Script: {instanceID: 12178}
+    - Class: 114
+      Script: {instanceID: 12214}
+    - Class: 114
+      Script: {instanceID: 12320}
+    - Class: 114
+      Script: {instanceID: 12342}
+    - Class: 114
+      Script: {instanceID: 12472}
+    - Class: 114
+      Script: {instanceID: 12558}
+    - Class: 114
+      Script: {instanceID: 12566}
+    - Class: 114
+      Script: {instanceID: 12576}
+    - Class: 114
+      Script: {instanceID: 12740}
+    - Class: 114
+      Script: {instanceID: 12772}
+    - Class: 114
+      Script: {instanceID: 12868}
+    - Class: 114
+      Script: {instanceID: 13010}
+    - Class: 114
+      Script: {instanceID: 13026}
+    - Class: 114
+      Script: {instanceID: 13034}
+    - Class: 114
+      Script: {instanceID: 13224}
+    - Class: 114
+      Script: {instanceID: 13334}
+    - Class: 114
+      Script: {instanceID: 13470}
+    - Class: 114
+      Script: {instanceID: 13482}
+    - Class: 114
+      Script: {instanceID: 13590}
+    - Class: 114
+      Script: {instanceID: 13768}
+    - Class: 114
+      Script: {instanceID: 13836}
+    - Class: 114
+      Script: {instanceID: 13850}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
     Assets/1.Scenes/Map/Level 1.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -102,9 +235,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11580}
+      Script: {instanceID: 11540}
     - Class: 114
-      Script: {instanceID: 11654}
+      Script: {instanceID: 11584}
+    - Class: 114
+      Script: {instanceID: 11658}
     - Class: 114
       Script: {instanceID: 11870}
     - Class: 114
@@ -152,28 +287,32 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 13032}
+      Script: {instanceID: 13026}
     - Class: 114
-      Script: {instanceID: 13222}
+      Script: {instanceID: 13034}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13224}
     - Class: 114
-      Script: {instanceID: 13466}
+      Script: {instanceID: 13334}
     - Class: 114
-      Script: {instanceID: 13478}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13586}
+      Script: {instanceID: 13482}
     - Class: 114
-      Script: {instanceID: 13764}
+      Script: {instanceID: 13590}
     - Class: 114
-      Script: {instanceID: 13800}
+      Script: {instanceID: 13768}
     - Class: 114
-      Script: {instanceID: 13830}
+      Script: {instanceID: 13806}
     - Class: 114
-      Script: {instanceID: 13844}
+      Script: {instanceID: 13836}
     - Class: 114
-      Script: {instanceID: 13864}
+      Script: {instanceID: 13850}
+    - Class: 114
+      Script: {instanceID: 13870}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -256,11 +395,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11580}
+      Script: {instanceID: 11540}
     - Class: 114
-      Script: {instanceID: 11654}
+      Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 11810}
+      Script: {instanceID: 11658}
+    - Class: 114
+      Script: {instanceID: 11814}
     - Class: 114
       Script: {instanceID: 11860}
     - Class: 114
@@ -308,28 +449,32 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 13032}
+      Script: {instanceID: 13026}
     - Class: 114
-      Script: {instanceID: 13222}
+      Script: {instanceID: 13034}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13224}
     - Class: 114
-      Script: {instanceID: 13466}
+      Script: {instanceID: 13334}
     - Class: 114
-      Script: {instanceID: 13478}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13586}
+      Script: {instanceID: 13482}
     - Class: 114
-      Script: {instanceID: 13764}
+      Script: {instanceID: 13590}
     - Class: 114
-      Script: {instanceID: 13800}
+      Script: {instanceID: 13768}
     - Class: 114
-      Script: {instanceID: 13830}
+      Script: {instanceID: 13806}
     - Class: 114
-      Script: {instanceID: 13844}
+      Script: {instanceID: 13836}
     - Class: 114
-      Script: {instanceID: 13864}
+      Script: {instanceID: 13850}
+    - Class: 114
+      Script: {instanceID: 13870}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -384,7 +529,7 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: aef9386513e10c2b58b4c2172faf4e3c
+      Hash: 9d2498268f388e53558238178674fd86
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerSkillState
@@ -424,6 +569,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: AnyPortrait
     className: apTutorial_PirateGame_Bomb
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FirstSceneBridgeSceneManager
   - hash:
       serializedVersion: 2
       Hash: 423c5588dd586d81ecb15f34d1fa4ab8
@@ -570,12 +721,6 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: b3178e8b5b9dd6e5dea1f97b253b3231
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PoliceRod
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -588,7 +733,7 @@ ScriptsOnlyBuild:
     className: Glass
   - hash:
       serializedVersion: 2
-      Hash: b3178e8b5b9dd6e5dea1f97b253b3231
+      Hash: 5c821b6971dcf1fb8a32364e281a0ec3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WindFist
@@ -618,7 +763,7 @@ ScriptsOnlyBuild:
     className: apTutorial_RunnerObject
   - hash:
       serializedVersion: 2
-      Hash: a5348c8abaa1614d9e83a1db2f6b3f61
+      Hash: 60f408bf7170aff3b9c35a06b874c2f6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OfficeWorkerAttackState
@@ -840,7 +985,7 @@ ScriptsOnlyBuild:
     className: apModifier_Volume
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 33e8d953b7ec875fb395d3aa2f2a3d2c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Test
@@ -888,7 +1033,7 @@ ScriptsOnlyBuild:
     className: Level1SceneManager
   - hash:
       serializedVersion: 2
-      Hash: 558a39a16cf1b46e4905f12e8b75b852
+      Hash: 7ac34a5e4f70cdf4bcbc9a4722407983
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FXControl
@@ -960,10 +1105,16 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 17d261608d6771ff8e2772f9d694e764
+      Hash: e678ef08aa5d23877ac75c6ce510174f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 5c9a716a166792b4b376c6a07f1c45b3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ConversationManager
   - hash:
       serializedVersion: 2
       Hash: 4e059a232b0d73bb855b365b57e884f1
@@ -1206,6 +1357,7 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
+  - Assets/1.Scenes/Map/First Scene Bridge.unity
   - Assets/1.Scenes/Map/Prologue.unity
   - Assets/1.Scenes/Map/Level 1.unity
   - Assets/1.Scenes/Map/Level 2.unity

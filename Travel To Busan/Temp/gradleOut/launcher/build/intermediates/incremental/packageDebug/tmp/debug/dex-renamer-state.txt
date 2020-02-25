@@ -1,0 +1,4 @@
+#Tue Feb 25 00:00:58 KST 2020
+base.0=D\:\\WorkSpace\\Unity_WorkSpace\\Rest-In-Code\\Travel To Busan\\Temp\\gradleOut\\launcher\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

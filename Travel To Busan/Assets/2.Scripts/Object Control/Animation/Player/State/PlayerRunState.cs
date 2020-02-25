@@ -17,7 +17,7 @@ public class PlayerRunState : PlayerState, IAnimState
             player.TransitionProcess(player.animationStates.attack);
             (player.CurrState as PlayerAttackState).Attack();
         }
-        else if (player.inputModule.SkillButtonPressed.Key)
+        else if (player.inputModule.SkillButtonPressed.Key && player.inputModule.SkillButtonPressed.Value.phase == TouchPhase.Began)
         {
             player.TransitionProcess(player.animationStates.skill);
         }

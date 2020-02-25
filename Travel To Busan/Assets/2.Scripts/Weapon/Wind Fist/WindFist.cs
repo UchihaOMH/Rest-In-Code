@@ -15,11 +15,12 @@ public class WindFist : Weapon
     }
     public override void RizingAttack(float _additionalDmg)
     {
+        owner.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60f, ForceMode2D.Impulse);
         FXControl fx = GetInitializedFX(owner.transform);
         fx.AddOnHitEvent((Entity _target) =>
         {
             _target.BeAttacked(owner, owner.info.damage + weaponInfo.damage, _target.transform.position.x - owner.transform.position.x < 0f ? Vector2.left : Vector2.right, weaponInfo.knockBackDist);
-            _target.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30f, ForceMode2D.Impulse);
+            _target.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 40f, ForceMode2D.Impulse);
         });
         fx.Play("Wind Fist Rizing Attack", audioClip.skillAttack1);
     }

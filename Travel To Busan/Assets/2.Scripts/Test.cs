@@ -1,63 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Test : MonoBehaviour
 {
-    private string curr = "";
+    public ConversationManager cm;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        if (curr != "TE")
-        {
-            curr = "TE";
-            Debug.Log("Trigger Enter");
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (curr != "TS")
-        {
-            curr = "TS";
-            Debug.Log("Trigger Stay");
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (curr != "TEx")
-        {
-            curr = "TEx";
-            Debug.Log("Trigger Exit");
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (curr != "CE")
-        {
-            curr = "CE";
-            Debug.Log("Collision Enter");
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (curr != "CS")
-        {
-            curr = "CS";
-            Debug.Log("Collision Stay");
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (curr != "CEx")
-        {
-            curr = "Cex";
-            Debug.Log("Collision Exit");
-        }
-    }
-
-    private void Awake()
-    {
-        transform.SetParent(GameObject.FindGameObjectWithTag("Office Worker").transform);
-        transform.localPosition = Vector3.zero;
-        transform.localScale = Vector3.one;
+        Debug.Log(Application.dataPath);
     }
 }

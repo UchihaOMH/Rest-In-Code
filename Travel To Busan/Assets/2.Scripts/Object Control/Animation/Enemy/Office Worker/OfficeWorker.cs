@@ -101,7 +101,7 @@ public class OfficeWorker : Enemy, IManagedObject
 
             target = _attacker;
 
-            info.currHP -= GameManager.Instance.damageCalculator.CalcFinalDamage(_damage, info.defense);
+            info.currHP -= GameManager.Instance.DamageCalculator.CalcFinalDamage(_damage, info.defense);
 
             TransitionProcess(animationState.beAttacked);
             (CurrState as OfficeWorkerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
