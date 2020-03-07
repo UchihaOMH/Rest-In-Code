@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : Entity
+public abstract class Enemy : Entity, IManagedObject
 {
-    [Header("Enemy Info"), Space(10f)]
-    public Vector2 wanderOrigin;
-    public float wanderRadius = 2f;
+    protected Entity target;
 
-    private void Awake()
+    public abstract Transform Pool
     {
-        gameObject.layer = LayerMask.GetMask(GameConst.LayerDefinition.enemy);
+        get;
+        set;
     }
+    protected Transform pool;
 
     public abstract void FocusTarget(Entity _target);
+    public abstract void ResetObjectForPooling();
+    public abstract void ReturnObject2Pool();
 }

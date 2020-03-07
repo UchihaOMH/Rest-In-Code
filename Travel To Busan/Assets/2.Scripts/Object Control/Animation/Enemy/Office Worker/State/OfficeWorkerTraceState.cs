@@ -21,27 +21,29 @@ public class OfficeWorkerTraceState : OfficeWorkerState, IAnimState
     }
     public void Process()
     {
+        if (!officeWorker.apPortrait.IsPlaying(_OfficeWorkerAnimTrigger_.trace))
+            officeWorker.apPortrait.Play(_OfficeWorkerAnimTrigger_.trace);
+
         var hit = Physics2D.BoxCast(rangeBox.position, new Vector2(Mathf.Abs(rangeBox.lossyScale.x), Mathf.Abs(rangeBox.lossyScale.y)), 0, Vector2.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
         if (hit.collider != null)
         {
-            if (hit.collider.GetComponent<Player>() == officeWorker.target)
+            if (hit.collider.GetComponent<Player>() == officeWorker.Target)
             {
                 officeWorker.TransitionProcess(officeWorker.animationState.attack);
-                (officeWorker.CurrState as OfficeWorkerAttackState).Attack();
+                return;
             }
         }
         else
         {
             //  타깃이 죽었거나 놓침
-            if (officeWorker.target == null || officeWorker.target.isDead)
+            if (officeWorker.Target == null || officeWorker.Target.isDead)
             {
-                officeWorker.TransitionProcess(officeWorker.animationState.patrol);
+                officeWorker.TransitionProcess(officeWorker.animationState.idle);
+                return;
             }
             else
             {
-                if (!officeWorker.apPortrait.IsPlaying(_OfficeWorkerAnimTrigger_.trace))
-                    officeWorker.apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.trace);
-                Vector2 dir = officeWorker.target.transform.position.x - officeWorker.tr.position.x < 0f ? Vector2.left : Vector2.right;
+                Vector2 dir = officeWorker.Target.transform.position.x - officeWorker.tr.position.x < 0f ? Vector2.left : Vector2.right;
                 officeWorker.LookAt(dir);
                 officeWorker.tr.Translate(dir * officeWorker.info.speed * Time.deltaTime, Space.World);
             }

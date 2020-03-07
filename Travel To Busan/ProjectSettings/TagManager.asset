@@ -6,11 +6,15 @@ TagManager:
   tags:
   - Portal
   - Map
-  - Office Worker
-  - UnderArmour Collector
-  - Bat Man
   - FX Pool
   - Enemy Pool
+  - Enemy
+  - Protein
+  - Ball
+  - NPC
+  - Main UI
+  - BackGround Audio
+  - FX Audio
   layers:
   - Default
   - TransparentFX
@@ -26,9 +30,9 @@ TagManager:
   - Player
   - Enemy
   - IKs
-  - FX
-  - 
-  - 
+  - Trigger
+  - Portal
+  - Boss Monster
   - 
   - 
   - 
@@ -54,14 +58,17 @@ TagManager:
   - name: Map
     uniqueID: 596383117
     locked: 0
-  - name: Object
-    uniqueID: 394833521
+  - name: NPC
+    uniqueID: 1070093389
     locked: 0
   - name: Enemy
     uniqueID: 3785302235
     locked: 0
   - name: Player
     uniqueID: 1895723625
+    locked: 0
+  - name: Object
+    uniqueID: 394833521
     locked: 0
   - name: Bones
     uniqueID: 1283775571
@@ -74,6 +81,9 @@ TagManager:
     locked: 0
   - name: FX
     uniqueID: 3955937239
+    locked: 0
+  - name: HitVFX
+    uniqueID: 34447307
     locked: 0
   - name: UI
     uniqueID: 272698743

@@ -31,7 +31,7 @@ public class ControlPadInputModule : MonoBehaviour
     #endregion
 
     #region Public Field
-    
+    public string debugDir = "";
     #endregion
 
     #region Private Field
@@ -48,8 +48,6 @@ public class ControlPadInputModule : MonoBehaviour
     [SerializeField] private GameObject attackButton;
     [SerializeField] private GameObject skillButton;
     [SerializeField] private GameObject jumpButton;
-
-    private int controlPadTouchIndex = -1;
     #endregion
 
     private void Awake()
@@ -68,6 +66,7 @@ public class ControlPadInputModule : MonoBehaviour
     /// </summary>
     private void InterpretInput()
     {
+        //  Android Control
         //  터치 갱신을 위한 플래그
         bool controlPadTouched = false;
         bool attackButtonTouched = false;
@@ -86,11 +85,9 @@ public class ControlPadInputModule : MonoBehaviour
             {
                 GameObject hitObject = set[0].gameObject;
 
-                if (hitObject == controlPad || touch.fingerId == controlPadTouchIndex)
+                if (hitObject == controlPad)
                 {
                     controlPadTouched = true;
-
-                    controlPadTouchIndex = touch.fingerId;
 
                     //  방향 해석
                     Vector2 dir = (controlStick.position - controlPad.transform.position).normalized;
@@ -101,12 +98,26 @@ public class ControlPadInputModule : MonoBehaviour
                     {
                         interpretedDir = "Up";
                     }
-                    else if (Mathf.Abs(rot) < 160f)
+                    else if (Mathf.Abs(rot) < 60f)
+                    {
+                        if (rot > 0f)
+                            interpretedDir = "Up Left";
+                        else if (rot < 0f)
+                            interpretedDir = "Up Right";
+                    }
+                    else if (Mathf.Abs(rot) < 120f)
                     {
                         if (rot > 0f)
                             interpretedDir = "Left";
                         else if (rot < 0f)
                             interpretedDir = "Right";
+                    }
+                    else if (Mathf.Abs(rot) < 160f)
+                    {
+                        if (rot > 0f)
+                            interpretedDir = "Down Left";
+                        else if (rot < 0f)
+                            interpretedDir = "Down Right";
                     }
                     else if (Mathf.Abs(rot) <= 180f)
                     {
@@ -114,6 +125,7 @@ public class ControlPadInputModule : MonoBehaviour
                     }
 
                     CurrDir = new KeyValuePair<string, Touch>(interpretedDir, touch);
+                    debugDir = currDir.Key;
                 }
                 else if (hitObject == attackButton)
                 {
@@ -140,7 +152,6 @@ public class ControlPadInputModule : MonoBehaviour
         if (!controlPadTouched)
         {
             CurrDir = new KeyValuePair<string, Touch>("", GameConst.emptyTouch);
-            controlPadTouchIndex = -1;
         }
         if (!attackButtonTouched)
         {
@@ -154,14 +165,65 @@ public class ControlPadInputModule : MonoBehaviour
         {
             JumpButtonPressed = new KeyValuePair<bool, Touch>(false, GameConst.emptyTouch);
         }
+
+        //// Editor Control
+        //bool controlKeyInteracted = false;
+        //bool jumpKeyInteracted = false;
+        //bool attackKeyInteracted = false;
+
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    controlKeyInteracted = true;
+        //    CurrDir = new KeyValuePair<string, Touch>("Up", GameConst.emptyTouch);
+        //}
+        //else if (Input.GetKey(KeyCode.A))
+        //{
+        //    controlKeyInteracted = true;
+        //    CurrDir = new KeyValuePair<string, Touch>("Left", GameConst.emptyTouch);
+        //}
+        //else if (Input.GetKey(KeyCode.S))
+        //{
+        //    controlKeyInteracted = true;
+        //    CurrDir = new KeyValuePair<string, Touch>("Down", GameConst.emptyTouch);
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    controlKeyInteracted = true;
+        //    CurrDir = new KeyValuePair<string, Touch>("Right", GameConst.emptyTouch);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    jumpKeyInteracted = true;
+        //    JumpButtonPressed = new KeyValuePair<bool, Touch>(true, GameConst.emptyTouch);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Mouse0))
+        //{
+        //    attackKeyInteracted = true;
+        //    AttackButtonPressed = new KeyValuePair<bool, Touch>(true, GameConst.emptyTouch);
+        //}
+
+
+        //if (!controlKeyInteracted)
+        //{
+        //    CurrDir = new KeyValuePair<string, Touch>("", GameConst.emptyTouch);
+        //}
+        //if (!jumpKeyInteracted)
+        //{
+        //    JumpButtonPressed = new KeyValuePair<bool, Touch>(false, GameConst.emptyTouch);
+        //}
+        //if (!attackKeyInteracted)
+        //{
+        //    AttackButtonPressed = new KeyValuePair<bool, Touch>(false, GameConst.emptyTouch);
+        //}
     }
     public void HoldControlStick()
     {
-        if (Input.touchCount == 0 || controlPadTouchIndex == -1)
+        if (CurrDir.Key == "")
         {
             controlStick.position = controlPad.transform.position;
         }
-        else if (controlPadTouchIndex != -1)
+        else
         {
             float radius = controlPad.GetComponent<RectTransform>().rect.size.y / 2f;
             Debug.DrawRay(controlPad.transform.position, Vector3.up * radius);

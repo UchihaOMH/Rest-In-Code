@@ -20,6 +20,7 @@ public class Fade : MonoBehaviour
     private CanvasGroup cg;
 
     private bool isProceeding = false;
+    private Action callback;
     #endregion
 
     private void Awake()
@@ -27,15 +28,21 @@ public class Fade : MonoBehaviour
         cg = GetComponent<CanvasGroup>();
     }
 
-    public void LoadScene(string scene)
+    public void LoadScene(string scene, Action _callback = null)
     {
         if (!isProceeding)
+        {
+            callback = _callback;
             StartCoroutine(LoadSceneCoroutine(scene));
+        }
     }
-    public void LoadScene(int sceneIdx)
+    public void LoadScene(int sceneIdx, Action _callback = null)
     {
         if (!isProceeding)
+        {
+            callback = _callback;
             StartCoroutine(LoadSceneCoroutine(sceneIdx));
+        }
     }
 
     private IEnumerator LoadSceneCoroutine(string scene)
@@ -54,6 +61,7 @@ public class Fade : MonoBehaviour
         timer = 0.0f;
 
         //  Load scene
+        callback?.Invoke();
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
 
         //  Fade in
@@ -82,6 +90,7 @@ public class Fade : MonoBehaviour
         timer = 0.0f;
 
         //  Load scene
+        callback?.Invoke();
         SceneManager.LoadScene(sceneIdx, LoadSceneMode.Single);
 
         //  Fade in

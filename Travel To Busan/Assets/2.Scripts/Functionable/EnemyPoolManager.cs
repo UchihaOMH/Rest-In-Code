@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class EnemyPoolManager : MonoBehaviour
 {
-    public List<GameObject> enemyPrefList;
+    public EnemyDefinition enemyDefinition;
 
-    private List<GameObject> pool = new List<GameObject>();
+    [SerializeField] private List<GameObject> pool = new List<GameObject>();
 
     public GameObject SpawnEnemy(Vector3 _pos, string _enemyName)
     {
         //  일치하는 이름을 가진 몬스터가 있는가
-        foreach (var entityData in enemyPrefList)
+        foreach (var entityData in enemyDefinition.enemyPrefebList)
         {
-            if (entityData.GetComponent<Entity>().name == _enemyName)
+            if (entityData.GetComponent<Entity>().info.name == _enemyName)
             {
                 //  풀에 비활성화 상태의 몬스터가 있으면 초기화 후, 리턴
                 foreach (var objInPool in pool)
-                {   
+                {
                     if (objInPool.GetComponent<Entity>().info.name == entityData.GetComponent<Entity>().info.name && !objInPool.activeSelf)
                     {
                         var enemy = objInPool.GetComponent<Enemy>();
@@ -50,7 +50,7 @@ public class EnemyPoolManager : MonoBehaviour
     }
     public void PrepareEnemyInPool(string _enemyName, int _count)
     {
-        foreach (var enemyPref in enemyPrefList)
+        foreach (var enemyPref in enemyDefinition.enemyPrefebList)
         {
             Entity enemy = enemyPref.GetComponent<Entity>();
             if (enemy.info.name == _enemyName)

@@ -13,15 +13,17 @@ public enum eEntityType
 [System.Serializable]
 public struct _EntityInfo_
 {
-    public string name;
+    [SerializeField] public string name;
 
-    public float damage;
-    public float defense;
+    [SerializeField] public float damage;
+    [SerializeField] public float defense;
 
-    public float maxHP;
-    public float currHP;
+    [SerializeField] public float maxHP;
+    [SerializeField] public float currHP;
 
-    public float speed;
+    [SerializeField] public float speed;
+    [SerializeField] public float jumpForce;
+    [SerializeField] public float knockBackDist;
 }
 
 public abstract class Entity : MonoBehaviour
@@ -31,12 +33,6 @@ public abstract class Entity : MonoBehaviour
     public _EntityInfo_ info;
     
     public bool isDead = false;
-
-    private void Update()
-    {
-        if (info.currHP <= 0f || isDead)
-            OnDeadEvent();
-    }
 
     public abstract void OnDeadEvent();
     public abstract void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.3f);

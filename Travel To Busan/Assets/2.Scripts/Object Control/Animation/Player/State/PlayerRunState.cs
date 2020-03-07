@@ -29,9 +29,13 @@ public class PlayerRunState : PlayerState, IAnimState
         {
             switch (player.inputModule.CurrDir.Key)
             {
+                case "Up Left":
+                case "Down Left":
                 case "Left":
                     Run(Vector2.left);
                     break;
+                case "Up Right":
+                case "Down Right":
                 case "Right":
                     Run(Vector2.right);
                     break;

@@ -5,30 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Level1SceneManager : SceneManagerClass
 {
-    public List<Enemy> enemyList;
+    [Space(15f)]
+    public List<Transform> enemyPoint;
 
+    private void OnLevelWasLoaded(int level)
+    {
+        GameManager.Instance.GameData.currLevel = level;
+        GameManager.Instance.SaveGameData();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            //  모든 적이 죽어있으면 씬 로드
-            foreach (var enemy in enemyList)
-            {
-                if (!enemy.isDead)
-                {
-                    return;
-                }
-            }
-            GameManager.Instance.Fade.LoadScene((int)GameManager.eScene.Level2);
-        }
+        if (collision.CompareTag("Player") && AllEnemyDead())
+            GameManager.Instance.Fade.LoadScene((int)GameManager.eScene.Level2, fadeCallback);
     }
-
-    private void Update()
+    private void Start()
     {
-        if (enemyList[0].isDead && !enemyList[0].gameObject.activeSelf)
+        GameManager.Instance.Player.tr.position = startPoint.position;
+        foreach (var point in enemyPoint)
+            enemyList.Add(GameManager.Instance.EnemyPool.SpawnEnemy(point.position, "Office Worker").GetComponent<Enemy>());
+
+        GameManager.Instance.Conversation.StartConversation(gameObject, "Script/Main/Level1", () =>
         {
-            enemyList[0].isDead = false;
-            enemyList[0].gameObject.SetActive(true);
-        }
+            if (!GameManager.Instance.GameData.uiTutorialShown)
+                GameManager.Instance.ShowTutorial();
+        });
     }
 }

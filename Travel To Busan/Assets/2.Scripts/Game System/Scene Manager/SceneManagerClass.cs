@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,19 @@ using UnityEngine;
 /// </summary>
 public abstract class SceneManagerClass : MonoBehaviour
 {
-    private void Awake()
+    [Header("Scene Manager Class Field")]
+    public Transform startPoint;
+
+    protected List<Enemy> enemyList = new List<Enemy>();
+    protected Action fadeCallback = () => GameManager.Instance.EnemyPool.ReturnAllManagedEnemy();
+
+    public bool AllEnemyDead()
     {
-        GameManager.Instance.Player = GameObject.FindGameObjectWithTag("Player")?.GetComponentInParent<Player>();
+        foreach (var enemy in enemyList)
+        {
+            if (enemy.gameObject.activeSelf && !enemy.isDead)
+                return false;
+        }
+        return true;
     }
 }

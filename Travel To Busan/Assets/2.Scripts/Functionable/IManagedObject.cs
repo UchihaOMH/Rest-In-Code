@@ -7,6 +7,7 @@ public interface IManagedObject
     Transform Pool
     {
         get;
+        set;
     }
 
     void ReturnObject2Pool();

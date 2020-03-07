@@ -25,8 +25,16 @@ public class FXControl : MonoBehaviour, IManagedObject
     {
         var entity = collision.gameObject.GetComponentInChildren<Entity>();
 
-        if (entity != null)
+        if (entity != null && !entity.isDead)
+        {
             callback?.Invoke(entity);
+            var obj = GameManager.Instance.FxPool.GetHitFXObject();
+            obj.transform.position = transform.position = collision.ClosestPoint(transform.position);
+        }
+    }
+    private void Start()
+    {
+        Pool = GameObject.FindGameObjectWithTag("FX Pool").transform;
     }
     private void Update()
     {

@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public Camera cam;
-
     public Rect camBox;
 
     private Transform followTarget;
+    [SerializeField] private Camera cam;
     private Rect camRect;
 
     private bool shaking = false;
 
     private void Awake()
     {
-        followTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        cam = GetComponent<Camera>();
+
+        followTarget = GameManager.Instance.Player.tr;
 
         cam.transform.position = followTarget.position + Vector3.back * 10;
         camRect = new Rect(Vector2.zero, new Vector2(cam.orthographicSize * cam.aspect * 2f, cam.orthographicSize * 2f));
@@ -23,10 +24,17 @@ public class CameraControl : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(camBox.center, camBox.size);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector2(cam.orthographicSize * cam.aspect * 2f, cam.orthographicSize * 2f));
+        try
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(camBox.center, camBox.size);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(transform.position, new Vector2(cam.orthographicSize * cam.aspect * 2f, cam.orthographicSize * 2f));
+        }
+        catch (System.NullReferenceException)
+        {
+            
+        }
     }
     private void LateUpdate()
     {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using AnyPortrait;
+
 public struct _PlayerAnimTrigger_
 {
     public const string idle = "Idle";
@@ -61,7 +63,7 @@ public class Player : Entity
     public ControlPadInputModule inputModule;
 
     [Header("Target Control"), Space(15f)]
-    public AnyPortrait.apPortrait apPortrait;
+    public apPortrait apPortrait;
     public Transform targetHandTr;
     public Transform tr;
     public Rigidbody2D rb;
@@ -72,16 +74,16 @@ public class Player : Entity
     public _PlayerAnimState_ animationStates;
     public float jumpForce;
     public bool onGround = true;
+    public bool isCinematicMode = false;
     #endregion
 
     #region Private Field
     [SerializeField, Header("Debug")] private PlayerState currState;
-    [SerializeField] bool isCinematicMode = false;
     [SerializeField] private bool isDebug = true;
     #endregion
 
     #region Mono
-    private void Awake()
+    private void OnEnable()
     {
         CurrState = animationStates.run;
 
@@ -100,14 +102,21 @@ public class Player : Entity
             return;
         }
 
-        JumpCheck();
+        if (!isDead)
+        {
+            JumpCheck();
 
-        (CurrState as IAnimState).Process();
+            (CurrState as IAnimState).Process();
+        }
 
         if (isDebug)
         {
             //Debug.Log(CurrentDirection);
         }
+    }
+    private void LateUpdate()
+    {
+        hpBar.FillAmount(info.currHP / info.maxHP);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -117,7 +126,7 @@ public class Player : Entity
             {
                 onGround = true;
 
-                if (CurrState is PlayerJumpState)
+                if (CurrState == animationStates.jump)
                 {
                     CurrState = animationStates.run;
                     apPortrait.Play(_PlayerAnimTrigger_.idle);
@@ -138,8 +147,8 @@ public class Player : Entity
 
         weapon.owner = this;
         weapon.transform.SetParent(targetHandTr);
-        weapon.transform.position = weapon.weaponOffset.position;
-        weapon.transform.rotation = Quaternion.Euler(weapon.weaponOffset.rotation);
+        weapon.transform.localPosition = weapon.weaponOffset.position;
+        weapon.transform.localRotation = Quaternion.Euler(weapon.weaponOffset.rotation);
         weapon.transform.localScale = weapon.weaponOffset.scale;
     }
     #endregion
@@ -151,7 +160,7 @@ public class Player : Entity
         {
             onGround = false;
 
-            if (!(CurrState is PlayerAttackState) && !(CurrState is PlayerSkillState))
+            if (!(CurrState is PlayerAttackState) && !(CurrState is PlayerSkillState) && !(currState is PlayerBeAttackedState))
             {
                 CurrState = animationStates.jump;
                 if (!apPortrait.IsPlaying(_PlayerAnimTrigger_.jump))
@@ -162,13 +171,15 @@ public class Player : Entity
         {
             onGround = false;
 
-            if (!(CurrState is PlayerAttackState) && !(CurrState is PlayerSkillState))
+            if (!(CurrState is PlayerAttackState) && !(CurrState is PlayerSkillState) && !(currState is PlayerBeAttackedState))
             {
                 CurrState = animationStates.jump;
                 if (!apPortrait.IsPlaying(_PlayerAnimTrigger_.fall))
                     apPortrait.Play(_PlayerAnimTrigger_.fall);
             }
         }
+        else
+            onGround = true;
     }
     #endregion
 
@@ -208,7 +219,7 @@ public class Player : Entity
             info.currHP -= finalDamage;
             hpBar?.FillAmount(info.currHP / info.maxHP);
 
-            if (!(currState is PlayerSkillState) && !(currState is PlayerAttackState))
+            if (!(currState is PlayerSkillState))
             {
                 TransitionProcess(animationStates.beAttacked);
                 (CurrState as PlayerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
@@ -221,6 +232,7 @@ public class Player : Entity
         {
             isDead = true;
             apPortrait.Play(_PlayerAnimTrigger_.die);
+            GameManager.Instance.PlayerDead();
         }
     }
     #endregion
@@ -231,14 +243,16 @@ public class Player : Entity
         if (apPortrait.IsPlaying(_PlayerAnimTrigger_.attack))
             animationStates.attack.OnAttackExit();
         else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
-            animationStates.skill.OnRizingAttackExit();
+            animationStates.skill.OnAttackExit();
         else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.smashAttack))
-            animationStates.skill.OnSmashExit();
+            animationStates.skill.OnAttackExit();
     }
     private void OnAttack()
     {
         if (apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
-            animationStates.skill.OnRizingAttack();
+            animationStates.skill.OnAttack();
+        else if (apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
+            animationStates.skill.OnAttack();
     }
     #endregion
 }

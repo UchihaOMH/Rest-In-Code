@@ -22,30 +22,34 @@ public class PlayerSkillState : PlayerState, IAnimState
         KeyValuePair<string, Touch> currDir = player.inputModule.CurrDir;
         KeyValuePair<bool, Touch> skillButtonInput = player.inputModule.SkillButtonPressed;
 
-        if (skillButtonInput.Key && skillButtonInput.Value.phase == TouchPhase.Began)
-        {
-            if (currDir.Key == "Up")
-            {
-                RizingAttack();
-            }
-            else if (currDir.Key == "Down")
-            {
-                SmashAttack();
-            }
-            else if (currDir.Key == "")
-                player.TransitionProcess(player.animationStates.run);
-        }
-
         if (onRizingAttack)
         {
-            switch (player.inputModule.CurrDir.Key)
+            return;
+        }
+        else
+        {
+            if (skillButtonInput.Key && skillButtonInput.Value.phase == TouchPhase.Began)
             {
-                case "Left":
-                    player.tr.Translate(Vector3.left * player.info.speed * Time.deltaTime, Space.World);
-                    break;
-                case "Right":
-                    player.tr.Translate(Vector3.right * player.info.speed * Time.deltaTime, Space.World);
-                    break;
+                if (currDir.Key == "Up" || currDir.Key == "Up Left" || currDir.Key == "Up Right")
+                {
+                    if (!onRizingAttack && !onSmashAttack)
+                        RizingAttack();
+                }
+                else if (currDir.Key == "Down" || currDir.Key == "Down Left" || currDir.Key == "Down Right")
+                {
+                    if (!onRizingAttack && !onSmashAttack)
+                        SmashAttack();
+                }
+                else
+                {
+                    player.CurrState = player.animationStates.run;
+                    return;
+                }
+            }
+            else
+            {
+                player.CurrState = player.animationStates.run;
+                return;
             }
         }
     }
@@ -56,7 +60,10 @@ public class PlayerSkillState : PlayerState, IAnimState
         {
             player.apPortrait.Play(_PlayerAnimTrigger_.rizingAttack);
             rizingAttackTimer = Time.time + rizingAttackCoolTime;
+            onRizingAttack = true;
         }
+        else
+            player.CurrState = player.animationStates.run;
     }
     public void SmashAttack()
     {
@@ -64,31 +71,38 @@ public class PlayerSkillState : PlayerState, IAnimState
         {
             player.apPortrait.Play(_PlayerAnimTrigger_.smashAttack);
             smashAttackTimer = Time.time + smashAttackCoolTime;
+            onSmashAttack = true;
         }
+        else
+            player.CurrState = player.animationStates.run;
     }
 
     #region Animation Event
-    public void OnSmashExit()
+    public void OnAttack()
     {
-        onSmashAttack = false;
-        player.apPortrait.Play(_PlayerAnimTrigger_.idle);
-        player.TransitionProcess(player.animationStates.run);
+        if (player.apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
+        {
+            player.weapon.RizingAttack(player.info.damage);
+        }
+        else if (player.apPortrait.IsPlaying(_PlayerAnimTrigger_.smashAttack))
+        {
+            player.weapon.SmashAttack(player.info.damage);
+        }
     }
-    public void OnRizingAttackExit()
+    public void OnAttackExit()
     {
-        onRizingAttack = false;
-        player.apPortrait.Play(_PlayerAnimTrigger_.idle);
-        player.TransitionProcess(player.animationStates.run);
-    }
-    public void OnSmashAttack()
-    {
-        onSmashAttack = true;
-        player.weapon.SmashAttack(player.info.damage);
-    }
-    public void OnRizingAttack()
-    {
-        onRizingAttack = true;
-        player.weapon.RizingAttack(player.info.damage);
+        if (player.apPortrait.IsPlaying(_PlayerAnimTrigger_.rizingAttack))
+        {
+            onRizingAttack = false;
+            player.apPortrait.Play(_PlayerAnimTrigger_.idle);
+            player.CurrState = player.animationStates.run;
+        }
+        else if (player.apPortrait.IsPlaying(_PlayerAnimTrigger_.smashAttack))
+        {
+            onSmashAttack = false;
+            player.apPortrait.Play(_PlayerAnimTrigger_.idle);
+            player.CurrState = player.animationStates.run;
+        }
     }
     #endregion
 }

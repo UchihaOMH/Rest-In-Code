@@ -5,11 +5,13 @@ using UnityEngine;
 public class FXPoolManager : MonoBehaviour
 {
     [SerializeField] private GameObject fxPref;
-    [SerializeField, Space(10f)] private List<GameObject> poolFXList = new List<GameObject>();
+    [SerializeField] private GameObject hitFxPref;
+    [SerializeField, Space(10f)] private List<GameObject> poolFxList = new List<GameObject>();
+    [SerializeField, Space(10f)] private List<GameObject> poolHitFxList = new List<GameObject>();
 
     public GameObject GetFXObject()
     {
-        foreach (var data in poolFXList)
+        foreach (var data in poolFxList)
         {
             if (!data.gameObject.activeSelf)
             {
@@ -17,9 +19,24 @@ public class FXPoolManager : MonoBehaviour
                 return data;
             }
         }
-        GameObject newFX = Instantiate(fxPref, this.gameObject.transform);
-        newFX.GetComponent<FXControl>().Pool = transform;
-        poolFXList.Add(newFX);
-        return newFX;
+        GameObject newFx = Instantiate(fxPref, this.gameObject.transform);
+        newFx.GetComponent<FXControl>().Pool = transform;
+        poolFxList.Add(newFx);
+        return newFx;
+    }
+    public GameObject GetHitFXObject()
+    {
+        foreach (var data in poolHitFxList)
+        {
+            if (!data.gameObject.activeSelf)
+            {
+                data.gameObject.SetActive(true);
+                return data;
+            }
+        }
+        GameObject newHitFx = Instantiate(hitFxPref, this.gameObject.transform);
+        newHitFx.GetComponent<HitFXControl>().Pool = transform;
+        poolHitFxList.Add(newHitFx);
+        return newHitFx;
     }
 }

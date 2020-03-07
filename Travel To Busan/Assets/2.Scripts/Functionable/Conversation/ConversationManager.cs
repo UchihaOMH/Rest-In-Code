@@ -23,7 +23,6 @@ public class ConversationManager : MonoBehaviour
 
         [Space(15f)]
         public Sprite officeWorker;
-        public Sprite businessman;
         public Sprite underArmourCollector;
         public Sprite batMan;
     }
@@ -58,15 +57,14 @@ public class ConversationManager : MonoBehaviour
     private GraphicRaycaster raycaster;
     private PointerEventData eventData;
 
-    //  About scan a file and interpret that
-    private string filePath = "";
     private List<string> conversation = new List<string>();
     private int conversationIndexer = 0;
+    private GameObject eventObject;
 
-    private string flagPattern = "^\\[Direction=\".*?\",Illust Name=\".*?\"(,Method=\".*?\")?\\]";
-    private string illustNamePattern = "(?<=Illust Name=\").*?(?=\")";
-    private string directionPattern = "(?<=Direction=\").*?(?=\")";
-    private string methodPattern = "(?<=Method=\").*?(?=\")";
+    private static string flagPattern = "^\\[Direction=\".*?\",Illust Name=\".*?\"(,Method=\".*?\")?\\]";
+    private static string illustNamePattern = "(?<=Illust Name=\").*?(?=\")";
+    private static string directionPattern = "(?<=Direction=\").*?(?=\")";
+    private static string methodPattern = "(?<=Method=\").*?(?=\")";
     #endregion
 
     private void Awake()
@@ -103,43 +101,59 @@ public class ConversationManager : MonoBehaviour
     {
         conversation = null;
         conversationIndexer = 0;
-        filePath = "";
         callback = null;
         onConversation = false;
         currTalker = null;
     }
 
     //  Public :
-    //  If converstation has other work already, return false
-    public bool StartConversation(string _filePath, Action _callback)
+    /// <summary>
+    /// If converstation has other work already, return false
+    /// </summary>
+    /// <param name="eventObject">Gameobject what having the Method what script flag specified</param>
+    /// <param name="_dbUri">Generally "Script/Main/[Name]"</param>
+    /// <param name="_callback">On Conversation Exit Event</param>
+    /// <returns></returns>
+    public bool StartConversation(GameObject _eventObject, string _dbUri, Action _callback = null)
     {
         if (onConversation)
             return false;
 
-        conversation = new List<string>();
-        gameObject.SetActive(true);
+        eventObject = _eventObject;
         callback = _callback;
-        onConversation = true;
-        filePath = _filePath;
 
-        using (StreamReader reader = new StreamReader(filePath))
+        Time.timeScale = 0f;
+        Time.fixedDeltaTime = 0f;
+
+        GameManager.Instance.DbConnection.LoadDataFromDB(_dbUri, (List<string> _conversation) =>
         {
-            while (!reader.EndOfStream)
-                conversation.Add(reader.ReadLine());
+            if (_conversation != default(List<string>))
+            {
+                GameManager.Instance.MainUI.SetActive(false);
+                gameObject.SetActive(true);
+                onConversation = true;
+                conversation = _conversation;
+                DisplayNextConversation();
+            }
+        });
 
-            reader.Close();
-            DisplayNextConversation();
-        }
         return true;
     }
 
     //  Private :
     private void DisplayNextConversation()
     {
-        if (conversationIndexer == conversation.Count)
+        if (conversation.Count == conversationIndexer)
         {
-            callback();
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.02f;
+
+            GameManager.Instance.MainUI.SetActive(true);
             gameObject.SetActive(false);
+            leftTalker.Leave();
+            rightTalker.Leave();
+
+            callback?.Invoke();
             return;
         }
 
@@ -172,12 +186,8 @@ public class ConversationManager : MonoBehaviour
                 currTalker.SetIllust(GetIlustByName(illustName));
             }
 
-            switch (method)
-            {
-                case "Leave":
-                    currTalker.Leave();
-                    break;
-            }
+            if (method != string.Empty)
+                eventObject?.SendMessage(method);
 
             DisplayNextConversation();
             return;
@@ -192,49 +202,38 @@ public class ConversationManager : MonoBehaviour
     }
     private Sprite GetIlustByName(string _name)
     {
-        try
+        Sprite illust = null;
+
+        switch (_name)
         {
-            Sprite illust = null;
+            //  Servivor
+            case "Player":
+                illust = spriteIllust.player;
+                break;
+            case "ZeroU":
+                illust = spriteIllust.zeroU;
+                break;
+            case "Bible":
+                illust = spriteIllust.bible;
+                break;
+            case "Girl":
+                illust = spriteIllust.girl;
+                break;
 
-            switch (_name)
-            {
-                //  Servivor
-                case "Player":
-                    illust = spriteIllust.player;
-                    break;
-                case "ZeroU":
-                    illust = spriteIllust.zeroU;
-                    break;
-                case "Bible":
-                    illust = spriteIllust.bible;
-                    break;
-                case "Girl":
-                    illust = spriteIllust.girl;
-                    break;
-
-                //  Monster
-                case "Office Worker":
-                    illust = spriteIllust.officeWorker;
-                    break;
-                case "Businessman":
-                    illust = spriteIllust.businessman;
-                    break;
-                case "UnderArmour Collector":
-                    illust = spriteIllust.underArmourCollector;
-                    break;
-                case "Bat Man":
-                    illust = spriteIllust.batMan;
-                    break;
-            }
-            if (illust == null)
-                throw new NullReferenceException();
-
-            return illust;
+            //  Monster
+            case "Office Worker":
+                illust = spriteIllust.officeWorker;
+                break;
+            case "UnderArmour Collector":
+                illust = spriteIllust.underArmourCollector;
+                break;
+            case "Bat Man":
+                illust = spriteIllust.batMan;
+                break;
         }
-        catch (NullReferenceException)
-        {
-            Debug.LogError("This llust name ware not defined : " + _name);
-            return null;
-        }
+        if (illust == null)
+            throw new NullReferenceException("This llust name ware not defined : " + _name);
+
+        return illust;
     }
 }

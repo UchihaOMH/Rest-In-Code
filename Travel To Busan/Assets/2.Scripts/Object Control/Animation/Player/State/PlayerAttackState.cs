@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerState, IAnimState
 {
-    public AudioClip clip;
-
     public string GetStateName()
     {
         return "Base Attack State";
@@ -18,11 +16,9 @@ public class PlayerAttackState : PlayerState, IAnimState
             switch (player.inputModule.CurrDir.Key)
             {
                 case "Left":
-                    player.LookAt(Vector2.left);
                     player.tr.Translate(Vector2.left * player.info.speed * Time.deltaTime, Space.World);
                     break;
                 case "Right":
-                    player.LookAt(Vector2.right);
                     player.tr.Translate(Vector2.right * player.info.speed * Time.deltaTime, Space.World);
                     break;
             }

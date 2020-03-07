@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using AnyPortrait;
+
 [System.Serializable]
 public struct _OfficeWorkerAnimStates_
 {
     public OfficeWorkerAttackState attack;
-    public OfficeWorkerPatrolState patrol;
     public OfficeWorkerTraceState trace;
+    public OfficeWorkerIdleState idle;
     public OfficeWorkerBeAttackedState beAttacked;
 }
 public struct _OfficeWorkerAnimTrigger_
 {
     public const string idle = "Idle";
-    public const string patrol = "Patrol";
     public const string trace = "Trace";
     public const string die = "Die";
     public const string attack = "Attack";
     public const string beAttacked = "Be Attacked";
 }
 
-public class OfficeWorker : Enemy, IManagedObject
+public class OfficeWorker : Enemy
 {
     #region Property
     public OfficeWorkerState CurrState
@@ -36,11 +37,16 @@ public class OfficeWorker : Enemy, IManagedObject
     }
     [SerializeField] private OfficeWorkerState currState;
 
-    public Transform Pool
+    public Entity Target
+    {
+        get => target;
+        private set => target = value;
+    }
+    public override Transform Pool
     {
         get => pool;
+        set => pool = value;
     }
-    private Transform pool;
     #endregion
 
     #region Public Field
@@ -51,26 +57,20 @@ public class OfficeWorker : Enemy, IManagedObject
     public HPBar hpBar;
     public Transform tr;
     public Rigidbody2D rb;
-    public AnyPortrait.apPortrait apPortrait;
+    public apPortrait apPortrait;
     public AudioSource audioSource;
-
-    [Header("Parameter"), Space(10f)]
-    public Entity target;
-    public float patrolSpeed = 0.15f;
-    public float knockBackDist = 0.3f;
     #endregion
 
     #region Private Field
-    [SerializeField] private bool isDebug = true;
+    [SerializeField] private bool isDebug = false;
     #endregion
 
     #region Mono
-    private void Awake()
+    private void OnEnable()
     {
-        pool = GameObject.FindGameObjectWithTag("Enemy Pool").transform;
+        Pool = GameObject.FindGameObjectWithTag("Enemy Pool").transform;
         hpBar.HideBar(true);
-        wanderOrigin = new Vector2(tr.position.x, tr.position.y);
-        CurrState = animationState.patrol;
+        CurrState = animationState.idle;
     }
     private void Update()
     {
@@ -80,10 +80,17 @@ public class OfficeWorker : Enemy, IManagedObject
             return;
         }
 
-        if (target?.isDead == true)
-            target = null;
+        if (!isDead)
+        {
+            if (Target?.isDead == true)
+            {
+                Target = null;
+                apPortrait.Play(_OfficeWorkerAnimTrigger_.idle);
+                TransitionProcess(animationState.idle);
+            }
 
-        (CurrState as IAnimState).Process();
+            (CurrState as IAnimState).Process();
+        }
     }
     private void LateUpdate()
     {
@@ -99,7 +106,7 @@ public class OfficeWorker : Enemy, IManagedObject
             if (CurrState == animationState.attack)
                 OnAttackExitEvent();
 
-            target = _attacker;
+            Target = _attacker;
 
             info.currHP -= GameManager.Instance.DamageCalculator.CalcFinalDamage(_damage, info.defense);
 
@@ -122,12 +129,15 @@ public class OfficeWorker : Enemy, IManagedObject
     }
     public override void TransitionProcess(IAnimState _state)
     {
-        CurrState = _state as OfficeWorkerState;
-        (CurrState as IAnimState).Process();
+        if (!isDead)
+        {
+            CurrState = _state as OfficeWorkerState;
+            (CurrState as IAnimState).Process();
+        }
     }
     public override void FocusTarget(Entity _target)
     {
-        target = _target;
+        Target = _target;
         LookAt(_target.transform.position.x - tr.position.x < 0f ? Vector2.left : Vector2.right);
         apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.trace);
         TransitionProcess(animationState.trace);
@@ -144,7 +154,7 @@ public class OfficeWorker : Enemy, IManagedObject
             rb.bodyType = RigidbodyType2D.Kinematic;
             GetComponent<BoxCollider2D>().isTrigger = true;
 
-            apPortrait.CrossFade(_OfficeWorkerAnimTrigger_.die);
+            apPortrait.Play(_OfficeWorkerAnimTrigger_.die);
 
             Invoke("ReturnObject2Pool", 3f);
         }
@@ -152,27 +162,27 @@ public class OfficeWorker : Enemy, IManagedObject
     #endregion
 
     #region IManagedObejct Method Override
-    public void ReturnObject2Pool()
+    public override void ReturnObject2Pool()
     {
         ResetObjectForPooling();
         tr.SetParent(Pool);
         gameObject.SetActive(false);
     }
-    public void ResetObjectForPooling()
+    public override void ResetObjectForPooling()
     {
-        target = null;
+        apPortrait.Play(_OfficeWorkerAnimTrigger_.idle);
+        isDead = false;
+        Target = null;
         info.currHP = info.maxHP;
         rb.bodyType = RigidbodyType2D.Dynamic;
         GetComponent<BoxCollider2D>().isTrigger = false;
-
-        apPortrait.Play(_OfficeWorkerAnimTrigger_.idle);
     }
     #endregion
 
     #region Animation Event
-    private void OnAttackEvent(bool _attack)
+    private void OnAttackEvent()
     {
-        animationState.attack.OnAttack(_attack);
+        animationState.attack.OnAttack();
     }
     private void OnAttackExitEvent()
     {
