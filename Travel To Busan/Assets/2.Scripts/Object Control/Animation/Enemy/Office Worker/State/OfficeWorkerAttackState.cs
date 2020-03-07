@@ -43,7 +43,7 @@ public class OfficeWorkerAttackState : OfficeWorkerState, IAnimState
         var hit = Physics2D.BoxCast(rangeBox.position, new Vector2(Mathf.Abs(rangeBox.lossyScale.x), Mathf.Abs(rangeBox.lossyScale.y)), 0f, Vector2.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
         if (hit.collider != null)
         {
-            hit.collider.GetComponent<Entity>().BeAttacked(officeWorker, officeWorker.info.damage, hit.collider.transform.position - officeWorker.tr.position, officeWorker.info.knockBackDist, 0.2f);
+            hit.collider.GetComponent<Entity>().BeAttacked(officeWorker, officeWorker.info.damage, hit.collider.transform.position - officeWorker.tr.position, officeWorker.info.knockBackPower, 0.2f);
         }
     }
     public void OnAttackExit()

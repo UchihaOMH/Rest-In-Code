@@ -102,7 +102,7 @@ MonoBehaviour:
   weaponInfo:
     name: "\uBC14\uB78C\uC758 \uC8FC\uBA39"
     damage: 40
-    knockBackDist: 0.2
+    knockBackPower: 5
   audioClip:
     attack: {fileID: 8300000, guid: e6a74694486dac240b4fd0f4d0195e92, type: 3}
     skillAttack1: {fileID: 0}

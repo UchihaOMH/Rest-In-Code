@@ -28457,7 +28457,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929324870951876042}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.53, y: -2.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28488,7 +28488,7 @@ MonoBehaviour:
     currHP: 400
     speed: 10
     jumpForce: 0
-    knockBackDist: 0.6
+    knockBackPower: 0
   isDead: 0
   animState:
     idle: {fileID: 2645340192662354127}
@@ -28538,7 +28538,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -28674,7 +28674,7 @@ MonoBehaviour:
   collector: {fileID: 8064526243516640776}
   rangeBox: {fileID: 6180118368871015110}
   damage: 30
-  knockBackDist: 0.3
+  knockBackPower: 25
   coolTime: 2
 --- !u!1 &2645340193270530240
 GameObject:
@@ -44269,7 +44269,7 @@ MonoBehaviour:
   collector: {fileID: 8064526243516640776}
   rangeBox: {fileID: 6180118369877770150}
   damage: 10
-  knockBackDist: 0.8
+  knockBackPower: 10
   coolTime: 4
 --- !u!1 &6180118369085548584
 GameObject:
@@ -44318,7 +44318,7 @@ MonoBehaviour:
   collector: {fileID: 8064526243516640776}
   rangeBox: {fileID: 6180118368528004075}
   damage: 45
-  knockBackDist: 0.4
+  knockBackPower: 20
   coolTime: 2
 --- !u!1 &6180118369877770149
 GameObject:
@@ -60353,7 +60353,6 @@ MonoBehaviour:
   - {fileID: 2030317110153698053}
   handSocket: {fileID: 8137378066028569022}
   damage: 20
-  knockBackDist: 0.4
   coolTime: 1
 --- !u!1 &8137378066028569021
 GameObject:

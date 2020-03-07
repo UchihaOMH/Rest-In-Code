@@ -24654,7 +24654,7 @@ MonoBehaviour:
     currHP: 300
     speed: 23
     jumpForce: 0
-    knockBackDist: 0.3
+    knockBackPower: 10
   isDead: 0
   currState: {fileID: 0}
   animationState:
@@ -24667,6 +24667,7 @@ MonoBehaviour:
   rb: {fileID: 2362949620738722033}
   apPortrait: {fileID: 5990985714113650998}
   audioSource: {fileID: 2362949620738722035}
+  isDebug: 0
 --- !u!50 &2362949620738722033
 Rigidbody2D:
   serializedVersion: 4

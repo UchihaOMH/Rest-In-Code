@@ -15,6 +15,20 @@ public class PlayerJumpState : PlayerState, IAnimState
     }
     public void Process()
     {
+        switch (player.inputModule.CurrDir.Key)
+        {
+            case "Up Left":
+            case "Down Left":
+            case "Left":
+                AirWalk(Vector2.left);
+                break;
+            case "Up Right":
+            case "Down Right":
+            case "Right":
+                AirWalk(Vector2.right);
+                break;
+        }
+
         if (player.inputModule.AttackButtonPressed.Key)
         {
             player.TransitionProcess(player.animationStates.attack);
@@ -30,20 +44,6 @@ public class PlayerJumpState : PlayerState, IAnimState
                 Jump();
             else if (player.inputModule.JumpButtonPressed.Value.phase == TouchPhase.Began)
                 Jump();
-        }
-
-        switch (player.inputModule.CurrDir.Key)
-        {
-            case "Up Left":
-            case "Down Left":
-            case "Left":
-                AirWalk(Vector2.left);
-                break;
-            case "Up Right":
-            case "Down Right":
-            case "Right":
-                AirWalk(Vector2.right);
-                break;
         }
 
         if (player.rb.velocity.y > -0.001f && player.rb.velocity.y < 0.001f)

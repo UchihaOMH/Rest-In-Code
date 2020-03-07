@@ -20,6 +20,7 @@ public class Level1SceneManager : SceneManagerClass
     }
     private void Start()
     {
+        GameManager.Instance.Player.rb.bodyType = RigidbodyType2D.Dynamic;
         GameManager.Instance.Player.tr.position = startPoint.position;
         foreach (var point in enemyPoint)
             enemyList.Add(GameManager.Instance.EnemyPool.SpawnEnemy(point.position, "Office Worker").GetComponent<Enemy>());

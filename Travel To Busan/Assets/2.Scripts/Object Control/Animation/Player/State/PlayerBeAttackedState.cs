@@ -8,10 +8,10 @@ public class PlayerBeAttackedState : PlayerState, IAnimState
     {
 
     }
-    public void BeAttacked(Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.1f)
+    public void BeAttacked(Vector2 _knockBackDir, float _knockBackPower, float _knockBackDuration = 0.1f)
     {
         player.apPortrait.Play(_PlayerAnimTrigger_.beAttacked);
-        player.tr.Translate(_knockBackDir.normalized * _knockBackDist, Space.World);
+        player.rb.AddForce(_knockBackDir.normalized * _knockBackPower, ForceMode2D.Impulse);
         CancelInvoke("ResetStance");
         Invoke("ResetStance", _knockBackDuration);
     }

@@ -99,7 +99,7 @@ public class OfficeWorker : Enemy
     #endregion
 
     #region Entity Method Override
-    public override void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.3f)
+    public override void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackPower, float _knockBackDuration = 0.3f)
     {
         if (_attacker is Player)
         {
@@ -111,7 +111,7 @@ public class OfficeWorker : Enemy
             info.currHP -= GameManager.Instance.DamageCalculator.CalcFinalDamage(_damage, info.defense);
 
             TransitionProcess(animationState.beAttacked);
-            (CurrState as OfficeWorkerBeAttackedState).BeAttacked(_knockBackDir, _knockBackDist, _knockBackDuration);
+            (CurrState as OfficeWorkerBeAttackedState).BeAttacked(_knockBackDir, _knockBackPower, _knockBackDuration);
         }
     }
     public override void LookAt(Vector2 _dir)

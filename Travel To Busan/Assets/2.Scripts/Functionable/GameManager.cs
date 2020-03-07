@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
         Player = GetComponentInChildren<Player>();
         Player.EquipWeapon(weaponDefinition.GetWeaponByWeaponName("바람의 주먹"));
 
+#if UNITY_ANDROID
         DbConnection.Initialize(() => LoadGameData(() =>
         {
             if (!GameData.prologueShown)
@@ -143,6 +144,7 @@ public class GameManager : MonoBehaviour
             else
                 Fade.LoadScene(GameData.currLevel, () => MainUI.SetActive(true));
         }));
+#endif
     }
 
     public void PlayerDead()

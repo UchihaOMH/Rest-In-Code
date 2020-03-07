@@ -12,6 +12,25 @@ public class PlayerRunState : PlayerState, IAnimState
     }
     public void Process()
     {
+        switch (player.inputModule.CurrDir.Key)
+        {
+            case "Up Left":
+            case "Down Left":
+            case "Left":
+                Run(Vector2.left);
+                break;
+            case "Up Right":
+            case "Down Right":
+            case "Right":
+                Run(Vector2.right);
+                break;
+
+            case "":
+                if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.idle))
+                    player.apPortrait.Play(_PlayerAnimTrigger_.idle);
+                break;
+        }
+
         if (player.inputModule.AttackButtonPressed.Key)
         {
             player.TransitionProcess(player.animationStates.attack);
@@ -24,27 +43,6 @@ public class PlayerRunState : PlayerState, IAnimState
         else if (player.inputModule.JumpButtonPressed.Key)
         {
             player.TransitionProcess(player.animationStates.jump);
-        }
-        else
-        {
-            switch (player.inputModule.CurrDir.Key)
-            {
-                case "Up Left":
-                case "Down Left":
-                case "Left":
-                    Run(Vector2.left);
-                    break;
-                case "Up Right":
-                case "Down Right":
-                case "Right":
-                    Run(Vector2.right);
-                    break;
-
-                case "":
-                    if (!player.apPortrait.IsPlaying(_PlayerAnimTrigger_.idle))
-                        player.apPortrait.Play(_PlayerAnimTrigger_.idle);
-                    break;
-            }
         }
     }
 

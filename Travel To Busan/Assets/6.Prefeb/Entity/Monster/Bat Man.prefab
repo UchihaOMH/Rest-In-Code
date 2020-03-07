@@ -26554,7 +26554,7 @@ MonoBehaviour:
     currHP: 600
     speed: 0
     jumpForce: 0
-    knockBackDist: 0
+    knockBackPower: 0
   isDead: 0
   apPortrait: {fileID: 8395343901774474291}
   fxAnimator: {fileID: 6116130944519176090}
@@ -28315,7 +28315,7 @@ MonoBehaviour:
   rangeBox: {fileID: 6116130943330294188}
   damage: 60
   coolTime: 2
-  knockBackDist: 0.5
+  knockBackPower: 25
 --- !u!1 &6116130944249756068
 GameObject:
   m_ObjectHideFlags: 0

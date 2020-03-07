@@ -59,6 +59,7 @@ public class PrologueSceneManager : SceneManagerClass
         player = GameManager.Instance.Player;
         tempInputModule = GetComponentInChildren<ControlPadInputModule>();
         player.inputModule = tempInputModule;
+        player.rb.bodyType = RigidbodyType2D.Dynamic;
         
         player.tr.position = startPoint.position;
         dest = cinematicPoint[++cinematicPointIdx].position;

@@ -7,7 +7,7 @@ public class UnderArmourCollectorRushState : UnderArmourCollectorState
     public Transform rangeBox;
 
     public float damage = 10f;
-    public float knockBackDist = 0.3f;
+    public float knockBackPower = 15f;
     public float coolTime = 2f;
 
     private Vector2 dir;
@@ -34,7 +34,7 @@ public class UnderArmourCollectorRushState : UnderArmourCollectorState
         if (collector.CurrState == this)
         {
             var hit = Physics2D.BoxCast(rangeBox.position, new Vector2(Mathf.Abs(rangeBox.lossyScale.x), Mathf.Abs(rangeBox.lossyScale.y)), 0f, Vector2.zero, 0f, LayerMask.GetMask(GameConst.LayerDefinition.player));
-            hit.collider?.GetComponent<Entity>().BeAttacked(collector, damage, (hit.collider.transform.position - collector.transform.position).normalized, knockBackDist);
+            hit.collider?.GetComponent<Entity>().BeAttacked(collector, damage, (hit.collider.transform.position - collector.transform.position).normalized, knockBackPower);
         }
     }
     public void OnAttackEnter()

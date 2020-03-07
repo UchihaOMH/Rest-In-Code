@@ -8,7 +8,6 @@ public class UnderArmourCollectorThrowProteinState : UnderArmourCollectorState
     public Transform handSocket;
 
     public float damage = 20f;
-    public float knockBackDist = 0.4f;
     public float coolTime = 1f;
 
     private GameObject currProtein;

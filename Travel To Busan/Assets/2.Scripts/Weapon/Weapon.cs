@@ -21,7 +21,7 @@ public struct _WeaponInfo_
 {
     public string name;
     public float damage;
-    public float knockBackDist;
+    public float knockBackPower;
 }
 
 public abstract class Weapon : MonoBehaviour

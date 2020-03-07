@@ -35,5 +35,6 @@ public class Talker
     public void Leave()
     {
         illustBox.sprite = null;
+        illustBoxCG.alpha = 0f;
     }
 }

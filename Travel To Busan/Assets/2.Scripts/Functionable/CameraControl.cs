@@ -16,7 +16,7 @@ public class CameraControl : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
-        followTarget = GameManager.Instance.Player.tr;
+        followTarget = GameObject.FindGameObjectWithTag("Player").transform;
 
         cam.transform.position = followTarget.position + Vector3.back * 10;
         camRect = new Rect(Vector2.zero, new Vector2(cam.orthographicSize * cam.aspect * 2f, cam.orthographicSize * 2f));

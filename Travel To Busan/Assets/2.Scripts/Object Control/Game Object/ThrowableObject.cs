@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThrowableObject : MonoBehaviour, IManagedObject
 {
     public float damage = 20f;
-    public float knockBackDist = 0.4f;
+    public float knockBackPower = 10f;
     public float knockBackDuration = 0.3f;
     public float speed = 0f;
     public float rotationDamp = 0f;
@@ -26,9 +26,12 @@ public class ThrowableObject : MonoBehaviour, IManagedObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!onThrow)
+            return;
+
         if (collision.gameObject.GetComponent<Player>() != null)
         {
-            collision.gameObject.GetComponent<Player>().BeAttacked(null, damage, collision.gameObject.transform.position - transform.position, knockBackDist, knockBackDuration);
+            collision.gameObject.GetComponent<Player>().BeAttacked(null, damage, collision.gameObject.transform.position - transform.position, knockBackPower, knockBackDuration);
             ReturnObject2Pool();
         }
         else if (LayerMask.LayerToName(collision.gameObject.layer) == GameConst.LayerDefinition.level)
@@ -44,6 +47,12 @@ public class ThrowableObject : MonoBehaviour, IManagedObject
             transform.Translate(dir * speed * Time.deltaTime, Space.World);
             transform.Rotate(Vector3.forward, rotationDamp * Time.deltaTime);
         }
+    }
+    private void OnDisable()
+    {
+        dir = Vector2.zero;
+        onThrow = false;
+        timer = 0f;
     }
 
     public void ThrowTo(Vector2 _dir)

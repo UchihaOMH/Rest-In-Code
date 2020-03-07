@@ -23,7 +23,7 @@ public struct _EntityInfo_
 
     [SerializeField] public float speed;
     [SerializeField] public float jumpForce;
-    [SerializeField] public float knockBackDist;
+    [SerializeField] public float knockBackPower;
 }
 
 public abstract class Entity : MonoBehaviour
@@ -35,7 +35,7 @@ public abstract class Entity : MonoBehaviour
     public bool isDead = false;
 
     public abstract void OnDeadEvent();
-    public abstract void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackDist, float _knockBackDuration = 0.3f);
+    public abstract void BeAttacked(Entity _attacker, float _damage, Vector2 _knockBackDir, float _knockBackPower, float _knockBackDuration = 0.3f);
     public abstract void LookAt(Vector2 _dir);
     public abstract void TransitionProcess(IAnimState _state);
 }

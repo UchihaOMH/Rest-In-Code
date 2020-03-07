@@ -122,18 +122,23 @@ public class ConversationManager : MonoBehaviour
         eventObject = _eventObject;
         callback = _callback;
 
-        Time.timeScale = 0f;
-        Time.fixedDeltaTime = 0f;
-
         GameManager.Instance.DbConnection.LoadDataFromDB(_dbUri, (List<string> _conversation) =>
         {
             if (_conversation != default(List<string>))
             {
+                Time.timeScale = 0f;
+                Time.fixedDeltaTime = 0f;
                 GameManager.Instance.MainUI.SetActive(false);
                 gameObject.SetActive(true);
                 onConversation = true;
                 conversation = _conversation;
                 DisplayNextConversation();
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                Time.fixedDeltaTime = 0.02f;
+                _callback?.Invoke();
             }
         });
 

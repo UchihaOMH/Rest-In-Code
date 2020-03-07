@@ -7,7 +7,7 @@ public class BatManSwingState : BatManState
     public Transform rangeBox;
     public float damage = 60f;
     public float coolTime = 2f;
-    public float knockBackDist = 0.5f;
+    public float knockBackPower = 35f;
 
     public override string GetStateName()
     {
@@ -33,7 +33,7 @@ public class BatManSwingState : BatManState
         if (hit.collider != null)
         {
             Vector2 dir = hit.transform.position - batMan.transform.position;
-            hit.collider.GetComponent<Player>().BeAttacked(batMan, damage, dir.normalized, knockBackDist, 1f);
+            hit.collider.GetComponent<Player>().BeAttacked(batMan, damage, dir.normalized, knockBackPower, 1f);
         }
     }
     public void OnAttackExit()

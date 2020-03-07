@@ -20,6 +20,7 @@ public class Level3SceneManager : SceneManagerClass
     }
     private void Start()
     {
+        GameManager.Instance.Player.rb.bodyType = RigidbodyType2D.Dynamic;
         GameManager.Instance.Player.tr.position = startPoint.position;
 
         foreach (var point in officeWorkerPoint)

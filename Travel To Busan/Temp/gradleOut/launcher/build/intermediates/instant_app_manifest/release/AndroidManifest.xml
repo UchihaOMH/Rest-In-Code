@@ -76,7 +76,7 @@
             android:value="portrait|landscape" />
         <meta-data
             android:name="unity.build-id"
-            android:value="7370fb95-5a4c-40d6-ac27-577c3be2831f" />
+            android:value="43ea3ae9-4db0-4cb6-94a0-0fcccf0c866d" />
 
         <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
